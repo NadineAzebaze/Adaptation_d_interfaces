@@ -1,0 +1,27 @@
+[
+    {
+        "id": "coq_au_vin",
+        "name": "Coq au vin",
+        "clerkSteps": [
+            {
+                "description": "Faire mariner le coq dans du vin",
+                "image": "https://assets.afcdn.com/recipe/20170312/9120_w1024h576c1cx360cy560.webp"
+            }, {
+                "description": "Preparer les champignons",
+                "image": "https://cdn.futura-sciences.com/sources/images/cepe-champignon.jpg"
+            }
+        ]
+    }, {
+        "id": "salade_nicoise",
+        "name": "Salade niçoise",
+        "clerkSteps": [
+            {
+                "description": "Préparer les pommes de terre",
+                "image": "https://www.academiedugout.fr/images/16365/1200-auto/fotolia_55292183_subscription_xl-copy.jpg?poix=50&poiy=50"
+            }, {
+                "description": "Denoyoter les olives",
+                "image": "https://gastronomie-espagnole.be/wp-content/uploads/2020/05/olives-noires.jpg"
+            }
+        ]
+    }
+]

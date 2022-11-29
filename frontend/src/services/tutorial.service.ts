@@ -1,6 +1,7 @@
 import {Injectable} from "@angular/core";
 import {Recipe, RecipeStep} from "../app/models/recipe.model";
 import {BehaviorSubject, Subject} from "rxjs";
+import { RECIPE} from '../mocks/recipe.mock'
 import {HttpClient} from "@angular/common/http";
 
 @Injectable({
@@ -13,7 +14,7 @@ export class TutorialService {
    * The list of recipes retrieved from the mock
    * @private
    */
-  private recipes: Recipe[]; //todo
+  private recipes: Recipe[] = RECIPE;
 
 
   /**
@@ -49,5 +50,9 @@ export class TutorialService {
     this.http.get<RecipeStep>(recipeStepUrl).subscribe((recipeStepNext) => {
       this.recipeStepNext$.next(recipeStepNext);
     });
+  }
+  
+  getRecipeStep(recipeId: string, recipeStepId: string): void{
+    //todo
   }
 }
