@@ -1,0 +1,5 @@
+import Recipe from "./recipe.model";
+
+export default class ClerkTask {
+    constructor(public commandDate: Date, public quantity: number, public recipe: Recipe) {}
+}
