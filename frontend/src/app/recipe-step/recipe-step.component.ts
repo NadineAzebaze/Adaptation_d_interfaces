@@ -1,4 +1,5 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, Input, OnInit} from "@angular/core";
+import {RecipeStep} from "../models/recipe.model";
 
 @Component({
   selector: 'app-recipe-step',
@@ -6,6 +7,9 @@ import {Component, OnInit} from "@angular/core";
   styleUrls: ['./recipe-step.component.scss']
 })
 export class RecipeStepComponent implements OnInit {
+
+  @Input()
+  recipeStep: RecipeStep;
 
   constructor() {
   }

@@ -1,16 +1,12 @@
 <div class="step">
-  <h2>
+  <div class="image">
     Ici titre de l'étape
-  </h2>
-  <div>
-    <h3>
-      Ici image
-    </h3>
-    <h3>
-      Ici descriptif texte
-    </h3>
+    {{recipeStep.image}}
   </div>
-
+  <h3>
+    {{recipeStep.description}}
+  </h3>
   <button class="button-next" (click)="next()"></button>
   <button class="button-back" (click)="back()"></button>
+
 </div>

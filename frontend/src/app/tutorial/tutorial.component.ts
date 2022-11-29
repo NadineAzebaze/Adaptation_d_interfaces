@@ -1,4 +1,7 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, Input, OnInit} from "@angular/core";
+import {Recipe} from '../models/recipe.model'
+import {RecipeStep} from "../models/recipe.model";
+import {TutorialService} from "../../services/tutorial.service";
 
 @Component({
   selector: 'app-tutorial',
@@ -7,17 +10,18 @@ import {Component, OnInit} from "@angular/core";
 })
 export class TutorialComponent implements OnInit {
 
-  public recipeChose: string;
+  @Input()
+  recipe: Recipe;
 
-  constructor() {
-    this.recipeChose = '';
+  constructor(private tutorialService: TutorialService) {
+
   }
 
   ngOnInit(): void {
   }
 
-  nextStep(): void { //todo
-    console.log("recipe-step");
+  nextRecipeStep(recipeStep: RecipeStep): void{
+    this.tutorialService.nextRecipeStep(this.recipe, recipeStep);
   }
 
 
