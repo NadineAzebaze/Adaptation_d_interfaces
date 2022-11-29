@@ -24,6 +24,10 @@ export class ClerkTaskService {
             quantity: Math.floor(Math.random() * 10),
             recipeId: Recipes[Math.floor(Math.random() * Recipes.length)].id
         } as ClerkTask;
+        this.add(task)
+    }
+
+    public add(task: ClerkTask) {
         this.tasks.push(task);
         this.subject.next(null);
     }
