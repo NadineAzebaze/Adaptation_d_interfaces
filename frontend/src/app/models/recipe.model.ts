@@ -5,7 +5,7 @@ export default class Recipe {
 }
 
 export class RecipeStep {
-    constructor(public description: string, public image: string) {
+    constructor(public description: string, public image: string|undefined) {
 
     }
 }
