@@ -7,6 +7,7 @@ import {RecipeComponent} from "./recipe/recipe.component";
 import {HomeComponent} from "./home/home.component";
 import {RecipesComponent} from "./Recipes/recipes.component";
 import {TutorialComponent} from "./tutorial/tutorial.component";
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import {TutorialComponent} from "./tutorial/tutorial.component";
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
