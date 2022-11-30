@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
 import {Recipe, RecipeStep} from "../app/models/recipe.model";
 import {BehaviorSubject, Subject} from "rxjs";
-import { RECIPE} from '../mocks/recipe.mock'
+import {RECIPE} from '/../../backend/src/mocks/recipe.mock'
 import {HttpClient} from "@angular/common/http";
 
 @Injectable({
@@ -51,7 +51,7 @@ export class TutorialService {
       this.recipeStepNext$.next(recipeStepNext);
     });
   }
-  
+
   getRecipeStep(recipeId: string, recipeStepId: string): void{
     //todo
   }

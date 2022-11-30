@@ -1,4 +1,4 @@
-import {Recipe, RecipeStep} from "../app/models/recipe.model";
+import {Recipe, RecipeStep} from "../../../frontend/src/app/models/recipe.model";
 
 export const RECIPE_STEP: RecipeStep[] = [
   {
@@ -16,7 +16,6 @@ export const RECIPE_STEP: RecipeStep[] = [
 
 export const RECIPE: Recipe[] = [
   {
-    id: "coq_au_vin",
     name: "Coq au vin",
     clerkSteps: []
   },

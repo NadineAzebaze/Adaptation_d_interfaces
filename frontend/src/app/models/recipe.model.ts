@@ -8,15 +8,3 @@ export class RecipeStep {
 
     }
 }
-
-export interface Recipe {
-  id: string;
-  name: string;
-  clerkSteps: RecipeStep[];
-}
-
-export interface RecipeStep {
-  id:string;
-  description: string;
-  image?:string;
-}
