@@ -9,7 +9,7 @@ import {RecipeStep} from "../models/recipe.model";
 export class RecipeStepComponent implements OnInit {
 
   @Input()
-  recipeStep: RecipeStep;
+  recipeStep!: RecipeStep;
 
   constructor() {
   }

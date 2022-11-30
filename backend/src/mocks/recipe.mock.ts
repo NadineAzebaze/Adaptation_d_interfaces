@@ -16,6 +16,7 @@ export const RECIPE_STEP: RecipeStep[] = [
 
 export const RECIPE: Recipe[] = [
   {
+    id: "coq_au_vin",
     name: "Coq au vin",
     clerkSteps: []
   },

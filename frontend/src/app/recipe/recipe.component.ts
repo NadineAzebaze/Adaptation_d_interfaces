@@ -11,7 +11,7 @@ import {RecipeService} from "../../services/recipe.service";
 export class RecipeComponent implements OnInit {
 
   @Input()
-  recipe: Recipe;
+  recipe!: Recipe;
 
   @Output()
   recipeSelected: EventEmitter<Recipe> = new EventEmitter<Recipe>();

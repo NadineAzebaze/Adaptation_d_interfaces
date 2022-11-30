@@ -11,7 +11,7 @@ import {TutorialService} from "../../services/tutorial.service";
 export class TutorialComponent implements OnInit {
 
   @Input()
-  recipe: Recipe;
+  recipe!: Recipe;
 
   constructor(private tutorialService: TutorialService) {
 
