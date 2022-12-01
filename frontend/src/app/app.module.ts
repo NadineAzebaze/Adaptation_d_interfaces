@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { TableComponent } from './table/table.component';
 import { TypeDishComponent } from './table/type-dish/type-dish.component';
 import {RecipeStepComponent} from "./recipe-step/recipe-step.component";
+import { ScreenChefComponent } from './screen-chef/screen-chef.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import {RecipeStepComponent} from "./recipe-step/recipe-step.component";
     TableComponent,
     TypeDishComponent,
     TutorialComponent,
-    RecipeStepComponent
+    RecipeStepComponent,
+    ScreenChefComponent
   ],
   imports: [
     BrowserModule,
