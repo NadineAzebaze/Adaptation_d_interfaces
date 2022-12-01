@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-screen-chef',
@@ -11,6 +11,7 @@ export class ScreenChefComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
 
 
 
