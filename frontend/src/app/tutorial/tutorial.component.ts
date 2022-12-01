@@ -5,8 +5,8 @@ import {TutorialService} from "../../services/tutorial.service";
 
 @Component({
   selector: 'app-tutorial',
-  templateUrl: './app-tutorial.component.html',
-  styleUrls: ['./app-tutorial.component.scss']
+  templateUrl: './tutorial.component.html',
+  styleUrls: ['./tutorial.component.scss']
 })
 export class TutorialComponent implements OnInit {
 

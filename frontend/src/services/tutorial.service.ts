@@ -3,6 +3,7 @@ import {Recipe, RecipeStep} from "../app/models/recipe.model";
 import {BehaviorSubject, Subject} from "rxjs";
 import {RECIPE} from "../../../backend/src/mocks/recipe.mock"
 import {HttpClient} from "@angular/common/http";
+import {RecipeRepository} from "../app/repositories/recipe.repository";
 
 @Injectable({
   providedIn: 'root'
@@ -15,12 +16,12 @@ export class TutorialService {
    * @private
    */
   private recipes: Recipe[] = RECIPE;
+  private recipeRepository!: RecipeRepository;
 
 
   /**
    * Observable which contains the list of the recipes
    */
-  public recipes$: BehaviorSubject<Recipe[]> = new BehaviorSubject<Recipe[]>(this.recipes);
   public recipeSelected$: Subject<Recipe> = new Subject();
   public recipeStepNext$: Subject<RecipeStep> = new Subject();
 
@@ -34,8 +35,7 @@ export class TutorialService {
 
   private retrieveRecipes(): void {
     this.http.get<Recipe[]>(this.recipeUrl).subscribe((recipeList) => {
-        this.recipes = recipeList;
-        this.recipes$.next(this.recipes);
+        this.recipes = this.recipeRepository.recipes;
       }
     )
   }
