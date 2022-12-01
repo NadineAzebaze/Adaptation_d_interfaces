@@ -11,7 +11,6 @@ export class TypeDishComponent implements OnInit{
 
   @Input() dishclass: string='';
 
-  @Input() dishesList!: string[];
 
 
 

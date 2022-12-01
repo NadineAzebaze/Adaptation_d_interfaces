@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import Table from "../models/table.model";
-import TypeDish from "../models/typeDish.model";
+import Table from "../../models/table.model";
+import TypeDish from "../../models/typeDish.model";
 
 
 @Component({
@@ -59,21 +59,21 @@ export class TableComponent implements OnInit {
     // @ts-ignore
     if (this.entree.dishes.includes(dish)) {
       this.nbrEntreeDone+=1;
-      if (this.nbrEntreeDone===this.entree.dishes.length) document.getElementsByTagName("app-type-dish")[this.id-1].remove()
+      // @ts-ignore
+      if (this.nbrEntreeDone===this.entree.dishes.length) document.getElementById(this.entree.type+this.id).remove()
     } else { // @ts-ignore
       if (this.plat.dishes.includes(dish)) {
         this.nbrPlatDone+=1;
-        if (this.nbrPlatDone===this.plat.dishes.length) document.getElementsByTagName("app-type-dish")[this.id-1].remove()
+        // @ts-ignore
+        if (this.nbrPlatDone===this.plat.dishes.length) document.getElementById(this.plat.type+this.id).remove()
       } else {
         this.nbrDessertDone+=1;
-        if (this.nbrDessertDone===this.dessert.dishes.length)document.getElementsByTagName("app-type-dish")[this.id-1].remove()
+        // @ts-ignore
+        if (this.nbrDessertDone===this.dessert.dishes.length) document.getElementById(this.dessert.type+this.id).remove()
       }
     }
-
-
-
-
   }
+
 
 }
 

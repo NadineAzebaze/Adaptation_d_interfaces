@@ -1,18 +1,18 @@
 <div class="table">
   <p>Table {{id}}</p>
 
-  <app-type-dish [dishclass]=entree.type [dishesList]="entree.dishes">
+  <app-type-dish [dishclass]=entree.type id="{{entree.type}}{{id}}">
     <li id="{{entree.dishes[0]}}{{id}}">{{entree.dishes[0]}}<input (click)="strikeOut(entree.dishes[0]+id)" type="checkbox" class="checkbox"/></li>
     <li id="{{entree.dishes[1]}}{{id}}">{{entree.dishes[1]}}<input (click)="strikeOut(entree.dishes[1]+id)" type="checkbox" class="checkbox"/></li>
   </app-type-dish>
 
-  <app-type-dish [dishclass]=plat.type [dishesList]="plat.dishes">
+  <app-type-dish [dishclass]=plat.type id="{{plat.type}}{{id}}">
     <li id="{{plat.dishes[0]}}{{id}}">{{plat.dishes[0]}}<input (click)="strikeOut(plat.dishes[0]+id)" type="checkbox" class="checkbox"/></li>
     <li id="{{plat.dishes[1]}}{{id}}">{{plat.dishes[1]}}<input (click)="strikeOut(plat.dishes[1]+id)" type="checkbox" class="checkbox"/></li>
     <li id="{{plat.dishes[2]}}{{id}}">{{plat.dishes[2]}}<input (click)="strikeOut(plat.dishes[2]+id)" type="checkbox" class="checkbox"/></li>
   </app-type-dish>
 
-  <app-type-dish [dishclass]=dessert.type [dishesList]="dessert.dishes">
+  <app-type-dish [dishclass]=dessert.type id="{{dessert.type}}{{id}}">
     <li id="{{dessert.dishes[0]}}{{id}}" >{{dessert.dishes[0]}}<input (click)="strikeOut(dessert.dishes[0]+id)" type="checkbox" class="checkbox"/></li>
     <li id="{{dessert.dishes[1]}}{{id}}">{{dessert.dishes[1]}}<input (click)="strikeOut(dessert.dishes[1]+id)" type="checkbox" class="checkbox"/></li>
   </app-type-dish>
