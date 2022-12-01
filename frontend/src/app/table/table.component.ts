@@ -10,15 +10,18 @@ import TypeDish from "../models/typeDish.model";
 })
 
 export class TableComponent implements OnInit {
-  dishesDone=0;
+  dishesDone = 0;
 
-  @Input() id! : number
+  @Input() id!: number
 
 
-  entree = new TypeDish("entree",["salade niçoise","salade de chèvre chaud"])
-  plat = new TypeDish("plat",["daube","lasagne","escalope milanaise"])
-  dessert = new TypeDish("dessert",["tiramisu","tropesiene"])
-  table = new Table(this.id,[this.entree,this.plat,this.dessert])
+  entree = new TypeDish("entree", ["salade niçoise", "salade de chèvre chaud"])
+  nbrEntreeDone=0;
+  plat = new TypeDish("plat", ["daube", "lasagne", "escalope milanaise"])
+  nbrPlatDone=0;
+  dessert = new TypeDish("dessert", ["tiramisu", "tropesiene"])
+  nbrDessertDone=0;
+  table = new Table(this.id, [this.entree, this.plat, this.dessert])
 
   tableLength = this.entree.dishes.length + this.plat.dishes.length + this.dessert.dishes.length
 
@@ -28,25 +31,49 @@ export class TableComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  strikeOut(dish: string) {
+  strikeOut(dishId: string) {
     // @ts-ignore
-    document.getElementById(dish).innerHTML = '<del>' + document.getElementById(dish).textContent + '</del>';
-    this.dishesDone+=1;
-    if(this.dishesDone===this.tableLength) this.deleteTable()
+    var dish = document.getElementById(dishId).textContent
+    // @ts-ignore
+    document.getElementById(dishId).innerHTML = '<del>' + dish + '</del>';
+    // @ts-ignore
+    this.checkIfDeleteDish(dish)
+    this.dishesDone += 1;
+    if (this.dishesDone === this.tableLength) this.deleteTable()
 
   }
 
-  deleteTable(){
-
+  deleteTable() {
     // @ts-ignore
     var firstIndex = document.getElementsByTagName("app-table")[0].attributes["ng-reflect-id"].value
-    document.getElementsByTagName("app-table")[this.id-firstIndex].remove()
+    document.getElementsByTagName("app-table")[this.id - firstIndex].remove()
     // @ts-ignore
-    var allCommands = document.getElementsByClassName("allCommands")[this.id-firstIndex]
+    var allCommands = document.getElementsByClassName("allCommands")[this.id - firstIndex]
 
     // @ts-ignore
     allCommands.style["grid-template-columns"] = "repeat(3,1fr)"
 
   }
+
+  checkIfDeleteDish(dish:string) {
+    // @ts-ignore
+    if (this.entree.dishes.includes(dish)) {
+      this.nbrEntreeDone+=1;
+      if (this.nbrEntreeDone===this.entree.dishes.length) document.getElementsByTagName("app-type-dish")[this.id-1].remove()
+    } else { // @ts-ignore
+      if (this.plat.dishes.includes(dish)) {
+        this.nbrPlatDone+=1;
+        if (this.nbrPlatDone===this.plat.dishes.length) document.getElementsByTagName("app-type-dish")[this.id-1].remove()
+      } else {
+        this.nbrDessertDone+=1;
+        if (this.nbrDessertDone===this.dessert.dishes.length)document.getElementsByTagName("app-type-dish")[this.id-1].remove()
+      }
+    }
+
+
+
+
+  }
+
 }
 
