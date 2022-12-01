@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import Table from "../models/table.model";
 import TypeDish from "../models/typeDish.model";
 
+
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
@@ -9,7 +10,7 @@ import TypeDish from "../models/typeDish.model";
 })
 
 export class TableComponent implements OnInit {
-  add =0;
+  dishesDone=0;
 
   @Input() id! : number
 
@@ -30,16 +31,22 @@ export class TableComponent implements OnInit {
   strikeOut(dish: string) {
     // @ts-ignore
     document.getElementById(dish).innerHTML = '<del>' + document.getElementById(dish).textContent + '</del>';
-    this.add+=1;
-    if(this.add===this.tableLength) this.deleteTable()
+    this.dishesDone+=1;
+    if(this.dishesDone===this.tableLength) this.deleteTable()
 
   }
 
   deleteTable(){
-    console.log("delete",this.id)
 
     // @ts-ignore
-    document.getElementById("table"+this.id).remove();
+    var firstIndex = document.getElementsByTagName("app-table")[0].attributes["ng-reflect-id"].value
+    document.getElementsByTagName("app-table")[this.id-firstIndex].remove()
+    // @ts-ignore
+    var allCommands = document.getElementsByClassName("allCommands")[this.id-firstIndex]
+
+    // @ts-ignore
+    allCommands.style["grid-template-columns"] = "repeat(3,1fr)"
+
   }
 }
 
