@@ -1,0 +1,16 @@
+<div class="table">
+  <p>Table {{table.id}}</p>
+  <app-type-dish [dishclass]=entree.type>
+    <li>{{entree.dishes[0]}}</li>
+    <li>{{entree.dishes[1]}}</li>
+  </app-type-dish>
+  <app-type-dish [dishclass]=plat.type>
+    <li>{{plat.dishes[0]}}</li>
+    <li>{{plat.dishes[1]}}</li>
+    <li>{{plat.dishes[2]}}</li>
+  </app-type-dish>
+  <app-type-dish [dishclass]=dessert.type>
+    <li>{{dessert.dishes[0]}}</li>
+    <li>{{dessert.dishes[1]}}</li>
+  </app-type-dish>
+</div>

@@ -7,6 +7,8 @@ import {RecipeComponent} from "./recipe/recipe.component";
 import {HomeComponent} from "./home/home.component";
 import {TutorialComponent} from "./tutorial/tutorial.component";
 import { HttpClientModule } from '@angular/common/http';
+import { TableComponent } from './table/table.component';
+import { TypeDishComponent } from './table/type-dish/type-dish.component';
 import {RecipeStepComponent} from "./recipe-step/recipe-step.component";
 
 @NgModule({
@@ -14,6 +16,8 @@ import {RecipeStepComponent} from "./recipe-step/recipe-step.component";
     AppComponent,
     RecipeComponent,
     HomeComponent,
+    TableComponent,
+    TypeDishComponent,
     TutorialComponent,
     RecipeStepComponent
   ],
