@@ -13,7 +13,7 @@ export class ClerkTaskController {
     }
 
     @Get(":id")
-    public get(@Param() params: { id: String }): ClerkTask {
+    public get(@Param() params: { id: string }): ClerkTask {
         var result = this.service.get(params.id);
         if(!result)
             throw new HttpException("Task not found.", HttpStatus.NOT_FOUND);
