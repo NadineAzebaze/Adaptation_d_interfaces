@@ -1,11 +1,10 @@
-export default class Recipe {
+export class Recipe {
     constructor(public id: String, public name: String, public clerkSteps: RecipeStep[]) {
-
     }
 }
 
 export class RecipeStep {
-    constructor(public description: string, public image: string|undefined) {
+    constructor(public id: String, public description: string, public image: string|undefined) {
 
     }
 }

@@ -17,11 +17,11 @@ export class ClerkTaskController {
     return this.service.getAll();
   }
 
-  @Get(':id')
+  @Get(":id")
   public get(@Param() params: { id: string }): ClerkTask {
-    const result = this.service.get(params.id);
-    if (!result)
-      throw new HttpException('Task not found.', HttpStatus.NOT_FOUND);
-    return result;
+      var result = this.service.get(params.id);
+      if(!result)
+          throw new HttpException("Task not found.", HttpStatus.NOT_FOUND);
+      return result;
   }
 }

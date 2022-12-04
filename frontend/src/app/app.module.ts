@@ -5,13 +5,23 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {RecipeComponent} from "./recipe/recipe.component";
 import {HomeComponent} from "./home/home.component";
+import {TutorialComponent} from "./tutorial/tutorial.component";
 import { HttpClientModule } from '@angular/common/http';
+import { TableComponent } from './screen-chef/table/table.component';
+import { TypeDishComponent } from './screen-chef/table/type-dish/type-dish.component';
+import {RecipeStepComponent} from "./recipe-step/recipe-step.component";
+import { ScreenChefComponent } from './screen-chef/screen-chef.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RecipeComponent,
-    HomeComponent
+    HomeComponent,
+    TableComponent,
+    TypeDishComponent,
+    TutorialComponent,
+    RecipeStepComponent,
+    ScreenChefComponent
   ],
   imports: [
     BrowserModule,
