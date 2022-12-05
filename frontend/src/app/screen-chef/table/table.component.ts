@@ -14,24 +14,30 @@ export class TableComponent implements OnInit {
 
   @Input() id!: number
 
+  @Input() table! : Table
 
-  entree = new TypeDish("entree", ["salade niçoise", "salade de chèvre chaud"])
   nbrEntreeDone=0;
-  plat = new TypeDish("plat", ["daube", "lasagne", "escalope milanaise"])
   nbrPlatDone=0;
-  dessert = new TypeDish("dessert", ["tiramisu", "tropesiene"])
   nbrDessertDone=0;
-  table = new Table(this.id, [this.entree, this.plat, this.dessert])
-
-  tableLength = this.entree.dishes.length + this.plat.dishes.length + this.dessert.dishes.length
-
   constructor() {
   }
 
+  entrees! : TypeDish
+  plats! : TypeDish
+  desserts! : TypeDish
+  tableLength = 0;
+
+
   ngOnInit(): void {
+    console.log(this.table)
+    this.entrees = this.table.alldishes[0]
+    this.plats = this.table.alldishes[1]
+    this.desserts = this.table.alldishes[2]
+    this.tableLength = this.entrees.dishes.length + this.plats.dishes.length + this.desserts.dishes.length
   }
 
   strikeOut(dishId: string) {
+    console.log(dishId)
     // @ts-ignore
     var dish = document.getElementById(dishId).textContent
     // @ts-ignore
@@ -57,19 +63,19 @@ export class TableComponent implements OnInit {
 
   checkIfDeleteDish(dish:string) {
     // @ts-ignore
-    if (this.entree.dishes.includes(dish)) {
+    if (this.entrees.dishes.includes(dish)) {
       this.nbrEntreeDone+=1;
       // @ts-ignore
-      if (this.nbrEntreeDone===this.entree.dishes.length) document.getElementById(this.entree.type+this.id).remove()
+      if (this.nbrEntreeDone===this.entrees.dishes.length) document.getElementById(this.entrees.type+this.id).remove()
     } else { // @ts-ignore
-      if (this.plat.dishes.includes(dish)) {
+      if (this.plats.dishes.includes(dish)) {
         this.nbrPlatDone+=1;
         // @ts-ignore
-        if (this.nbrPlatDone===this.plat.dishes.length) document.getElementById(this.plat.type+this.id).remove()
+        if (this.nbrPlatDone===this.plats.dishes.length) document.getElementById(this.plats.type+this.id).remove()
       } else {
         this.nbrDessertDone+=1;
         // @ts-ignore
-        if (this.nbrDessertDone===this.dessert.dishes.length) document.getElementById(this.dessert.type+this.id).remove()
+        if (this.nbrDessertDone===this.desserts.dishes.length) document.getElementById(this.desserts.type+this.id).remove()
       }
     }
   }
