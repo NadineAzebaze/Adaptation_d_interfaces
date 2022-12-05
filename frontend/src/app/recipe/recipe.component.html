@@ -1,10 +1,30 @@
-<div>
-  <div class="recipe" *ngFor="let recipe of recipes">
-    <h2>
-      {{recipe.name}}
-    </h2>
-    <h3>
-      Nombre d'étapes: {{recipe.clerkSteps.length}}
-    </h3>
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+
+  <title>Cook Apprentice</title>
+</head>
+
+<body>
+  <div class="header">
+    <h1>Liste de recettes</h1>
   </div>
-</div>
+
+  <div class="row2-container">
+      <div class="box box-down cyan" *ngFor="let recipe of recipes">
+        <h2> {{recipe.name}} </h2>
+        <p>
+          Nombre d'étapes: {{recipe.clerkSteps.length}}
+        </p>
+      </div>
+  </div>
+</body>
+
+</html>
