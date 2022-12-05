@@ -1,6 +1,17 @@
-@import '../../../styles/card.scss';
+//@import '../../../styles/card.scss';
 
-.card {
-  display: grid;
-  grid-template-rows: max-content 200px 1fr;
+.row {
+  display: flex;
+}
+.col1 {
+  flex: 1;
+  padding: 1em;
+  border: solid;
+  border-color: #3f51b5;
+}
+.col2{
+  flex:2;
+  padding: 1em;
+  border: solid;
+  border-color: #3f51b5;
 }

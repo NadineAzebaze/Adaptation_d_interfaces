@@ -24,7 +24,12 @@ export class RecipeComponent implements OnInit {
     this.recipeService.subject.subscribe(v => this.recipes = v);
   }
 
-  selectRecipe(): void {
+  selectRecipe(id: String): void {
+    for(let i=0; this.recipes.length; i++){
+      if(this.recipes[i].id == id){
+        this.recipes[i].showTutorial = true;
+      }
+    }
     //this.recipeSelected.emit(this.recipe);
   }
 

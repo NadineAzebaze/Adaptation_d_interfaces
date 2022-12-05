@@ -8,6 +8,7 @@ import {Router} from "@angular/router";
 })
 export class HomeComponent implements OnInit {
 
+  public isApprenti = false;
   constructor(public router : Router) {
   }
 
@@ -15,4 +16,7 @@ export class HomeComponent implements OnInit {
   }
 
 
+  changeMode() {
+    this.isApprenti = !this.isApprenti;
+  }
 }

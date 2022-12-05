@@ -1,5 +1,5 @@
 export class Recipe {
-    constructor(public id: String, public name: String, public clerkSteps: RecipeStep[]) {
+    constructor(public id: String, public name: String, public clerkSteps: RecipeStep[], public showTutorial: boolean) {
     }
 }
 

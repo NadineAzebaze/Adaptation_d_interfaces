@@ -1,15 +1,21 @@
-<div>
-  <div class="home">
-    <button class="button-expertise">Expert/Novice</button>
-    <div class="card">
+
+  <div class="row">
+    <button (click)="changeMode()">Mode apprenti</button>
+    <div class="col1">
       <h2>Titre ici ....</h2>
-      <div class="task">
-        <app-clerk-task-list></app-clerk-task-list>
+      <div *ngIf="isApprenti == true">
+        <h2> chrono ici</h2>
+        <h1> Guide de recettes: Ici mettre le tutoriel </h1>
+        <app-tutorial></app-tutorial>
       </div>
-      <div class="card">
+      <div >
         <app-recipe></app-recipe>
       </div>
-
     </div>
+      <div class="col2">
+        <app-clerk-task-list></app-clerk-task-list>
+      </div>
+
+
   </div>
-</div>
+

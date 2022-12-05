@@ -1,7 +1,17 @@
 <div class="tutorial">
   <div class="recipeStep" >
-    <app-recipe-step >
-      <!--todo-->
-    </app-recipe-step>
+      <div class="image">
+        Ici titre de l'étape
+      </div>
+      <h3>
+      </h3>
+    <div *ngFor="let recipe of recipes">
+      <div *ngIf="recipe.showTutorial == true">
+        <div *ngFor="let recipeStep of recipe.clerkSteps">
+          <app-recipe-step></app-recipe-step>
+        </div>
+      </div>
+
     </div>
+  </div>
 </div>
