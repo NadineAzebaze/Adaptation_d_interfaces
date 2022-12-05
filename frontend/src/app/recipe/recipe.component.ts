@@ -11,7 +11,7 @@ import {RecipeService} from "../../services/recipe.service";
 export class RecipeComponent implements OnInit {
 
   @Input()
-  recipe!: Recipe;
+  recipes: Recipe[] = [];
 
   @Output()
   recipeSelected: EventEmitter<Recipe> = new EventEmitter<Recipe>();
@@ -21,10 +21,11 @@ export class RecipeComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.recipeService.subject.subscribe(v => this.recipes = v);
   }
 
   selectRecipe(): void {
-    this.recipeSelected.emit(this.recipe);
+    //this.recipeSelected.emit(this.recipe);
   }
 
 
