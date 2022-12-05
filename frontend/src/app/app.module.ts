@@ -11,6 +11,10 @@ import { TableComponent } from './screen-chef/table/table.component';
 import { TypeDishComponent } from './screen-chef/table/type-dish/type-dish.component';
 import {RecipeStepComponent} from "./recipe-step/recipe-step.component";
 import { ScreenChefComponent } from './screen-chef/screen-chef.component';
+import { SidePanelComponent } from './components/side-panel/side-panel.component';
+import { ClerkHeaderComponent } from './components/clerk-header/clerk-header.component';
+import { RecipeStepOverviewComponent } from './components/recipe-step-overview/recipe-step-overview.component';
+import { RecipePlayerComponent } from './components/recipe-player/recipe-player.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +25,11 @@ import { ScreenChefComponent } from './screen-chef/screen-chef.component';
     TypeDishComponent,
     TutorialComponent,
     RecipeStepComponent,
-    ScreenChefComponent
+    ScreenChefComponent,
+    SidePanelComponent,
+    ClerkHeaderComponent,
+    RecipeStepOverviewComponent,
+    RecipePlayerComponent
   ],
   imports: [
     BrowserModule,
