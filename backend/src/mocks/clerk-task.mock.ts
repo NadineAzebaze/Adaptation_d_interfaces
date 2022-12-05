@@ -6,25 +6,14 @@ export const TASK_LIST: ClerkTask[] = [
         commandDate: new Date(2022,10,10),
         quantity: 1,
         recipeId: 'coq_au_vin',
+        instruction: "blablablabla"
     },
     {
-        id: "task1",
+        id: "task2",
         commandDate: new Date(2022,10,10),
         quantity: 1,
-        recipeId: 'coq_au_vin',
+        recipeId: 'salade_nicoise',
+        instruction: "blablablabla"
     },
 
-];
-
-export const RECIPE: Recipe[] = [
-    {
-        id: "coq_au_vin",
-        name: "Coq au vin",
-        clerkSteps: []
-    },
-    {
-        id: "salade_nicoise",
-        name: "Salade niçoise",
-        clerkSteps: []
-    }
 ];

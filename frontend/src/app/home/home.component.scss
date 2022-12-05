@@ -1,1 +1,6 @@
 @import '../../../styles/card.scss';
+
+.card {
+  display: grid;
+  grid-template-rows: max-content 200px 1fr;
+}

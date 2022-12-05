@@ -1,10 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Title</title>
-</head>
-<body>
+<div class="header">
+  <h1>Liste de tâches</h1>
+</div>
 
-</body>
-</html>
+<div class="row2-container">
+  <div class="box box-down cyan" *ngFor="let clerktask of clerkTaskList">
+    <h2> {{clerktask.id}} </h2>
+    <p>
+      Instructions: {{clerktask.instruction}}
+    </p>
+  </div>
+</div>

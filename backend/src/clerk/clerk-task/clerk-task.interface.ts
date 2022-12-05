@@ -3,4 +3,5 @@ export interface ClerkTask {
   commandDate: Date;
   quantity: number;
   recipeId: string;
+  instruction: string;
 }
