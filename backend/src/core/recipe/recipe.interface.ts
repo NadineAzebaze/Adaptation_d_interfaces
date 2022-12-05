@@ -1,10 +1,10 @@
 export interface Recipe {
-    id: String;
-    name: String;
-    clerkSteps: RecipeStep[]
+  id: string;
+  name: string;
+  clerkSteps: RecipeStep[];
 }
 
 export interface RecipeStep {
-    description: String;
-    image?: String;
+  description: string;
+  image?: string;
 }
