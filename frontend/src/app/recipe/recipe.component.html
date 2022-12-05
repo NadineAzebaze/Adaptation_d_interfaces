@@ -1,11 +1,11 @@
 
-<div class="row2-container">
-  <div class="box box-down cyan" *ngFor="let recipe of recipes">
+<div class="container">
+  <div class="element" *ngFor="let recipe of recipes">
     <h2> {{recipe.name}} </h2>
     <p>
       Nombre d'étapes: {{recipe.clerkSteps.length}}
     </p>
-    <button (click)="selectRecipe(recipe.id)"> Voir recette</button>
+    <button (click)="selectRecipe(recipe)">Voir recette</button>
   </div>
 
 </div>

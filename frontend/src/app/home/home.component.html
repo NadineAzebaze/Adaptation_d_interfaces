@@ -1,20 +1,21 @@
-
-  <div class="row">
-    <button (click)="changeMode()">Mode apprenti</button>
-    <div class="col1">
-      <h2>Titre ici ....</h2>
-      <div *ngIf="isApprenti == true">
-        <h2> chrono ici</h2>
-        <h1> Guide de recettes: Ici mettre le tutoriel </h1>
-        <app-tutorial></app-tutorial>
-      </div>
-      <div >
-        <app-recipe></app-recipe>
+<app-side-panel>
+  <div panel>
+    <app-clerk-task-list></app-clerk-task-list>
+  </div>
+  <div class="body">
+    <div class="header">
+      <button (click)="changeMode()">Mode apprenti</button>
+    </div>
+    <div class="content animate" [ngClass]="{ 'apprentise': isApprenti }">
+      <div>
+        <app-tutorial [recipe]="selectedRecipe" *ngIf="selectedRecipe" [apprentise]="isApprenti"></app-tutorial>
+        <div *ngIf="!selectedRecipe">No recipe selected.</div>
       </div>
     </div>
-      <div class="col2">
-        <app-clerk-task-list></app-clerk-task-list>
-      </div>
 
-
+    <div class="footer animate recipes" [ngClass]="{ 'apprentise': isApprenti }">
+      <app-recipe (recipeSelected)="selectRecipe($event)"></app-recipe>
+    </div>
   </div>
+
+</app-side-panel>

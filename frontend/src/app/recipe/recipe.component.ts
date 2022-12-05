@@ -6,7 +6,7 @@ import {RecipeService} from "../../services/recipe.service";
 @Component({
   selector: 'app-recipe',
   templateUrl: './recipe.component.html',
-  styleUrls: ['./recipe.component.scss']
+  styleUrls: ['./recipe.component.less']
 })
 export class RecipeComponent implements OnInit {
 
@@ -14,7 +14,7 @@ export class RecipeComponent implements OnInit {
   recipes: Recipe[] = [];
 
   @Output()
-  recipeSelected: EventEmitter<Recipe> = new EventEmitter<Recipe>();
+  recipeSelected = new EventEmitter<Recipe>();
 
   constructor(public recipeService : RecipeService) {
   }
@@ -24,13 +24,8 @@ export class RecipeComponent implements OnInit {
     this.recipeService.subject.subscribe(v => this.recipes = v);
   }
 
-  selectRecipe(id: String): void {
-    for(let i=0; this.recipes.length; i++){
-      if(this.recipes[i].id == id){
-        this.recipes[i].showTutorial = true;
-      }
-    }
-    //this.recipeSelected.emit(this.recipe);
+  selectRecipe(recipe: Recipe): void {
+    this.recipeSelected.emit(recipe)
   }
 
 

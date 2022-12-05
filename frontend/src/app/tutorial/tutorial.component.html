@@ -1,17 +1,15 @@
-<div class="tutorial">
-  <div class="recipeStep" >
-      <div class="image">
-        Ici titre de l'étape
-      </div>
-      <h3>
-      </h3>
-    <div *ngFor="let recipe of recipes">
-      <div *ngIf="recipe.showTutorial == true">
-        <div *ngFor="let recipeStep of recipe.clerkSteps">
-          <app-recipe-step></app-recipe-step>
-        </div>
-      </div>
-
-    </div>
+<div class="container">
+  <div class="arrow-container left-arrow">
+    <i class="fa-solid fa-arrow-left" (click)="previous()"></i>
+  </div>
+  <div class="body">
+    <img style="width: 500px; height: 300px;" class="image" [src]="step.image" *ngIf="step.image && apprentise" [alt]="step.id">
+    <h3>Description: </h3>
+    <p>{{step.description}}</p>
+  </div>
+  <div class="arrow-container right-arrow">
+    <i class="fa-solid fa-arrow-right" (click)="next()"></i>
   </div>
 </div>
+
+
