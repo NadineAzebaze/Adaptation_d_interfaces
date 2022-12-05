@@ -1,16 +1,8 @@
 <div class="table">
-  <p>Table {{id}}</p>
+  <p>Table {{table.id}}</p>
 
-  <app-type-dish [dishclass]=entrees.type id="{{entrees.type}}{{id}}">
-    <li *ngFor="let entree of entrees.dishes" id="{{entree+id}}">{{entree}}<input (click)="strikeOut(entree+id)" type="checkbox" class="checkbox"/></li>
-  </app-type-dish>
-
-  <app-type-dish [dishclass]=plats.type id="{{plats.type}}{{id}}">
-    <li *ngFor="let plat of plats.dishes" id="{{plat+id}}">{{plat}}<input (click)="strikeOut(plat+id)" type="checkbox" class="checkbox"/></li>
-  </app-type-dish>
-
-  <app-type-dish [dishclass]=desserts.type id="{{desserts.type}}{{id}}">
-    <li *ngFor="let dessert of desserts.dishes" id="{{dessert+id}}">{{dessert}}<input (click)="strikeOut(dessert+id)" type="checkbox" class="checkbox"/></li>
-  </app-type-dish>
+  <app-type-dish *ngIf="entrees.length>0" [dishes]="entrees" [dishType]="'ENTREE'" (setDone)="setDoneTable($event.id)"></app-type-dish>
+  <app-type-dish [dishes]="plats" [dishType]="'PLAT'" (setDone)="setDoneTable($event.id)"></app-type-dish>
+  <app-type-dish *ngIf="dessert.length>0" [dishes]="dessert" [dishType]="'DESSERT'" (setDone)="setDoneTable($event.id)"></app-type-dish>
 
 </div>

@@ -2,6 +2,6 @@
   <a class="navigation" routerLink="/home">Mes Recettes</a>
   <h3>Commands</h3>
   <div class="allCommands" [style]="'display: grid;grid-template-columns: repeat(3,1fr)'">
-    <app-table *ngFor="let t of table; let index=index" [id]="index+1" [table]="t" ></app-table>
+    <app-table *ngFor="let t of tables" [table]="t" ></app-table>
   </div>
 </div>

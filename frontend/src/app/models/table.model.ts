@@ -1,6 +1,7 @@
-import TypeDish from "./typeDish.model";
+import Dish from "./dish.model";
 
 
-export default class Table{
-  constructor(public id:number,public alldishes:TypeDish[]){}
+export default interface Table{
+  id: number;
+  dishes: Dish[]
 }

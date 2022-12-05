@@ -1,6 +1,13 @@
-<div [ngClass] ="dishclass">
+<div [ngClass]="typeOfDish">
   <ul>
-    <ng-content></ng-content>
+    <li *ngFor="let dish of dishes">
+      <div class="dish">
+        <del *ngIf="dish.done"><p>{{dish.name}}</p></del>
+        <p *ngIf="!dish.done">{{dish.name}}</p>
+        <input (click)="setDone.emit(dish)" type="checkbox" class="checkbox"/>
+      </div>
+    </li>
+
   </ul>
 </div>
 
