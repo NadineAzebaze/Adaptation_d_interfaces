@@ -22,10 +22,12 @@ export const RECIPE: Recipe[] = [
     id: 'coq_au_vin',
     name: 'Coq au vin',
     clerkSteps: [],
+    showTutorial: true,
   },
   {
     id: 'salade_nicoise',
     name: 'Salade niçoise',
     clerkSteps: [],
+    showTutorial: false,
   },
 ];

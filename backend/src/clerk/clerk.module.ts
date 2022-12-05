@@ -5,6 +5,6 @@ import { ClerkTaskService } from './clerk-task/clerk-task.service';
 
 @Module({
   controllers: [ClerkTaskController],
-  providers: [ClerkTaskService, SocketGateway]
+  providers: [ClerkTaskService, SocketGateway],
 })
 export class ClerkModule {}
