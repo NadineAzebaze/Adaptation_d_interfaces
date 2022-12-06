@@ -4,7 +4,7 @@ import {RecipeStep} from "../../../../models/recipe.model";
 @Component({
   selector: 'app-recipe-step',
   templateUrl: './recipe-step.component.html',
-  styleUrls: ['./recipe-step.component.scss']
+  styleUrls: ['./recipe-step.component.less']
 })
 export class RecipeStepComponent implements OnInit {
 
