@@ -2,10 +2,6 @@
   display: flex;
   width: 100%;
   height: 100%;
-
-  align-items: center;
-  justify-content: center;
-  background: transparent;
   font-family: 'Open Sans', sans-serif;
 
 }
@@ -29,13 +25,9 @@
 }
 
 .element {
-  width: 300px;
   position: relative;
-
   display: flex;
-  flex-direction: column;
-  min-height: 20.75em;
-  overflow: hidden;
+  flex: 1;
   border-radius: .5em;
   text-decoration: none;
   background: white;
@@ -44,9 +36,9 @@
   box-shadow: 0 1.5em 2.5em -.5em rgba(#000000, .1);
 
   h2 {
+    display: flex;
     color: #2E3C40;
     font-size: 1.5em;
-    font-weight: 600;
     line-height: 1;
     padding-bottom: .5em;
     margin: 0 0 0.142857143em;
@@ -54,22 +46,21 @@
   }
 
   p {
+    display: flex;
     color: black;
     text-transform: uppercase;
     font-size: 1em;
-    font-weight: 700;
     line-height: 1;
     letter-spacing: 0.1em;
     margin: 0 0 1.777777778em;
   }
 
   button {
+    display: flex;
     border: none;
     background: transparent;
-    display: block;
     color: #753BBD;
     font-size: 1.125em;
-    font-weight: 600;
     line-height: 1.2;
     margin: auto 0 0;}
 
