@@ -5,6 +5,7 @@
   <div class="body">
     <div class="header">
       <button (click)="changeMode()">Mode apprenti</button>
+      <a class="navigation" routerLink="/home">Mes Recettes</a>
     </div>
     <div class="content animate" [ngClass]="{ 'apprentise': isApprenti }">
       <div>

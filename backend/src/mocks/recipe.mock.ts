@@ -55,20 +55,20 @@ export const RECIPE: Recipe[] = [
     name: 'Coq au vin',
     clerkSteps: [],
     showTutorial: true,
-    image:''
+    image:'https://assets.afcdn.com/recipe/20190307/88896_w1024h1024c1cx3360cy2240.jpg'
   },
   {
     id: 'salade_nicoise',
     name: 'Salade niçoise',
     clerkSteps: [],
     showTutorial: false,
-    image:''
+    image:'https://img.cuisineaz.com/660x660/2013/12/20/i34581-salade-nicoise-rapide.jpeg'
   },
   {
     id: 'Genoise_chocolat_secret_maison',
     name: 'Genoise chocolat secret maison',
     clerkSteps: RECIPE_STEP_GENOISE,
     showTutorial: false,
-    image:'https://www.amourdecuisine.fr/wp-content/uploads/2020/06/recette-g%C3%A9noise-au-chocolat-inratable-2.jpg'
+    image:'https://www.mesinspirationsculinaires.com/wp-content/uploads/2015/04/rectte-de-la-genoise-a-la-chocolat-1.jpg'
   }
 ];
