@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {HomeComponent} from "./home/home.component";
-import {ScreenChefComponent} from "./screen-chef/screen-chef.component";
+import {ClerkPageComponent} from "./pages/clerk-module/clerk-page/clerk-page.component";
+import {ScreenChefComponent} from "./pages/screen-chef/screen-chef.component";
 
 const routes: Routes = [
-  {path: 'home', component:HomeComponent},
+  {path: 'clerk-page', component:ClerkPageComponent},
+  {path: 'commands', component: ScreenChefComponent},
   {path: '', component:ScreenChefComponent},
 ];
 
