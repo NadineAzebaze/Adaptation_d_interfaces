@@ -14,6 +14,7 @@ import {ClerkHeaderComponent} from "./pages/clerk-module/components/clerk-header
 import {SidePanelComponent} from "./components/side-panel/side-panel.component";
 import {RecipePlayerComponent} from "./pages/clerk-module/components/recipe-player/recipe-player.component";
 import {RecipeStepComponent} from "./pages/clerk-module/components/recipe-step/recipe-step.component";
+import { RoleSelectionPageComponent } from './pages/role-selection-page/role-selection-page.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import {RecipeStepComponent} from "./pages/clerk-module/components/recipe-step/r
     ScreenChefComponent,
     SidePanelComponent,
     ClerkHeaderComponent,
+    RoleSelectionPageComponent,
   ],
   imports: [
     BrowserModule,
