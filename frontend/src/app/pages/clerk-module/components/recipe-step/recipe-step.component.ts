@@ -17,12 +17,5 @@ export class RecipeStepComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  next(): void {
-   //todo
-  }
-
-  back(): void {
-  //todo
-  }
 }
 

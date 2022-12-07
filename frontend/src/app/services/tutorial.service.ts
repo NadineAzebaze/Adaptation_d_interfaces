@@ -13,6 +13,7 @@ export class TutorialService {
   subject = new BehaviorSubject<RecipeStep[]>([]);
 
 
+
   constructor(private http: HttpClient) {
     this.retrieveRecipeSteps();
   }
@@ -21,22 +22,11 @@ export class TutorialService {
 
   retrieveRecipeSteps(): void {
     this.http.get<RecipeStep[]>("http://localhost:3000/recipe").subscribe((recipes) => {
-       const recipesList = recipes;
-      this.subject.next(this.recipeSteps);
+        const recipesList = recipes;
+        this.subject.next(this.recipeSteps);
     });
   }
 
-
- /* nextRecipeStep(recipe-list: RecipeStep, recipeStep: RecipeStep): void{
-    const recipeStepUrl = this.recipeUrl + '/' + recipe-list.id + '/' + this.recipeStepsPath + '/' + recipeStep.id;
-    this.http.get<RecipeStep>(recipeStepUrl).subscribe((recipeStepNext) => {
-      this.recipeStepNext$.next(recipeStepNext);
-    });
-  }*/
-
-  /*getRecipeStep(recipeId: string, recipeStepId: string): void{
-
-  }*/
 }
 
 
