@@ -6,7 +6,7 @@
       <p>
         Nombre d'étapes: {{recipe.clerkSteps.length}}
       </p>
-      <button (click)="selectRecipe(recipe)">Voir recette</button>
+      <button *ngIf="recipe.showTutorial == false" (click)="selectRecipe(recipe)">Voir recette</button>
     </div>
 
   </div>
