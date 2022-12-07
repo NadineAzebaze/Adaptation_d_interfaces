@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import Table from "../../../models/table.model";
-import {DishType} from "../../../models/dish.model";
+import Dish, {DishType} from "../../../models/dish.model";
 import {TableService} from "../../../services/table.service";
 
 
@@ -25,6 +25,10 @@ export class TableComponent implements OnInit {
   }
   get dessert() {
     return this.table.dishes.filter(d => d.type === DishType.DESSERT)
+  }
+
+  allDishesNotDone(dishes : Dish[]){
+    return dishes.find(dish => !dish.done)
   }
 
   setDoneTable(dishId: number) {

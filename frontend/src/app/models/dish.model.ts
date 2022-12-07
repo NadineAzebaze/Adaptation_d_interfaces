@@ -9,4 +9,5 @@ export default interface Dish {
   type: DishType;
   name: string;
   done : boolean;
+  number: number;
 }

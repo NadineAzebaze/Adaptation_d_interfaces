@@ -21,17 +21,20 @@ export class TableService {
   }
 
   generateRandomDishes(type: Dish[], dishes: Dish[], min: number = 0){
-    var indexMax = Entree.length;
+    const indexMax = Entree.length;
     for (let j = 0; j < this.getRandom(6,min); j++) {
-      var indexRandom = this.getRandom(indexMax);
-      dishes.push({
+      const indexRandom = this.getRandom(indexMax);
+      const dishToAdd = {
         id: type[indexRandom].id,
         name: type[indexRandom].name,
         type: type[indexRandom].type,
-        done: type[indexRandom].done
-      });
+        done: type[indexRandom].done,
+        number: 1
+      };
+      const dish = dishes.find(d => d.id == dishToAdd.id);
+      if (dish) dish.name = dish.name + " x "+ (++dish.number);
+      else dishes.push(dishToAdd)
     }
-
   }
 
 
@@ -46,7 +49,6 @@ export class TableService {
         id: i,
         dishes: dishes
       })
-    dishes.forEach(dish => console.log(dish.id,dish.name))
     }
 
 
