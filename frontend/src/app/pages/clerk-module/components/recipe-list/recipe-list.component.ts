@@ -26,6 +26,7 @@ export class RecipeListComponent implements OnInit {
 
   selectRecipe(recipe: Recipe): void {
     this.recipeSelected.emit(recipe)
+    recipe.showTutorial = !recipe.showTutorial;
   }
 
 

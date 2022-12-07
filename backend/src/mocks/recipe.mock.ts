@@ -54,7 +54,7 @@ export const RECIPE: Recipe[] = [
     id: 'coq_au_vin',
     name: 'Coq au vin',
     clerkSteps: [],
-    showTutorial: true,
+    showTutorial: false,
     image:'https://assets.afcdn.com/recipe/20190307/88896_w1024h1024c1cx3360cy2240.jpg'
   },
   {
@@ -67,7 +67,7 @@ export const RECIPE: Recipe[] = [
   {
     id: 'Genoise_chocolat_secret_maison',
     name: 'Genoise chocolat secret maison',
-    clerkSteps: RECIPE_STEP_GENOISE,
+    clerkSteps: [],
     showTutorial: false,
     image:'https://www.mesinspirationsculinaires.com/wp-content/uploads/2015/04/rectte-de-la-genoise-a-la-chocolat-1.jpg'
   }
