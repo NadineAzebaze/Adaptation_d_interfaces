@@ -13,16 +13,17 @@ export class TableService {
   public tables$ = new BehaviorSubject<Table[]>([]);
 
   constructor() {
-    this.tables = this.generateTables()
+    this.generateTable();
   }
 
   getRandom(indexMax: number, min: number = 0) {
     return Math.floor(Math.random() * (indexMax - min) + min);
   }
 
-  generateRandomDishes(type: Dish[], dishes: Dish[], min: number = 0){
+
+  generateRandomDishes(type: Dish[], dishes: Dish[], min: number = 0) {
     const indexMax = Entree.length;
-    for (let j = 0; j < this.getRandom(6,min); j++) {
+    for (let j = 0; j < this.getRandom(6, min); j++) {
       const indexRandom = this.getRandom(indexMax);
       const dishToAdd = {
         id: type[indexRandom].id,
@@ -32,28 +33,24 @@ export class TableService {
         number: 1
       };
       const dish = dishes.find(d => d.id == dishToAdd.id);
-      if (dish) dish.name = dish.name + " x "+ (++dish.number);
+      if (dish) dish.name = dish.name + " x " + (++dish.number);
       else dishes.push(dishToAdd)
     }
   }
-
-
-  generateTables(): Table[] {
-    var tables = []
-    for (let i = 1; i < 7; i++) {
-      let dishes: Dish[] = []
-      this.generateRandomDishes(Entree,dishes)
-      this.generateRandomDishes(Plat,dishes,1)
-      this.generateRandomDishes(Dessert,dishes)
-      tables.push({
-        id: i,
-        dishes: dishes
-      })
+  generateTable(): void {
+    if(this.tables.length < 6){
+      setTimeout(() =>{
+        let dishes: Dish[] = []
+        this.generateRandomDishes(Entree, dishes)
+        this.generateRandomDishes(Plat, dishes, 1)
+        this.generateRandomDishes(Dessert, dishes)
+        this.tables.push({
+          id: this.tables.length+1,
+          dishes: dishes
+        })
+        this.generateTable();
+      }, this.getRandom(5000,2000));
     }
-
-
-    return tables
-
   }
 
   setDoneTable(tableId: number, dishId: number) {

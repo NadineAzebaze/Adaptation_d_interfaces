@@ -1,8 +1,6 @@
-.screen{
-  display: flex;
-  flex-direction: column;
-  width: fit-content;
-  justify-content: center;
+.screen {
+  height: 95%;
+  max-height: 95%;
   border: black dashed 1px;
   border-radius: 3px;
   padding: 1rem;
@@ -10,12 +8,18 @@
 
 
 }
-h3{
+
+h3 {
   text-align: center;
 }
 
-.allCommands:host{
-  display: grid;
-  grid-template-columns: repeat(3,1fr);
+app-table {
+  background-color: blanchedalmond;
+  width: 90%;
+  position: absolute;
+  border-radius: 5px;
+  align-items: center;
+  padding: 1px 5px 1px 5px;
+  font-style: italic;
+  margin-bottom: 1rem;
 }
-

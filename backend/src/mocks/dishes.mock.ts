@@ -206,7 +206,7 @@ export const Dessert: Dish[] = [
   {
     id: 28,
     type: DishType.DESSERT,
-    name: 'gambas a la plancha',
+    name: 'tarte flambée',
     done: false,
     number: 0,
   },
