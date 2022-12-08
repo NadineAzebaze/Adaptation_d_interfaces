@@ -20,9 +20,9 @@ export class RecipePlayerComponent implements OnInit {
   currentStepIndex: number = 0;
   step!: RecipeStep;
 
-
-  constructor(private tutorialService: TutorialService) {
-
+  public recipes : Recipe[];
+  constructor(private tutorialService: TutorialService, private recipeService: RecipeService) {
+    this.recipes = this.recipeService.retrieveRecipes();
   }
 
   ngOnInit(): void {

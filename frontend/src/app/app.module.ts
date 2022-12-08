@@ -15,7 +15,7 @@ import {SidePanelComponent} from "./components/side-panel/side-panel.component";
 import {RecipePlayerComponent} from "./pages/clerk-module/components/recipe-player/recipe-player.component";
 import {RecipeStepComponent} from "./pages/clerk-module/components/recipe-step/recipe-step.component";
 import { RoleSelectionPageComponent } from './pages/role-selection-page/role-selection-page.component';
-import {ChronometreComponent} from "./pages/clerk-module/components/chronometre/timer";
+import { CountDownComponent } from './pages/clerk-module/components/count-down/count-down.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +32,7 @@ import {ChronometreComponent} from "./pages/clerk-module/components/chronometre/
     SidePanelComponent,
     ClerkHeaderComponent,
     RoleSelectionPageComponent,
-    ChronometreComponent,
+    CountDownComponent
   ],
   imports: [
     BrowserModule,
