@@ -3,7 +3,6 @@
     <i class="fa-solid fa-arrow-left" (click)="next()"></i><span> précédente étape</span>
   </div>
   <div class="body">
-    <app-chronometre></app-chronometre>
     <h3>Etape {{currentStepIndex + 1}} :</h3>
     <img style="width: 500px; height: 300px;" class="image" [src]="step.image" *ngIf="step.image && apprentise" [alt]="step.id">
     <p>{{step.description}}</p>
