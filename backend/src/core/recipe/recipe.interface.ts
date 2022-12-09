@@ -3,6 +3,7 @@ export interface Recipe {
   name: string;
   image?:string;
   clerkSteps: RecipeStep[];
+  time : number;
 }
 
 export interface RecipeStep {

@@ -4,6 +4,7 @@
         "name": "Coq au vin",
         "image": "https://assets.afcdn.com/recipe/20190307/88896_w1024h1024c1cx3360cy2240.jpg",
         "showTutorial": false,
+        "time" : 45,
         "clerkSteps": [
             {
                 "description": "Faire mariner le coq dans du vin",
@@ -17,6 +18,7 @@
         "id": "salade_nicoise",
         "name": "Salade niçoise",
         "showTutorial": false,
+        "time" : 15,
         "image": "https://img.cuisineaz.com/660x660/2013/12/20/i34581-salade-nicoise-rapide.jpeg",
         "clerkSteps": [
             {
@@ -33,6 +35,7 @@
         "name": "Genoise chocolat secret maison",
         "image": "https://www.mesinspirationsculinaires.com/wp-content/uploads/2015/04/rectte-de-la-genoise-a-la-chocolat-1.jpg",
         "showTutorial": false,
+        "time" : 25,
         "clerkSteps": [{
             "id": "step1",
             "description":"Préchauffer le four à 180 C (350 F)",

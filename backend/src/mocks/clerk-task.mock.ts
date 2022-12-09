@@ -6,13 +6,13 @@ export const TASK_LIST: ClerkTask[] = [
     commandDate: new Date(2022, 10, 10),
     quantity: 1,
     recipeId: 'coq_au_vin',
-    instruction: 'blablablabla',
+    instruction: 'Faire mariner le coq',
   },
   {
     id: 'task2',
     commandDate: new Date(2022, 10, 10),
     quantity: 1,
     recipeId: 'salade_nicoise',
-    instruction: 'blablablabla',
+    instruction: 'Préparer deux portions de salades',
   },
 ];

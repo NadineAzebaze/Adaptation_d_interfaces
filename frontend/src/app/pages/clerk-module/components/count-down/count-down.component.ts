@@ -6,16 +6,20 @@ import { Subscription, interval } from 'rxjs';
   templateUrl: './count-down.component.html',
   styleUrls: ['./count-down.component.less']
 })
+
 export class CountDownComponent implements OnInit, OnDestroy {
+
+  @Input()
+  recipe : Recipe;
 
     private subscription!: Subscription;
 
     public dateNow = new Date();
     public dDay = new Date('Jan 01 2021 00:00:00');
-    milliSecondsInASecond = 1000;
-    hoursInADay = 24;
-    minutesInAnHour = 60;
-    SecondsInAMinute  = 60;
+    //ici rajouter le nombre de minutes qu'il faut pour 
+    public minutesofDateToReach : number; 
+    public dateToReach = new Date();
+    
 
     public timeDifference!: number;
     public secondsToDday!: number;
@@ -23,9 +27,22 @@ export class CountDownComponent implements OnInit, OnDestroy {
     public hoursToDday!: number;
     public daysToDday!: number;
 
+    constructor(public recipeService : RecipeService) {
+      this.recipeService.recipeSelected$.subscribe((recipe) => {
+        this.recipe = recipe;
+      })
+
+      minutesofDateToReach = this.dateNow.getMinutes() + this.recipe.time ;
+      dateToReach = this.dateNow.setMinutes(this.minutesofDateToReach);
+      milliSecondsInASecond = 1000;
+      hoursInADay = 24;
+      minutesInAnHour = 60;
+      SecondsInAMinute  = 60;
+    }
 
     private getTimeDifference () {
-        this.timeDifference = this.dDay.getTime() - new  Date().getTime();
+      
+        this.timeDifference = this.dateToReach.getTime() - new  Date().getTime();
         this.allocateTimeUnits(this.timeDifference);
     }
 
