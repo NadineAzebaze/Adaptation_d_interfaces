@@ -1,5 +1,5 @@
-import Recipe from "./recipe.model";
 
 export default class ClerkTask {
-    constructor(public id: String, public commandDate: Date, public quantity: number, public recipe: Recipe) {}
+    constructor(public id: String, public commandDate: Date, public quantity: number, public recipeId: String, public instruction: String) {}
 }
+

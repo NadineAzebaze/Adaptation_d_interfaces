@@ -1,0 +1,14 @@
+
+  <div class="title">
+    <h1>Liste de tâches</h1>
+  </div>
+
+  <div class="body">
+    <div class="text" *ngFor="let clerktask of clerkTaskList">
+      <h2> {{clerktask.id}} </h2>
+      <p>
+        Instructions: {{clerktask.instruction}}
+      </p>
+    </div>
+  </div>
+
