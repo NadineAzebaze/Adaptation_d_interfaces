@@ -4,12 +4,12 @@ import { Subscription, interval } from 'rxjs';
 @Component({
   selector: 'app-count-down',
   templateUrl: './count-down.component.html',
-  styleUrls: ['./count-down.component.css']
+  styleUrls: ['./count-down.component.less']
 })
 export class CountDownComponent implements OnInit, OnDestroy {
 
-    private subscription: Subscription;
-  
+    private subscription!: Subscription;
+
     public dateNow = new Date();
     public dDay = new Date('Jan 01 2021 00:00:00');
     milliSecondsInASecond = 1000;
@@ -17,11 +17,11 @@ export class CountDownComponent implements OnInit, OnDestroy {
     minutesInAnHour = 60;
     SecondsInAMinute  = 60;
 
-    public timeDifference;
-    public secondsToDday;
-    public minutesToDday;
-    public hoursToDday;
-    public daysToDday;
+    public timeDifference!: number;
+    public secondsToDday!: number;
+    public minutesToDday!: number;
+    public hoursToDday!: number;
+    public daysToDday!: number;
 
 
     private getTimeDifference () {
@@ -29,7 +29,7 @@ export class CountDownComponent implements OnInit, OnDestroy {
         this.allocateTimeUnits(this.timeDifference);
     }
 
-  private allocateTimeUnits (timeDifference) {
+  private allocateTimeUnits (timeDifference: number) {
         this.secondsToDday = Math.floor((timeDifference) / (this.milliSecondsInASecond) % this.SecondsInAMinute);
         this.minutesToDday = Math.floor((timeDifference) / (this.milliSecondsInASecond * this.minutesInAnHour) % this.SecondsInAMinute);
         this.hoursToDday = Math.floor((timeDifference) / (this.milliSecondsInASecond * this.minutesInAnHour * this.SecondsInAMinute) % this.hoursInADay);

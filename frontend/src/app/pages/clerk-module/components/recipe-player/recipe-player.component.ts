@@ -19,14 +19,22 @@ export class RecipePlayerComponent implements OnInit {
   @Input() apprentise = false;
   currentStepIndex: number = 0;
   step!: RecipeStep;
+  recipes : Recipe[] = [];
 
-  public recipes : Recipe[];
   constructor(private tutorialService: TutorialService, private recipeService: RecipeService) {
-    this.recipes = this.recipeService.retrieveRecipes();
+
   }
 
   ngOnInit(): void {
-    this.step = this.recipe.clerkSteps[this.currentStepIndex];
+    this.recipeService.retrieveRecipes();
+    this.recipes = this.recipeService.recipes;
+    for(let i=0; this.recipes.length; i++){
+      if(this.recipes[i].showTutorial){
+        this.recipe = this.recipes[i];
+        this.step = this.recipes[i].clerkSteps[this.currentStepIndex];
+      }
+    }
+    //this.step = this.recipe.clerkSteps[this.currentStepIndex];
   }
 
 
