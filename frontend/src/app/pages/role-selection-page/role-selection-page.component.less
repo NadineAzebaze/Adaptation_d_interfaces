@@ -6,7 +6,23 @@
   justify-content: space-evenly;
 }
 
+.title{
+  font-family: 'Open Sans', sans-serif;
+  font-size: 3em;
+  position: absolute;
+  top:0;
+}
+
+.recipe_image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0.5;
+}
 .selection-button {
+  z-index:2;
   width: 30%;
   min-width: 100px;
   display: flex;
@@ -14,19 +30,20 @@
   justify-content: center;
   user-select: none;
   cursor: pointer;
-
   border-radius: 5px;
-
-  height: 50%;
-  border: solid 2px blueviolet;
-  background-color: #dbbcf8;
-  color: blueviolet;
+  font-size: 2em;
+  height: 30%;
+  border: solid 4px #753BBD;
+  background-color: #753BBD;
+  color: white;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .selection-button:hover {
-  background-color: #cf9fff;
+  background-color: transparent;
+  color: #753BBD;
 }
 
 .selection-button:active {
-  background-color: #b36cff;
+  background-color: white;
 }

@@ -25,6 +25,11 @@ export class RecipeListComponent implements OnInit {
     this.recipeService.subject.subscribe(v => this.recipes = v);
   }
 
+  /**
+   * send an emit of the recipe in the list on which we clicked
+   * update the parameter showTutorial so that only one recipe should be display and indicated as displayed
+   * @param recipe
+   */
   selectRecipe(recipe: Recipe): void {
     this.recipeSelected.emit(recipe)
     recipe.showTutorial = !recipe.showTutorial;

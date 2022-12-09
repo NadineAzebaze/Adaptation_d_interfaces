@@ -35,30 +35,36 @@ export class CountDownComponent implements OnInit, OnDestroy {
     constructor(public recipeService : RecipeService) {
     }
 
-    private getTimeDifference () {
-
-      //console.log(this.recipe.time);
-      //console.log(this.recipe);
-      this.dDay = new Date("'"+new Date().getMonth()+"' "+new Date().getDay()+"' "+new Date().getFullYear()+" 00:"+this.minutesofDateToReach+":00");
+  /**
+   * creating a date to reach taking in account the actual time and the time to do the recipe
+   * then calculating the time Difference use to update the count-down timer
+   * @private
+   */
+  private getTimeDifference () {
       this.dateToReach = this.dateNow.setMinutes(this.minutesofDateToReach);
-      console.log(this.dDay);
       this.timeDifference = this.dateToReach - new  Date().getTime();
-
       this.allocateTimeUnits(this.timeDifference);
     }
 
+  /**
+   * Allocating units to each parameter of the timer
+   * @param timeDifference
+   * @private
+   */
   private allocateTimeUnits (timeDifference: number) {
         this.secondsToDday = Math.floor((timeDifference) / (this.milliSecondsInASecond) % this.SecondsInAMinute);
         this.minutesToDday = Math.floor((timeDifference) / (this.milliSecondsInASecond * this.minutesInAnHour) % this.SecondsInAMinute);
         this.hoursToDday = Math.floor((timeDifference) / (this.milliSecondsInASecond * this.minutesInAnHour * this.SecondsInAMinute) % this.hoursInADay);
-        this.daysToDday = Math.floor((timeDifference) / (this.milliSecondsInASecond * this.minutesInAnHour * this.SecondsInAMinute * this.hoursInADay));
   }
 
     ngOnInit() {
-       this.subscription = interval(1000)
+
+      this.subscription = interval(1000)
            .subscribe(x => { this.getTimeDifference(); });
+       //calculating the minutes to reach for the date to reach we are creating
       this.minutesofDateToReach = this.dateNow.getMinutes() + this.recipe.time;
 
+      //Updating the actual recipe with the recipe on which we clicked for the count-down timer to update too
       this.recipeService.retrieveRecipes();
       this.recipes = this.recipeService.recipes;
       for(let i=0; i<this.recipes.length; i++){
@@ -66,6 +72,7 @@ export class CountDownComponent implements OnInit, OnDestroy {
           this.recipe = this.recipes[i];
         }
       }
+
     }
 
    ngOnDestroy() {

@@ -18,10 +18,17 @@ export class ClerkPageComponent implements OnInit {
   }
 
 
+  /**
+   * changing expert mode to apprentice mode
+   */
   changeMode() {
     this.isApprenti = !this.isApprenti;
   }
 
+  /**
+   * affects the value of the recipe on which we clicked to the parameter recipe of the component
+   * @param recipe
+   */
   selectRecipe(recipe: Recipe) {
     this.selectedRecipe = recipe;
     console.log(recipe)
