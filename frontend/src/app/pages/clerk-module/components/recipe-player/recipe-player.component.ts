@@ -31,11 +31,9 @@ export class RecipePlayerComponent implements OnInit {
     for(let i=0; i<this.recipes.length; i++){
       if(this.recipes[i].showTutorial){
         this.recipe = this.recipes[i];
-        this.step = this.recipes[i].clerkSteps[this.currentStepIndex];
-        console.log(this.recipe);
       }
     }
-    //this.step = this.recipe.clerkSteps[this.currentStepIndex];
+    this.step = this.recipe.clerkSteps[this.currentStepIndex];
   }
 
 

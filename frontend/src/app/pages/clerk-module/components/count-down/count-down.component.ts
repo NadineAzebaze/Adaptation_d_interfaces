@@ -13,6 +13,7 @@ export class CountDownComponent implements OnInit, OnDestroy {
 
   @Input()
   recipe! : Recipe;
+  recipes : Recipe[] = [];
 
     private subscription!: Subscription;
 
@@ -57,6 +58,14 @@ export class CountDownComponent implements OnInit, OnDestroy {
        this.subscription = interval(1000)
            .subscribe(x => { this.getTimeDifference(); });
       this.minutesofDateToReach = this.dateNow.getMinutes() + this.recipe.time;
+
+      this.recipeService.retrieveRecipes();
+      this.recipes = this.recipeService.recipes;
+      for(let i=0; i<this.recipes.length; i++){
+        if(this.recipes[i].showTutorial){
+          this.recipe = this.recipes[i];
+        }
+      }
     }
 
    ngOnDestroy() {
