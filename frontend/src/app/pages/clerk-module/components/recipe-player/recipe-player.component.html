@@ -1,7 +1,6 @@
 <div class="container" >
-    <div class = timer>
-      <app-count-down></app-count-down>
-    </div>
+
+  <app-count-down [recipe]="recipe" *ngIf="apprentise"></app-count-down>
 
     <div class="arrow-container left-arrow">
       <i class="fa-solid fa-arrow-left" (click)="next()"></i><span> précédente étape</span>

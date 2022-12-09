@@ -28,7 +28,7 @@ export class RecipeListComponent implements OnInit {
   selectRecipe(recipe: Recipe): void {
     this.recipeSelected.emit(recipe)
     recipe.showTutorial = !recipe.showTutorial;
-    for(let i =0; this.recipes.length; i++){
+    for(let i =0; i<this.recipes.length; i++){
       if(this.recipes[i] !== recipe){
         this.recipes[i].showTutorial = false;
       }

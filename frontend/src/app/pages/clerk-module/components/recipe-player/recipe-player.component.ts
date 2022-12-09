@@ -28,10 +28,11 @@ export class RecipePlayerComponent implements OnInit {
   ngOnInit(): void {
     this.recipeService.retrieveRecipes();
     this.recipes = this.recipeService.recipes;
-    for(let i=0; this.recipes.length; i++){
+    for(let i=0; i<this.recipes.length; i++){
       if(this.recipes[i].showTutorial){
         this.recipe = this.recipes[i];
         this.step = this.recipes[i].clerkSteps[this.currentStepIndex];
+        console.log(this.recipe);
       }
     }
     //this.step = this.recipe.clerkSteps[this.currentStepIndex];
