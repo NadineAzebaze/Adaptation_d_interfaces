@@ -10,10 +10,15 @@ import Dish from "../models/dish.model";
 export class TableService {
 
   public tables: Table[] = []
+
+  entree_lst: {id: number , dish : Dish}[] = [] ; // Those list contain pair {idTable, dishe}
+  plat_lst:   {id: number , dish : Dish}[] = [];
+  dessert_lst:{id: number , dish : Dish}[] = [];
   public tables$ = new BehaviorSubject<Table[]>([]);
 
   constructor() {
     this.generateTable();
+
   }
 
   getRandom(indexMax: number, min: number = 0) {
@@ -34,10 +39,14 @@ export class TableService {
       };
       const dish = dishes.find(d => d.id == dishToAdd.id);
       if (dish) dish.name = dish.name + " x " + (++dish.number);
-      else dishes.push(dishToAdd)
+      else {dishes.push(dishToAdd)}
+
+
     }
+
   }
   generateTable(): void {
+    console.log("ok")
     if(this.tables.length < 6){
       setTimeout(() =>{
         let dishes: Dish[] = []
@@ -49,6 +58,7 @@ export class TableService {
           dishes: dishes
         })
         this.generateTable();
+        this.populateList();
       }, this.getRandom(5000,2000));
     }
   }
@@ -62,8 +72,34 @@ export class TableService {
       throw "Dish null."
     dish.done = true;
 
+
     this.tables = this.tables.filter(f => !!f.dishes.find(d => !d.done))
     this.tables$.next(this.tables)
+  }
+
+  populateList () {
+    console.log("Table list ")
+    console.log(this.tables)
+    this.tables.forEach(curTable => {
+      console.log("itterate")
+      curTable.dishes.forEach(curDish => {
+        switch(curDish.type){
+          case "ENTREE":{
+            this.entree_lst.push({id : curTable.id, dish: curDish})
+            break;
+          }
+          case "PLAT":{
+            this.plat_lst.push({id : curTable.id, dish: curDish})
+            break;
+          }
+          case "DESSERT":{
+            this.dessert_lst.push({id :curTable.id, dish : curDish})
+            break;
+          }
+        }
+      });
+
+    });
   }
 
 }

@@ -10,52 +10,26 @@ import { TableService } from 'src/app/services/table.service';
 })
 export class BusyScreenChefComponent {
   private subs?: Subscription;
-  
-  tableList : Table  []= [] ; // Observer 
-  
+
+  tableList : Table  []= [] ; // Observer
+
   entree_lst: {id: number , dish : Dish}[] = [] ; // Those list contain pair {idTable, dishe}
-  plat_lst:   {id: number , dish : Dish}[] = []; 
-  dessert_lst:{id: number , dish : Dish}[] = []; 
-  
+  plat_lst:   {id: number , dish : Dish}[] = [];
+  dessert_lst:{id: number , dish : Dish}[] = [];
+
   constructor(private commands :TableService){
-    this.subs = commands.tables$.subscribe(table => this.tableList = table)
-    this.populateList()
+    this.subs = commands.tables$.subscribe(tables => {this.tableList = tables})
+    //this.populateList()
   }
 
   ngOnInit(): void {
-    this.tableList = this.commands.tables
-    this.populateList()
+    this.tableList = this.commands.tables;
+    //this.populateList()
+
+    //this.populateList()
   }
 
   ngOnDestroy(): void {
     this.subs?.unsubscribe()
-  }
-  private  populateList () {
-    
-    this.tableList = this.commands.tables
-    console.log("Table list ")
-    console.log(this.tableList)
-    console.log("comandes list ")
-    console.log(this.commands.tables)
-    this.tableList.forEach(curTable => {
-      console.log("itterate")
-      curTable.dishes.forEach(curDish => {
-          switch(curDish.type){
-            case "ENTREE":{
-              this.entree_lst.push({id : curTable.id, dish: curDish})
-              break;
-            }
-            case "PLAT":{
-              this.plat_lst.push({id : curTable.id, dish: curDish})
-              break;
-            }
-            case "DESSERT":{
-              this.dessert_lst.push({id :curTable.id, dish : curDish})
-              break;
-            }
-          }       
-      });
-      
-    });
   }
 }

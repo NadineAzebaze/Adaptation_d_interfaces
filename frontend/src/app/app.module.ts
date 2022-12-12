@@ -16,6 +16,8 @@ import {RecipePlayerComponent} from "./pages/clerk-module/components/recipe-play
 import {RecipeStepComponent} from "./pages/clerk-module/components/recipe-step/recipe-step.component";
 import { RoleSelectionPageComponent } from './pages/role-selection-page/role-selection-page.component';
 import { CountDownComponent } from './pages/clerk-module/components/count-down/count-down.component';
+import {BusyScreenChefComponent} from "./pages/busy-screen-chef/busy-screen-chef.component";
+import {DisheListSectionComponent} from "./pages/busy-screen-chef/dishe-list-section/dishe-list-section.component";
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { CountDownComponent } from './pages/clerk-module/components/count-down/c
     SidePanelComponent,
     ClerkHeaderComponent,
     RoleSelectionPageComponent,
-    CountDownComponent
+    CountDownComponent,
+    BusyScreenChefComponent,
+    DisheListSectionComponent
   ],
   imports: [
     BrowserModule,

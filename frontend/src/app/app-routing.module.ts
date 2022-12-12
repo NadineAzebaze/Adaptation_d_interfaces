@@ -7,6 +7,7 @@ import {RoleSelectionPageComponent} from "./pages/role-selection-page/role-selec
 const routes: Routes = [
   {path: 'clerk', component:ClerkPageComponent},
   {path: 'commands', component: ScreenChefComponent},
+
   {path: '', component:RoleSelectionPageComponent},
 ];
 
