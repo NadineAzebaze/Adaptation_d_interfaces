@@ -10,6 +10,7 @@ import Dish from "../models/dish.model";
 export class TableService {
 
   public tables: Table[] = []
+  public tableNumber = 0;
   public tables$ = new BehaviorSubject<Table[]>([]);
 
   constructor() {
@@ -33,11 +34,12 @@ export class TableService {
         number: 1
       };
       const dish = dishes.find(d => d.id == dishToAdd.id);
-      if (dish) dish.name = dish.name + " x " + (++dish.number);
+      if (dish) dish.name = dish.number>1 ? dish.name.slice(0,-1) + (++dish.number) : dish.name + " x " + (++dish.number);
       else dishes.push(dishToAdd)
     }
   }
   generateTable(): void {
+    this.tableNumber+=1;
     if(this.tables.length < 6){
       setTimeout(() =>{
         let dishes: Dish[] = []
@@ -45,7 +47,7 @@ export class TableService {
         this.generateRandomDishes(Plat, dishes, 1)
         this.generateRandomDishes(Dessert, dishes)
         this.tables.push({
-          id: this.tables.length+1,
+          id: this.tableNumber,
           dishes: dishes
         })
         this.generateTable();
