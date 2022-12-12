@@ -2,18 +2,15 @@
   <div panel>
     <app-clerk-task-list></app-clerk-task-list>
   </div>
+  <h1>Guide de recettes</h1>
   <div class="body">
-    <div class="header">
-      <button class="button-85" role="button" (click)="changeMode()">Mode apprenti</button>
-    </div>
     <div class="content animate" [ngClass]="{ 'apprentise': isApprenti }">
-
-      <div class="nothing" *ngIf="!selectedRecipe">No recipe selected.</div>
       <div>
         <app-recipe-player [recipe]="selectedRecipe" *ngIf="selectedRecipe" [apprentise]="isApprenti"></app-recipe-player>
       </div>
     </div>
     <div class="footer animate recipes" [ngClass]="{ 'apprentise': isApprenti }">
+      <h4>Sélectionnez un plat dans la liste pour afficher la recette</h4>
       <app-recipe-list (recipeSelected)="selectRecipe($event)"></app-recipe-list>
     </div>
   </div>

@@ -1,3 +1,5 @@
+
+
 <div class="container" xmlns="http://www.w3.org/1999/html">
   <div class="element" *ngFor="let recipe of recipes">
     <img class="recipe_image" [src]="recipe.image" >
@@ -8,8 +10,5 @@
       </p>
       <button *ngIf="recipe.showTutorial == false" (click)="selectRecipe(recipe)">Voir recette</button>
     </div>
-
   </div>
-
-
 </div>
