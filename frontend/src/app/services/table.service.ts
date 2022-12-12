@@ -3,20 +3,22 @@ import Table from "../models/table.model";
 import {BehaviorSubject} from "rxjs";
 import {Entree, Plat, Dessert} from "../../../../backend/src/mocks/dishes.mock"
 import Dish from "../models/dish.model";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
 })
 export class TableService {
 
-  public tables: Table[] = []
+  public tables: Table[] = [];
+  private screen = true;
 
   entree_lst: {id: number , dish : Dish}[] = [] ; // Those list contain pair {idTable, dishe}
   plat_lst:   {id: number , dish : Dish}[] = [];
   dessert_lst:{id: number , dish : Dish}[] = [];
   public tables$ = new BehaviorSubject<Table[]>([]);
 
-  constructor() {
+  constructor(private router : Router) {
     this.generateTable();
 
   }
@@ -47,7 +49,7 @@ export class TableService {
   }
   generateTable(): void {
     console.log("ok")
-    if(this.tables.length < 6){
+    if(this.tables.length < 7){
       setTimeout(() =>{
         let dishes: Dish[] = []
         this.generateRandomDishes(Entree, dishes)
@@ -59,6 +61,7 @@ export class TableService {
         })
         this.generateTable();
         this.populateList();
+        this.checkChangeScreen();
       }, this.getRandom(5000,2000));
     }
   }
@@ -75,13 +78,11 @@ export class TableService {
 
     this.tables = this.tables.filter(f => !!f.dishes.find(d => !d.done))
     this.tables$.next(this.tables)
+    this.checkChangeScreen()
   }
 
   populateList () {
-    console.log("Table list ")
-    console.log(this.tables)
     this.tables.forEach(curTable => {
-      console.log("itterate")
       curTable.dishes.forEach(curDish => {
         switch(curDish.type){
           case "ENTREE":{
@@ -102,4 +103,8 @@ export class TableService {
     });
   }
 
+  checkChangeScreen() {
+    if (this.tables.length > 6 && this.screen) this.router.navigate(['/busy']).then( _ => this.screen = false)
+    if (this.tables.length < 7 && !this.screen) this.router.navigate(['/commands']).then(_ => this.screen= true)
+  }
 }
