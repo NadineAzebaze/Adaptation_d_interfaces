@@ -1,6 +1,6 @@
 <div class="screen">
     <h3>Commands</h3>
-  <div class="allCommands" [style]="'display: grid;grid-template-columns: repeat(3,1fr)'">
+  <div class="allCommands">
     <app-table *ngFor="let t of tables" [table]="t" ></app-table>
   </div>
 </div>
