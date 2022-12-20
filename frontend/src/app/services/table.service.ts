@@ -62,7 +62,7 @@ export class TableService {
     const dish = table.dishes.find(d => d.id === dishId)
     if (!dish)
       throw "Dish null."
-    dish.done = true;
+    dish.done = !dish.done;
 
     this.tables = this.tables.filter(f => !!f.dishes.find(d => !d.done))
     this.tables$.next(this.tables)
