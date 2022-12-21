@@ -1,8 +1,10 @@
+<button type="button" id="table{{table.id}}" class="btn btn-secondary">Table {{table.id}}</button>
 <div class="table">
-  <p>Table {{table.id}}</p>
-
-  <app-type-dish *ngIf="entrees.length>0 && allDishesNotDone(entrees)" [dishes]="entrees" [dishType]="'ENTREE'" (setDone)="setDoneTable($event.id)"></app-type-dish>
-  <app-type-dish *ngIf="allDishesNotDone(plats)" [dishes]="plats" [dishType]="'PLAT'" (setDone)="setDoneTable($event.id)"></app-type-dish>
-  <app-type-dish *ngIf="dessert.length>0 && allDishesNotDone(dessert)" [dishes]="dessert" [dishType]="'DESSERT'" (setDone)="setDoneTable($event.id)"></app-type-dish>
-
+  <app-type-dish *ngIf="entrees.length>0 && allDishesNotDone(entrees)" [dishes]="entrees" [dishType]="'ENTREE'"
+                 (setDone)="setDoneTable($event.id)"></app-type-dish>
+  <app-type-dish *ngIf="allDishesNotDone(plats)" [dishes]="plats" [dishType]="'PLAT'"
+                 (setDone)="setDoneTable($event.id)"></app-type-dish>
+  <app-type-dish *ngIf="dessert.length>0 && allDishesNotDone(dessert)" [dishes]="dessert" [dishType]="'DESSERT'"
+                 (setDone)="setDoneTable($event.id)"></app-type-dish>
 </div>
+

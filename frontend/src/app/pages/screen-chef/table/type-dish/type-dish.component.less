@@ -11,7 +11,6 @@
   background-color: rgba(222, 203, 127, 0.65);
 
 }
-
 .dessert {
   background-color: rgba(231, 143, 89, 0.55);
 }
@@ -24,16 +23,18 @@
   justify-content: space-between;
 }
 
-
-
 .checkbox {
-  margin-left: 1rem;
   accent-color: transparent;
   border: 1px solid black;
   border-radius: 3px;
   width: 1.5rem;
   height: 1.5rem;
   -webkit-appearance: none;
-  -moz-appearance: none;
-  float:right;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 650px) {
+  .dish {
+    z-index: -1;
+  }
 }
