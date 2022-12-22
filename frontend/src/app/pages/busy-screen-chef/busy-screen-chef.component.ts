@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
-import { Subscription } from 'rxjs';
-import Dish from 'src/app/models/dish.model';
+import {Component} from '@angular/core';
+import {Subscription} from 'rxjs';
+import Dish, {DishType} from 'src/app/models/dish.model';
 import Table from 'src/app/models/table.model';
-import { TableService } from 'src/app/services/table.service';
+import {TableService} from 'src/app/services/table.service';
+
 @Component({
   selector: 'app-busy-screen-chef',
   templateUrl: './busy-screen-chef.component.html',
@@ -11,25 +12,42 @@ import { TableService } from 'src/app/services/table.service';
 export class BusyScreenChefComponent {
   private subs?: Subscription;
 
-  tableList : Table  []= [] ; // Observer
+  tables! : Table  []; // Observer
 
-  entree_lst: {id: number , dish : Dish}[] = [] ; // Those list contain pair {idTable, dishe}
-  plat_lst:   {id: number , dish : Dish}[] = [];
-  dessert_lst:{id: number , dish : Dish}[] = [];
+
 
   constructor(private commands :TableService){
-    this.subs = commands.tables$.subscribe(tables => {this.tableList = tables})
-    //this.populateList()
+    this.subs = commands.tables$.subscribe(tables => {this.tables = tables})
+
   }
 
   ngOnInit(): void {
-    this.tableList = this.commands.tables;
-    //this.populateList()
-
-    //this.populateList()
+    this.tables = this.commands.tables;
   }
 
   ngOnDestroy(): void {
     this.subs?.unsubscribe()
+  }
+
+  get entrees() {
+    let entrees: Dish[]=[];
+    this.tables.forEach(table => {
+      entrees = entrees.concat(table.dishes.filter(dish => dish.type===DishType.ENTREE))
+    })
+    return entrees;
+  }
+  get plats() {
+    let plats: Dish[]=[];
+    this.tables.forEach(table => {
+      plats = plats.concat(table.dishes.filter(dish => dish.type===DishType.PLAT))
+    })
+    return plats;
+  }
+  get dessert() {
+    let desserts: Dish[]=[];
+    this.tables.forEach(table => {
+      desserts = desserts.concat(table.dishes.filter(dish => dish.type===DishType.DESSERT))
+    })
+    return desserts;
   }
 }

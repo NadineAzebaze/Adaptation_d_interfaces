@@ -1,13 +1,17 @@
-<div class="screen">
-    <h1>Busy table </h1>
-    <table>
-        <tbody>
-            <tr>
-                <td> <app-dishe-list-section [dishList]=entree_lst sectionName='entree'></app-dishe-list-section></td> 
-                <td> <app-dishe-list-section [dishList]=plat_lst sectionName='plat'></app-dishe-list-section></td> 
-                <td> <app-dishe-list-section [dishList]=dessert_lst sectionName='dessert'></app-dishe-list-section></td> 
-            </tr>
+<div class="screenBusy">
 
-        </tbody>
-    </table>
+  <div class="entree">
+    <p>Entrees</p>
+    <app-type-dish *ngIf="entrees.length>0" [dishes]="entrees" [dishType]="'ENTREE'"></app-type-dish>
+  </div>
+  <div class="plat">
+    <p>Plats</p>
+    <app-type-dish *ngIf="plats.length>0" [dishes]="plats" [dishType]="'PLAT'"></app-type-dish>
+  </div>
+  <div class="dessert">
+    <p>Desserts</p>
+    <app-type-dish *ngIf="dessert.length>0" [dishes]="dessert" [dishType]="'DESSERT'"></app-type-dish>
+  </div>
+
 </div>
+

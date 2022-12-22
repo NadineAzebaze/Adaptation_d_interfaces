@@ -10,8 +10,12 @@ import {Router} from "@angular/router";
 })
 export class TableService {
 
-  public tables: Table[] = []
-  public tableNumber = 0;
+  public tables: Table[] = [];
+  private screen = true;
+
+  entree_lst: {id: number , dish : Dish}[] = [] ; // Those list contain pair {idTable, dishe}
+  plat_lst:   {id: number , dish : Dish}[] = [];
+  dessert_lst:{id: number , dish : Dish}[] = [];
   public tables$ = new BehaviorSubject<Table[]>([]);
 
   constructor(private router : Router) {
@@ -36,23 +40,26 @@ export class TableService {
         number: 1
       };
       const dish = dishes.find(d => d.id == dishToAdd.id);
-      if (dish) dish.name = dish.number>1 ? dish.name.slice(0,-1) + (++dish.number) : dish.name + " x " + (++dish.number);
-      else dishes.push(dishToAdd)
+      if (dish) dish.name = dish.name + " x " + (++dish.number);
+      else {dishes.push(dishToAdd)}
+
+
     }
+
   }
   generateTable(): void {
-    this.tableNumber+=1;
-    if(this.tables.length < 6){
+    if(this.tables.length < 7){
       setTimeout(() =>{
         let dishes: Dish[] = []
         this.generateRandomDishes(Entree, dishes)
         this.generateRandomDishes(Plat, dishes, 1)
         this.generateRandomDishes(Dessert, dishes)
         this.tables.push({
-          id: this.tableNumber,
+          id: this.tables.length+1,
           dishes: dishes
         })
         this.generateTable();
+        this.checkChangeScreen();
       }, this.getRandom(5000,2000));
     }
   }
@@ -64,11 +71,38 @@ export class TableService {
     const dish = table.dishes.find(d => d.id === dishId)
     if (!dish)
       throw "Dish null."
-    dish.done = !dish.done;
+    dish.done = true;
 
 
     this.tables = this.tables.filter(f => !!f.dishes.find(d => !d.done))
     this.tables$.next(this.tables)
+    this.checkChangeScreen()
   }
 
+  populateList () {
+    this.tables.forEach(curTable => {
+      curTable.dishes.forEach(curDish => {
+        switch(curDish.type){
+          case "ENTREE":{
+            this.entree_lst.push({id : curTable.id, dish: curDish})
+            break;
+          }
+          case "PLAT":{
+            this.plat_lst.push({id : curTable.id, dish: curDish})
+            break;
+          }
+          case "DESSERT":{
+            this.dessert_lst.push({id :curTable.id, dish : curDish})
+            break;
+          }
+        }
+      });
+
+    });
+  }
+
+  checkChangeScreen() {
+    if (this.tables.length > 6 && this.screen) this.router.navigate(['/busy']).then( _ => this.screen = false)
+    if (this.tables.length < 7 && !this.screen) this.router.navigate(['/commands']).then(_ => this.screen= true)
+  }
 }
