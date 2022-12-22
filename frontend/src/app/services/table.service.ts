@@ -65,13 +65,14 @@ export class TableService {
   }
 
   setDoneTable(tableId: number, dishId: number) {
+    console.log("icicicicicic")
     const table = this.tables.find(t => t.id === tableId)
     if (!table)
       throw "Table null."
     const dish = table.dishes.find(d => d.id === dishId)
     if (!dish)
       throw "Dish null."
-    dish.done = true;
+    dish.done = !dish.done;
 
 
     this.tables = this.tables.filter(f => !!f.dishes.find(d => !d.done))
