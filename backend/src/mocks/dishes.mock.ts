@@ -7,6 +7,7 @@ export const Entree: Dish[] = [
     name: 'salade niçoise',
     done: false,
     number: 0,
+    table: 0,
   },
   {
     id: 1,
@@ -14,6 +15,7 @@ export const Entree: Dish[] = [
     name: 'salade cesar',
     done: false,
     number: 0,
+    table: 0,
   },
   {
     id: 2,
@@ -21,6 +23,7 @@ export const Entree: Dish[] = [
     name: 'salade de chèvre chaud',
     done: false,
     number: 0,
+    table: 0,
   },
   {
     id: 3,
@@ -28,6 +31,7 @@ export const Entree: Dish[] = [
     name: 'soupe',
     done: false,
     number: 0,
+    table: 0,
   },
   {
     id: 4,
@@ -35,6 +39,7 @@ export const Entree: Dish[] = [
     name: 'chausson au fromage',
     done: false,
     number: 0,
+    table: 0,
   },
   {
     id: 5,
@@ -42,6 +47,7 @@ export const Entree: Dish[] = [
     name: 'oeufs mayo',
     done: false,
     number: 0,
+    table: 0,
   },
   {
     id: 6,
@@ -49,6 +55,7 @@ export const Entree: Dish[] = [
     name: 'salade de bettrave',
     done: false,
     number: 0,
+    table: 0,
   },
   {
     id: 7,
@@ -56,6 +63,7 @@ export const Entree: Dish[] = [
     name: 'melon et son jambon cru',
     done: false,
     number: 0,
+    table: 0,
   },
   {
     id: 8,
@@ -63,6 +71,7 @@ export const Entree: Dish[] = [
     name: 'gambas a la plancha',
     done: false,
     number: 0,
+    table: 0,
   },
   {
     id: 9,
@@ -70,6 +79,7 @@ export const Entree: Dish[] = [
     name: 'avocat avec mais',
     done: false,
     number: 0,
+    table: 0,
   },
 ];
 
@@ -80,6 +90,7 @@ export const Plat: Dish[] = [
     name: 'daube',
     done: false,
     number: 0,
+    table: 0,
   },
   {
     id: 11,
@@ -87,6 +98,7 @@ export const Plat: Dish[] = [
     name: 'lasagne',
     done: false,
     number: 0,
+    table: 0,
   },
   {
     id: 12,
@@ -94,6 +106,7 @@ export const Plat: Dish[] = [
     name: 'cote de boeuf de 400g',
     done: false,
     number: 0,
+    table: 0,
   },
   {
     id: 13,
@@ -101,6 +114,7 @@ export const Plat: Dish[] = [
     name: "carre d'agneau",
     done: false,
     number: 0,
+    table: 0,
   },
   {
     id: 14,
@@ -108,6 +122,7 @@ export const Plat: Dish[] = [
     name: 'escalope milanaise',
     done: false,
     number: 0,
+    table: 0,
   },
   {
     id: 15,
@@ -115,6 +130,7 @@ export const Plat: Dish[] = [
     name: 'pates à la carbonara',
     done: false,
     number: 0,
+    table: 0,
   },
   {
     id: 16,
@@ -122,6 +138,7 @@ export const Plat: Dish[] = [
     name: 'pates à la bolognaise',
     done: false,
     number: 0,
+    table: 0,
   },
   {
     id: 17,
@@ -129,6 +146,7 @@ export const Plat: Dish[] = [
     name: 'pates aux gambas',
     done: false,
     number: 0,
+    table: 0,
   },
   {
     id: 18,
@@ -136,6 +154,7 @@ export const Plat: Dish[] = [
     name: 'pates a la truffe',
     done: false,
     number: 0,
+    table: 0,
   },
   {
     id: 19,
@@ -143,6 +162,7 @@ export const Plat: Dish[] = [
     name: 'rigattoni',
     done: false,
     number: 0,
+    table: 0,
   },
 ];
 
@@ -153,6 +173,7 @@ export const Dessert: Dish[] = [
     name: 'tiramisu',
     done: false,
     number: 0,
+    table: 0,
   },
   {
     id: 21,
@@ -160,6 +181,7 @@ export const Dessert: Dish[] = [
     name: 'ile flotante',
     done: false,
     number: 0,
+    table: 0,
   },
   {
     id: 22,
@@ -167,6 +189,7 @@ export const Dessert: Dish[] = [
     name: 'glace chocolat',
     done: false,
     number: 0,
+    table: 0,
   },
   {
     id: 23,
@@ -174,6 +197,7 @@ export const Dessert: Dish[] = [
     name: 'glace vanille',
     done: false,
     number: 0,
+    table: 0,
   },
   {
     id: 24,
@@ -181,6 +205,7 @@ export const Dessert: Dish[] = [
     name: 'tarte citron',
     done: false,
     number: 0,
+    table: 0,
   },
   {
     id: 25,
@@ -188,6 +213,7 @@ export const Dessert: Dish[] = [
     name: 'tarte pomme',
     done: false,
     number: 0,
+    table: 0,
   },
   {
     id: 26,
@@ -195,6 +221,7 @@ export const Dessert: Dish[] = [
     name: 'tarte fraise',
     done: false,
     number: 0,
+    table: 0,
   },
   {
     id: 27,
@@ -202,6 +229,7 @@ export const Dessert: Dish[] = [
     name: 'salade de fruit',
     done: false,
     number: 0,
+    table: 0,
   },
   {
     id: 28,
@@ -209,6 +237,7 @@ export const Dessert: Dish[] = [
     name: 'tarte flambée',
     done: false,
     number: 0,
+    table: 0,
   },
   {
     id: 29,
@@ -216,5 +245,6 @@ export const Dessert: Dish[] = [
     name: 'tarte framboise',
     done: false,
     number: 0,
+    table: 0,
   },
 ];

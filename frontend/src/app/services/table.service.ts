@@ -37,7 +37,9 @@ export class TableService {
         name: type[indexRandom].name,
         type: type[indexRandom].type,
         done: type[indexRandom].done,
-        number: 1
+        number: 1,
+        table: this.tables.length+1
+
       };
       const dish = dishes.find(d => d.id == dishToAdd.id);
       if (dish) dish.name = dish.name + " x " + (++dish.number);

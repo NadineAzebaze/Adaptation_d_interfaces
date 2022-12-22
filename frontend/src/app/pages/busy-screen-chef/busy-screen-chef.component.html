@@ -2,15 +2,15 @@
 
   <div class="entree">
     <p>Entrees</p>
-    <app-type-dish *ngIf="entrees.length>0" [dishes]="entrees" [dishType]="'ENTREE'"></app-type-dish>
+    <app-type-dish *ngIf="entrees.length>0" [dishes]="entrees" [dishType]="'ENTREE'" (setDone)="setDoneTable($event.table,$event.id)" [busy]="true"></app-type-dish>
   </div>
   <div class="plat">
     <p>Plats</p>
-    <app-type-dish *ngIf="plats.length>0" [dishes]="plats" [dishType]="'PLAT'"></app-type-dish>
+    <app-type-dish *ngIf="plats.length>0" [dishes]="plats" [dishType]="'PLAT'" (setDone)="setDoneTable($event.table,$event.id)" [busy]="true"></app-type-dish>
   </div>
   <div class="dessert">
     <p>Desserts</p>
-    <app-type-dish *ngIf="dessert.length>0" [dishes]="dessert" [dishType]="'DESSERT'"></app-type-dish>
+    <app-type-dish *ngIf="dessert.length>0" [dishes]="dessert" [dishType]="'DESSERT'" (setDone)="setDoneTable($event.table,$event.id)" [busy]="true"></app-type-dish>
   </div>
 
 </div>

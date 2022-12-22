@@ -16,13 +16,13 @@ export class BusyScreenChefComponent {
 
 
 
-  constructor(private commands :TableService){
-    this.subs = commands.tables$.subscribe(tables => {this.tables = tables})
+  constructor(private tableService :TableService){
+    this.subs = tableService.tables$.subscribe(tables => {this.tables = tables})
 
   }
 
   ngOnInit(): void {
-    this.tables = this.commands.tables;
+    this.tables = this.tableService.tables;
   }
 
   ngOnDestroy(): void {
@@ -49,5 +49,9 @@ export class BusyScreenChefComponent {
       desserts = desserts.concat(table.dishes.filter(dish => dish.type===DishType.DESSERT))
     })
     return desserts;
+  }
+
+  setDoneTable(tableId: number, dishId: number) {
+    this.tableService.setDoneTable(tableId,dishId)
   }
 }
