@@ -19,6 +19,11 @@ export class ScreenChefComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.tables = this.commands.tables
+    /*this.breakpointObserver
+      .observe(['(min-width: 650px)'])
+      .subscribe((state: BreakpointState) => {
+        if (state.matches) console.log("minnnnnn")
+      })*/
   }
 
   ngOnDestroy(): void {

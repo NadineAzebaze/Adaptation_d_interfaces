@@ -37,5 +37,12 @@ export class TableComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  print($event: MouseEvent) {
+
+    // @ts-ignore
+    const table = $event.target.nextElementSibling
+    table.style="z-index:10;"
+  }
 }
 

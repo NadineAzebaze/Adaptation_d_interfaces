@@ -2,7 +2,6 @@
   background-color: rgba(189, 189, 189, 0.56);
   height: fit-content;
   min-height: 95%;
-  //max-height: 95%;
   border: black dashed 1px;
   border-radius: 3px;
   padding: 1rem;
@@ -15,17 +14,13 @@ h3 {
 
 app-table {
   height: fit-content;
-  //background-color: #ecebeb;
-  border-radius: 5px;
-  align-items: center;
-  padding: 1px 5px 1px 5px;
   font-style: italic;
-  margin: 1rem;
+  pointer-events: none;
 }
 
-.allCommands{
+.allCommands {
   display: grid;
-  grid-template-columns: repeat(3,1fr);
+  grid-template-columns: repeat(3, 1fr);
 }
 
 @media (max-width: 970px) {
@@ -41,4 +36,24 @@ app-table {
     width: 90%;
     height: 80%;
   }
+  #table2 {
+    margin-left: 14%;
+  }
+
+  #table3 {
+    margin-left: 28%;
+  }
+
+  #table4 {
+    margin-left: 42%;
+  }
+
+  #table5 {
+    margin-left: 56%;
+  }
+
+  #table6 {
+    margin-left: 70%;
+  }
+
 }

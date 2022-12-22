@@ -37,7 +37,8 @@ import { CountDownComponent } from './pages/clerk-module/components/count-down/c
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    //LayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]
