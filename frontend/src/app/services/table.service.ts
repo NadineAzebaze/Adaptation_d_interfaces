@@ -3,6 +3,7 @@ import Table from "../models/table.model";
 import {BehaviorSubject} from "rxjs";
 import {Entree, Plat, Dessert} from "../../../../backend/src/mocks/dishes.mock"
 import Dish from "../models/dish.model";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +14,9 @@ export class TableService {
   public tableNumber = 0;
   public tables$ = new BehaviorSubject<Table[]>([]);
 
-  constructor() {
+  constructor(private router : Router) {
     this.generateTable();
+
   }
 
   getRandom(indexMax: number, min: number = 0) {
@@ -63,6 +65,7 @@ export class TableService {
     if (!dish)
       throw "Dish null."
     dish.done = !dish.done;
+
 
     this.tables = this.tables.filter(f => !!f.dishes.find(d => !d.done))
     this.tables$.next(this.tables)
