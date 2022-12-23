@@ -16,6 +16,8 @@ export class BusyScreenChefComponent {
 
 
 
+
+
   constructor(private tableService :TableService){
     this.subs = tableService.tables$.subscribe(tables => {this.tables = tables})
 
@@ -37,21 +39,22 @@ export class BusyScreenChefComponent {
     return entrees;
   }
   get plats() {
-    let plats: Dish[]=[];
+    return this.tableService.plats
+    /*let plats: Dish[]=[];
     this.tables.forEach(table => {
       plats = plats.concat(table.dishes.filter(dish => dish.type===DishType.PLAT))
     })
-    return plats;
+    return plats;*/
   }
   get dessert() {
-    let desserts: Dish[]=[];
-    this.tables.forEach(table => {
-      desserts = desserts.concat(table.dishes.filter(dish => dish.type===DishType.DESSERT))
-    })
-    return desserts;
+    return this.tableService.dessert
   }
 
   setDoneTable(tableId: number, dishId: number) {
     this.tableService.setDoneTable(tableId,dishId)
+  }
+
+  allDishesNotDone(dishes: Dish[], typeDish: string) {
+    return dishes.find(dish => !dish.done && dish.type===typeDish)
   }
 }
