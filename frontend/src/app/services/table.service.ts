@@ -12,24 +12,16 @@ export class TableService {
   public tables: Table[] = [];
   private screen = true;
   public tables$ = new BehaviorSubject<Table[]>([]);
-
-  private platsPriority: Dish[] = []
-  private dessertPriority: Dish[] = []
+  private tablePriorityPlat: Table[] = [];
+  private tablePriorityDessert: Table[] = []
 
   constructor(private router: Router) {
     this.generateTable();
   }
 
-  get entrees() {
-    let entrees: Dish[] = [];
-    this.tables.forEach(table => {
-      entrees = entrees.concat(table.dishes.filter(dish => dish.type === DishType.ENTREE))
-    })
-    return entrees;
-  }
 
   get plats() {
-    let plats: Dish[] = this.platsPriority;
+    let plats: Dish[] = []
     this.tables.forEach(table => {
       plats = plats.concat(table.dishes.filter(dish => dish.type === DishType.PLAT))
     })
@@ -91,15 +83,14 @@ export class TableService {
     const table = this.tables.find(t => t.id === tableId)
     if (!table)
       throw "Table null."
-    console.log(table,table.dishes)
     const dish = table.dishes.find(d => d.id === dishId)
     if (!dish)
       throw "Dish null."
     dish.done = !dish.done;
-    this.changePriority(table, dish)
+    if (dish.done) this.changePriority(table, dish)
     this.tables = this.tables.filter(f => !!f.dishes.find(d => !d.done))
-    this.tables$.next(this.tables)
     this.checkChangeScreen()
+    this.tables$.next(this.tables)
   }
 
   checkChangeScreen() {
@@ -108,19 +99,11 @@ export class TableService {
   }
 
   changePriority(table: Table, dish: Dish) {
-    let dishTypeToChangeOrder = dish.type===DishType.ENTREE ? DishType.PLAT : DishType.DESSERT
     if (!table.dishes.find(d => d.type === dish.type && !d.done)) {
-        this.filterDish(table, dish.type)
-        this.tables.filter(t => {
-          if (t.id === table.id) t.dishes = t.dishes.filter(d => d.type !== dishTypeToChangeOrder)
-        })
+      let tablePriority = dish.type === DishType.ENTREE ? this.tablePriorityPlat : this.tablePriorityDessert
+      table.dishes = table.dishes.filter(d => d.type !== dish.type)
+      tablePriority.push(table)
+      this.tables = tablePriority.concat(this.tables.filter(table => tablePriority.indexOf(table) < 0))
     }
-  }
-
-  private filterDish(table: Table, type: DishType) {
-    //console.log(table.dishes.filter(dish => dish.type === DishType.PLAT))
-    type === DishType.ENTREE ? this.platsPriority.push(...table.dishes.filter(dish => dish.type === DishType.PLAT)) : this.dessertPriority.push(...table.dishes.filter(dish => dish.type === DishType.DESSERT))
-    //type === DishType.ENTREE ? this.platsPriority.push(table) : this.dessertPriority.push(table)
-
   }
 }
