@@ -1,7 +1,7 @@
 <div class="screenBusy">
 
   <div class="entree">
-    <p>Entrees</p>
+    <p>Entrées</p>
     <app-type-dish *ngIf="entrees.length>0 && allDishesNotDone(entrees,'ENTREE')" [dishes]="entrees" [dishType]="'ENTREE'" (setDone)="setDoneTable($event.table,$event.id)" [busy]="true"></app-type-dish>
   </div>
   <div class="plat">

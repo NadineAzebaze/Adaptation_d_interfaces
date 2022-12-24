@@ -12,7 +12,7 @@ export const Entree: Dish[] = [
   {
     id: 1,
     type: DishType.ENTREE,
-    name: 'salade cesar',
+    name: 'salade césar',
     done: false,
     number: 0,
     table: 0,
@@ -44,7 +44,7 @@ export const Entree: Dish[] = [
   {
     id: 5,
     type: DishType.ENTREE,
-    name: 'oeufs mayo',
+    name: 'oeufs mayonnaise',
     done: false,
     number: 0,
     table: 0,
@@ -52,7 +52,7 @@ export const Entree: Dish[] = [
   {
     id: 6,
     type: DishType.ENTREE,
-    name: 'salade de bettrave',
+    name: 'salade de bettraves',
     done: false,
     number: 0,
     table: 0,
@@ -68,7 +68,7 @@ export const Entree: Dish[] = [
   {
     id: 8,
     type: DishType.ENTREE,
-    name: 'gambas a la plancha',
+    name: 'gambas à la plancha',
     done: false,
     number: 0,
     table: 0,
@@ -76,7 +76,7 @@ export const Entree: Dish[] = [
   {
     id: 9,
     type: DishType.ENTREE,
-    name: 'avocat avec mais',
+    name: 'avocat avec maïs',
     done: false,
     number: 0,
     table: 0,
@@ -103,7 +103,7 @@ export const Plat: Dish[] = [
   {
     id: 12,
     type: DishType.PLAT,
-    name: 'cote de boeuf de 400g',
+    name: 'côte de boeuf de 400g',
     done: false,
     number: 0,
     table: 0,
@@ -111,7 +111,7 @@ export const Plat: Dish[] = [
   {
     id: 13,
     type: DishType.PLAT,
-    name: "carre d'agneau",
+    name: "carré d'agneau",
     done: false,
     number: 0,
     table: 0,
@@ -127,7 +127,7 @@ export const Plat: Dish[] = [
   {
     id: 15,
     type: DishType.PLAT,
-    name: 'pates à la carbonara',
+    name: 'pâtes à la carbonara',
     done: false,
     number: 0,
     table: 0,
@@ -135,7 +135,7 @@ export const Plat: Dish[] = [
   {
     id: 16,
     type: DishType.PLAT,
-    name: 'pates à la bolognaise',
+    name: 'pâtes à la bolognaise',
     done: false,
     number: 0,
     table: 0,
@@ -143,7 +143,7 @@ export const Plat: Dish[] = [
   {
     id: 17,
     type: DishType.PLAT,
-    name: 'pates aux gambas',
+    name: 'pâtes aux gambas',
     done: false,
     number: 0,
     table: 0,
@@ -151,7 +151,7 @@ export const Plat: Dish[] = [
   {
     id: 18,
     type: DishType.PLAT,
-    name: 'pates a la truffe',
+    name: 'pâtes à la truffe',
     done: false,
     number: 0,
     table: 0,
@@ -178,7 +178,7 @@ export const Dessert: Dish[] = [
   {
     id: 21,
     type: DishType.DESSERT,
-    name: 'ile flotante',
+    name: 'île flottante',
     done: false,
     number: 0,
     table: 0,
@@ -210,7 +210,7 @@ export const Dessert: Dish[] = [
   {
     id: 25,
     type: DishType.DESSERT,
-    name: 'tarte pomme',
+    name: 'tarte aux pommes',
     done: false,
     number: 0,
     table: 0,
@@ -218,7 +218,7 @@ export const Dessert: Dish[] = [
   {
     id: 26,
     type: DishType.DESSERT,
-    name: 'tarte fraise',
+    name: 'tarte aux fraises',
     done: false,
     number: 0,
     table: 0,
@@ -226,7 +226,7 @@ export const Dessert: Dish[] = [
   {
     id: 27,
     type: DishType.DESSERT,
-    name: 'salade de fruit',
+    name: 'salade de fruits',
     done: false,
     number: 0,
     table: 0,
@@ -242,7 +242,7 @@ export const Dessert: Dish[] = [
   {
     id: 29,
     type: DishType.DESSERT,
-    name: 'tarte framboise',
+    name: 'tarte aux framboises',
     done: false,
     number: 0,
     table: 0,
