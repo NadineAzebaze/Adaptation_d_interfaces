@@ -13,7 +13,9 @@ export class TableService {
   private screen = true;
   public tables$ = new BehaviorSubject<Table[]>([]);
   private tablePriorityPlat: Table[] = [];
-  private tablePriorityDessert: Table[] = []
+  private tablePriorityDessert: Table[] = [];
+
+  public busy = false;
 
   constructor(private router: Router) {
     this.generateTable();
@@ -84,7 +86,7 @@ export class TableService {
         })
         this.generateTable();
         this.checkChangeScreen();
-        if (noEntree) {
+        if (noEntree && !this.screen) {
           this.tablePriorityPlat.push(this.tables[this.tables.length-1])
           this.tables = this.tablePriorityPlat.concat(this.tables.filter(table => this.tablePriorityPlat.indexOf(table) < 0))
         }
@@ -100,15 +102,19 @@ export class TableService {
     if (!dish)
       throw "Dish null."
     dish.done = !dish.done;
-    if (dish.done) this.changePriority(table, dish)
+    if (dish.done && !this.screen) this.changePriority(table, dish)
     this.tables = this.tables.filter(f => !!f.dishes.find(d => !d.done))
     this.checkChangeScreen()
     this.tables$.next(this.tables)
   }
 
   checkChangeScreen() {
-    if (this.tables.length > 6 && this.screen) this.router.navigate(['/busy']).then(_ => this.screen = false)
-    if (this.tables.length < 7 && !this.screen) this.router.navigate(['/commands']).then(_ => this.screen = true)
+    if (this.tables.length > 6 && this.screen) this.router.navigate(['/busy']).then(_ => {this.screen = false;
+    })
+    if (this.tables.length < 7 && !this.screen) this.router.navigate(['/commands']).then(_ => {
+      this.screen = true;
+      this.reorderTable();
+    })
   }
 
   changePriority(table: Table, dish: Dish) {
@@ -118,5 +124,10 @@ export class TableService {
       tablePriority.push(table)
       this.tables = tablePriority.concat(this.tables.filter(table => tablePriority.indexOf(table) < 0))
     }
+  }
+
+  private reorderTable() {
+    this.tables = this.tables.sort((table1,table2) => table1.id-table2.id)
+    console.log(this.tables)
   }
 }
