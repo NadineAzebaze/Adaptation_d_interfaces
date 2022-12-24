@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {Subscription} from 'rxjs';
-import Dish, {DishType} from 'src/app/models/dish.model';
+import Dish from 'src/app/models/dish.model';
 import Table from 'src/app/models/table.model';
 import {TableService} from 'src/app/services/table.service';
 
@@ -13,10 +13,6 @@ export class BusyScreenChefComponent {
   private subs?: Subscription;
 
   tables! : Table  []; // Observer
-
-
-
-
 
   constructor(private tableService :TableService){
     this.subs = tableService.tables$.subscribe(tables => {this.tables = tables})
@@ -32,22 +28,13 @@ export class BusyScreenChefComponent {
   }
 
   get entrees() {
-    let entrees: Dish[]=[];
-    this.tables.forEach(table => {
-      entrees = entrees.concat(table.dishes.filter(dish => dish.type===DishType.ENTREE))
-    })
-    return entrees;
+    return this.tableService.entreesBusy
   }
   get plats() {
-    return this.tableService.plats
-    /*let plats: Dish[]=[];
-    this.tables.forEach(table => {
-      plats = plats.concat(table.dishes.filter(dish => dish.type===DishType.PLAT))
-    })
-    return plats;*/
+    return this.tableService.platsBusy
   }
   get dessert() {
-    return this.tableService.dessert
+    return this.tableService.dessertsBusy
   }
 
   setDoneTable(tableId: number, dishId: number) {

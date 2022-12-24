@@ -19,8 +19,15 @@ export class TableService {
     this.generateTable();
   }
 
+  get entreesBusy() {
+    let entrees: Dish[]=[];
+    this.tables.forEach(table => {
+      entrees = entrees.concat(table.dishes.filter(dish => dish.type===DishType.ENTREE))
+    })
+    return entrees;
+  }
 
-  get plats() {
+  get platsBusy() {
     let plats: Dish[] = []
     this.tables.forEach(table => {
       plats = plats.concat(table.dishes.filter(dish => dish.type === DishType.PLAT))
@@ -28,7 +35,7 @@ export class TableService {
     return plats;
   }
 
-  get dessert() {
+  get dessertsBusy() {
     let desserts: Dish[] = [];
     this.tables.forEach(table => {
       desserts = desserts.concat(table.dishes.filter(dish => dish.type === DishType.DESSERT))
@@ -42,7 +49,8 @@ export class TableService {
 
   generateRandomDishes(type: Dish[], dishes: Dish[], min: number = 0) {
     const indexMax = Entree.length;
-    for (let j = 0; j < this.getRandom(6, min); j++) {
+    const numberOfDishes = this.getRandom(6, min);
+    for (let j = 0; j < numberOfDishes; j++) {
       const indexRandom = this.getRandom(indexMax);
       const dishToAdd = {
         id: type[indexRandom].id,
@@ -59,6 +67,7 @@ export class TableService {
         dishes.push(dishToAdd)
       }
     }
+     return numberOfDishes===0 && type[0].type === DishType.ENTREE;
 
   }
 
@@ -66,7 +75,7 @@ export class TableService {
     if (this.tables.length < 7) {
       setTimeout(() => {
         let dishes: Dish[] = []
-        this.generateRandomDishes(Entree, dishes)
+        let noEntree = this.generateRandomDishes(Entree, dishes)
         this.generateRandomDishes(Plat, dishes, 1)
         this.generateRandomDishes(Dessert, dishes)
         this.tables.push({
@@ -75,6 +84,10 @@ export class TableService {
         })
         this.generateTable();
         this.checkChangeScreen();
+        if (noEntree) {
+          this.tablePriorityPlat.push(this.tables[this.tables.length-1])
+          this.tables = this.tablePriorityPlat.concat(this.tables.filter(table => this.tablePriorityPlat.indexOf(table) < 0))
+        }
       }, this.getRandom(5000, 2000));
     }
   }
