@@ -7,7 +7,7 @@ import {BusyScreenChefComponent} from "./pages/busy-screen-chef/busy-screen-chef
 
 const routes: Routes = [
   {path: '', component:RoleSelectionPageComponent},
-  {path: 'home', component:ClerkPageComponent},
+  {path: 'clerk', component:ClerkPageComponent},
   {path: 'commands', component: ScreenChefComponent},
   {path: 'busy', component: BusyScreenChefComponent}
 ];
