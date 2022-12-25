@@ -3,15 +3,17 @@
   <app-count-down [recipe]="recipe" *ngIf="apprentise"></app-count-down>
 
     <div class="arrow-container left-arrow">
-      <i class="fa-solid fa-arrow-left" (click)="next()"></i><span> précédente étape</span>
+      <span (click)="previous()" class="material-symbols-outlined">chevron_left</span>
+    </div>
+    <div>
+      <img style="width: 500px; height: 300px;" class="image" [src]="step.image" *ngIf="step.image && apprentise" [alt]="step.id">
     </div>
     <div class="body">
-      <h3>Etape {{currentStepIndex + 1}} :</h3>
-      <img style="width: 500px; height: 300px;" class="image" [src]="step.image" *ngIf="step.image && apprentise" [alt]="step.id">
+      <h3>{{recipe.name}}</h3>
       <p>{{step.description}}</p>
     </div>
     <div class="arrow-container right-arrow">
-      <span> prochaine étape</span><i class="fa-solid fa-arrow-right" (click)="previous()"> </i>
+      <span class="material-symbols-outlined" (click)="next()">chevron_right</span>
     </div>
 
 </div>

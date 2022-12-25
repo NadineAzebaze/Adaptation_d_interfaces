@@ -1,7 +1,4 @@
 import {Component, EventEmitter, Input, OnInit, Output} from "@angular/core";
-import {Router} from "@angular/router";
-import {Recipe} from "../../../../models/recipe.model";
-import {RecipeService} from "../../../../services/recipe.service";
 import ClerkTask from "../../../../models/clerktask.model";
 import {ClerkTaskService} from "../../../../services/clerk-task.service";
 
