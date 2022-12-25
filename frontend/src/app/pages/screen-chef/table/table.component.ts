@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import Table from "../../../models/table.model";
 import Dish, {DishType} from "../../../models/dish.model";
 import {TableService} from "../../../services/table.service";
@@ -13,6 +13,9 @@ import {TableService} from "../../../services/table.service";
 export class TableComponent implements OnInit {
   @Input() table! : Table
 
+  @Input() position!: number;
+
+  @Output() setPosition = new EventEmitter<number>();
 
   constructor(private tableService: TableService) {
   }
@@ -37,5 +40,6 @@ export class TableComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
 }
 

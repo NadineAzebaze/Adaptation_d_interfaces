@@ -17,6 +17,7 @@ import {RecipeStepComponent} from "./pages/clerk-module/components/recipe-step/r
 import { RoleSelectionPageComponent } from './pages/role-selection-page/role-selection-page.component';
 import { CountDownComponent } from './pages/clerk-module/components/count-down/count-down.component';
 import { ChangeModButtonComponent } from './components/change-mod-button/change-mod-button.component';
+import {BusyScreenChefComponent} from "./pages/busy-screen-chef/busy-screen-chef.component";
 
 @NgModule({
   declarations: [
@@ -34,12 +35,14 @@ import { ChangeModButtonComponent } from './components/change-mod-button/change-
     ClerkHeaderComponent,
     RoleSelectionPageComponent,
     CountDownComponent,
-    ChangeModButtonComponent
+    ChangeModButtonComponent,
+    BusyScreenChefComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    //LayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]

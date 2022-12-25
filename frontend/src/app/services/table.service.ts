@@ -1,57 +1,96 @@
 import {Injectable} from '@angular/core';
 import Table from "../models/table.model";
 import {BehaviorSubject} from "rxjs";
-import {Entree, Plat, Dessert} from "../../../../backend/src/mocks/dishes.mock"
-import Dish from "../models/dish.model";
+import {Dessert, Entree, Plat} from "../../../../backend/src/mocks/dishes.mock"
+import Dish, {DishType} from "../models/dish.model";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
 })
 export class TableService {
-
-  public tables: Table[] = []
-  public tableNumber = 0;
+  public tables: Table[] = [];
+  private screen = true;
   public tables$ = new BehaviorSubject<Table[]>([]);
+  private tablePriorityPlat: Table[] = [];
+  private tablePriorityDessert: Table[] = [];
 
-  constructor() {
+  public busy = false;
+
+  constructor(private router: Router) {
     this.generateTable();
+  }
+
+  get entreesBusy() {
+    let entrees: Dish[]=[];
+    this.tables.forEach(table => {
+      entrees = entrees.concat(table.dishes.filter(dish => dish.type===DishType.ENTREE))
+    })
+    return entrees;
+  }
+
+  get platsBusy() {
+    let plats: Dish[] = []
+    this.tables.forEach(table => {
+      plats = plats.concat(table.dishes.filter(dish => dish.type === DishType.PLAT))
+    })
+    return plats;
+  }
+
+  get dessertsBusy() {
+    let desserts: Dish[] = [];
+    this.tables.forEach(table => {
+      desserts = desserts.concat(table.dishes.filter(dish => dish.type === DishType.DESSERT))
+    })
+    return desserts;
   }
 
   getRandom(indexMax: number, min: number = 0) {
     return Math.floor(Math.random() * (indexMax - min) + min);
   }
 
-
   generateRandomDishes(type: Dish[], dishes: Dish[], min: number = 0) {
     const indexMax = Entree.length;
-    for (let j = 0; j < this.getRandom(6, min); j++) {
+    const numberOfDishes = this.getRandom(6, min);
+    for (let j = 0; j < numberOfDishes; j++) {
       const indexRandom = this.getRandom(indexMax);
       const dishToAdd = {
         id: type[indexRandom].id,
         name: type[indexRandom].name,
         type: type[indexRandom].type,
         done: type[indexRandom].done,
-        number: 1
+        number: 1,
+        table: this.tables.length + 1
+
       };
       const dish = dishes.find(d => d.id == dishToAdd.id);
-      if (dish) dish.name = dish.number>1 ? dish.name.slice(0,-1) + (++dish.number) : dish.name + " x " + (++dish.number);
-      else dishes.push(dishToAdd)
+      if (dish) dish.name = dish.name + " x " + (++dish.number);
+      else {
+        dishes.push(dishToAdd)
+      }
     }
+     return numberOfDishes===0 && type[0].type === DishType.ENTREE;
+
   }
+
   generateTable(): void {
-    this.tableNumber+=1;
-    if(this.tables.length < 6){
-      setTimeout(() =>{
+    if (this.tables.length < 7) {
+      setTimeout(() => {
         let dishes: Dish[] = []
-        this.generateRandomDishes(Entree, dishes)
+        let noEntree = this.generateRandomDishes(Entree, dishes)
         this.generateRandomDishes(Plat, dishes, 1)
         this.generateRandomDishes(Dessert, dishes)
         this.tables.push({
-          id: this.tableNumber,
+          id: this.tables.length + 1,
           dishes: dishes
         })
         this.generateTable();
-      }, this.getRandom(5000,2000));
+        this.checkChangeScreen();
+        if (noEntree && !this.screen) {
+          this.tablePriorityPlat.push(this.tables[this.tables.length-1])
+          this.tables = this.tablePriorityPlat.concat(this.tables.filter(table => this.tablePriorityPlat.indexOf(table) < 0))
+        }
+      }, this.getRandom(5000, 2000));
     }
   }
 
@@ -62,10 +101,33 @@ export class TableService {
     const dish = table.dishes.find(d => d.id === dishId)
     if (!dish)
       throw "Dish null."
-    dish.done = true;
-
+    dish.done = !dish.done;
+    if (dish.done && !this.screen) this.changePriority(table, dish)
     this.tables = this.tables.filter(f => !!f.dishes.find(d => !d.done))
+    this.checkChangeScreen()
     this.tables$.next(this.tables)
   }
 
+  checkChangeScreen() {
+    if (this.tables.length > 6 && this.screen) this.router.navigate(['/busy']).then(_ => {this.screen = false;
+    })
+    if (this.tables.length < 7 && !this.screen) this.router.navigate(['/commands']).then(_ => {
+      this.screen = true;
+      this.reorderTable();
+    })
+  }
+
+  changePriority(table: Table, dish: Dish) {
+    if (!table.dishes.find(d => d.type === dish.type && !d.done)) {
+      let tablePriority = dish.type === DishType.ENTREE ? this.tablePriorityPlat : this.tablePriorityDessert
+      table.dishes = table.dishes.filter(d => d.type !== dish.type)
+      tablePriority.push(table)
+      this.tables = tablePriority.concat(this.tables.filter(table => tablePriority.indexOf(table) < 0))
+    }
+  }
+
+  private reorderTable() {
+    this.tables = this.tables.sort((table1,table2) => table1.id-table2.id)
+    console.log(this.tables)
+  }
 }

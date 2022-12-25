@@ -11,6 +11,7 @@ import {Subscription} from "rxjs";
 export class ScreenChefComponent implements OnInit, OnDestroy {
 
   private subs?: Subscription;
+  public position!: number
   constructor(private commands: TableService) {
     this.subs = commands.tables$.subscribe(tables => this.tables = tables)
   }
@@ -23,5 +24,9 @@ export class ScreenChefComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subs?.unsubscribe()
+  }
+
+  setPosition(tableId: number) {
+    this.position = tableId;
   }
 }

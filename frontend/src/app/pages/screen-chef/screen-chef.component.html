@@ -1,6 +1,6 @@
 <div class="screen">
-    <h3>Commands</h3>
+    <h3>Commandes</h3>
   <div class="allCommands">
-    <app-table *ngFor="let t of tables" [table]="t" ></app-table>
+    <app-table *ngFor="let t of tables" [table]="t" (setPosition)="setPosition($event)" [ngStyle]="{'z-index':this.position===t.id ? 2 : 0}" ></app-table>
   </div>
 </div>

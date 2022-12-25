@@ -10,4 +10,5 @@ export default interface Dish {
   name: string;
   done : boolean;
   number: number;
+  table: number;
 }

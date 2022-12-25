@@ -10,6 +10,7 @@ export class TypeDishComponent implements OnInit{
   @Input() dishes!: Dish[]
   @Input() dishType!: string;
   @Output() setDone = new EventEmitter<Dish>();
+  @Input() busy: boolean = false;
 
   constructor() {
   }
