@@ -2,7 +2,7 @@
   background-color: rgba(189, 189, 189, 0.56);
   height: fit-content;
   min-height: 95%;
-  border: black dashed 1px;
+  border: outset;
   border-radius: 3px;
   padding: 1rem;
   align-items: center;
@@ -15,7 +15,6 @@ h3 {
 app-table {
   height: fit-content;
   font-style: italic;
-  pointer-events: none;
 }
 
 .allCommands {
@@ -33,6 +32,7 @@ app-table {
 @media (max-width: 650px) {
   app-table {
     position: absolute;
+    pointer-events: none;
     width: 90%;
     height: 80%;
   }

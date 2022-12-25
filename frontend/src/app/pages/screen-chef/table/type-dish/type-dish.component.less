@@ -16,18 +16,19 @@
 }
 
 .dish {
-  display: flex;
-  align-items: center;
+  display: grid;
+  grid-template-columns: auto max-content min-content;
   max-height: 20px;
-  margin:0.13cm;
-  justify-content: space-between;
+  margin: 1% 1% 2%;
+  //justify-content: space-between;
+
 }
 
 .dishName{
   margin: 0;
 }
 ul{
-  padding-left: 2rem;
+  padding: 1% 1% 1% 6%;
 }
 
 .checkbox {
@@ -37,11 +38,14 @@ ul{
   width: 1.5rem;
   height: 1.5rem;
   -webkit-appearance: none;
-  margin: 0;
+  margin: 0 0 0 0.5cm;
+}
+
+.check{
+  background-color: rgba(80, 80, 80, 0.44);
+
 }
 
 @media (max-width: 650px) {
-  .dish {
-    z-index: -1;
-  }
+
 }
