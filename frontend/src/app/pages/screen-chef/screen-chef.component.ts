@@ -11,6 +11,7 @@ import {Subscription} from "rxjs";
 export class ScreenChefComponent implements OnInit, OnDestroy {
 
   private subs?: Subscription;
+  public position!: number
   constructor(private commands: TableService) {
     this.subs = commands.tables$.subscribe(tables => this.tables = tables)
   }
@@ -19,14 +20,13 @@ export class ScreenChefComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.tables = this.commands.tables
-    /*this.breakpointObserver
-      .observe(['(min-width: 650px)'])
-      .subscribe((state: BreakpointState) => {
-        if (state.matches) console.log("minnnnnn")
-      })*/
   }
 
   ngOnDestroy(): void {
     this.subs?.unsubscribe()
+  }
+
+  setPosition(tableId: number) {
+    this.position = tableId;
   }
 }
