@@ -3,7 +3,6 @@ import Table from "../../../models/table.model";
 import Dish, {DishType} from "../../../models/dish.model";
 import {TableService} from "../../../services/table.service";
 
-
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
@@ -14,6 +13,8 @@ export class TableComponent implements OnInit {
   @Input() table! : Table
 
   @Input() position!: number;
+
+  @Input() test!: number;
 
   @Output() setPosition = new EventEmitter<number>();
 

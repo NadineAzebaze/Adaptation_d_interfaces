@@ -74,7 +74,7 @@ export class TableService {
   }
 
   generateTable(): void {
-    if (this.tables.length < 7) {
+    if (this.tables.length < 6) {
       setTimeout(() => {
         let dishes: Dish[] = []
         let noEntree = this.generateRandomDishes(Entree, dishes)
