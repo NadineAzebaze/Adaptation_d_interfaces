@@ -18,6 +18,8 @@ import { RoleSelectionPageComponent } from './pages/role-selection-page/role-sel
 import { CountDownComponent } from './pages/clerk-module/components/count-down/count-down.component';
 import { ChangeModButtonComponent } from './components/change-mod-button/change-mod-button.component';
 import {BusyScreenChefComponent} from "./pages/busy-screen-chef/busy-screen-chef.component";
+import {ChronometreComponent} from "./pages/clerk-module/components/chronometre/chronometre.component";
+
 
 @NgModule({
   declarations: [
@@ -35,8 +37,9 @@ import {BusyScreenChefComponent} from "./pages/busy-screen-chef/busy-screen-chef
     ClerkHeaderComponent,
     RoleSelectionPageComponent,
     CountDownComponent,
+    BusyScreenChefComponent,
     ChangeModButtonComponent,
-    BusyScreenChefComponent
+    ChronometreComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,6 @@
+
 <div class="container1" >
+
 
   <app-count-down [recipe]="recipe" *ngIf="apprentise"></app-count-down>
 
@@ -6,8 +8,10 @@
       <button><span (click)="previous()" class="material-symbols-outlined">chevron_left</span></button>
     </div>
     <div>
+
       <!--img style="width: 500px; height: 300px;" class="image" [src]="step.image" *ngIf="step.image && apprentise" [alt]="step.id"-->
-      <img style="width: 500px; height: 300px;" class="image" [src]="step.image" [alt]="step.id">
+      <img style="width: 500px; height: 300px;" class="image1" [src]="step.image" [alt]="step.id">
+
     </div>
     <div class="body1">
       <h3>{{recipe.name}}</h3>

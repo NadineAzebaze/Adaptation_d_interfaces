@@ -1,4 +1,4 @@
-import {Component, Injectable} from '@angular/core';
+import {Component} from '@angular/core';
 import {Timer} from "../../../../timer";
 import {State} from "../../../../state";
 
@@ -9,9 +9,9 @@ import {State} from "../../../../state";
 })
 
 export class ChronometreComponent {
-  private btnPlay: string = 'Démarrer';
-  private timer: Timer = new Timer();
-  private state: State = new State();
+  btnPlay: string = 'Démarrer';
+  timer: Timer = new Timer();
+  state: State = new State();
 
   play() {
     this.timer.start();

@@ -1,9 +1,9 @@
 
 <div class="container1" xmlns="http://www.w3.org/1999/html">
   <div class="element1" *ngFor="let recipe of recipes" (click)="selectRecipe(recipe)">
-    <img class="recipe_image" [src]="recipe.image" >
+    <img class="recipe_image" [src]="recipe.image" alt="">
 
-    <div class="child">
+    <div class="child1">
       <h2> {{recipe.name}} </h2>
       <p>
         Nombre d'étapes: {{recipe.clerkSteps.length}}
