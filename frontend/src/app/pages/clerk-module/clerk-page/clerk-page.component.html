@@ -10,9 +10,11 @@
       </div>
     </div>
     <div class="footer animate recipes" [ngClass]="{ 'apprentise': isApprenti }">
-      <h4>Sélectionnez un plat dans la liste pour afficher la recette</h4>
+      <h6>Sélectionnez un plat dans la liste pour afficher la recette</h6>
       <app-recipe-list (recipeSelected)="selectRecipe($event)"></app-recipe-list>
     </div>
   </div>
+
+  <app-change-mod-button></app-change-mod-button>
 
 </app-side-panel>
