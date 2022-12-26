@@ -17,6 +17,8 @@ export class CountDownComponent implements OnInit, OnDestroy {
 
     private subscription!: Subscription;
 
+    public progressBar: any;
+
     public dateNow = new Date();
     public dDay = new Date('Jan 01 2021 00:00:00');
     public minutesofDateToReach! : number ;
@@ -55,6 +57,26 @@ export class CountDownComponent implements OnInit, OnDestroy {
         this.secondsToDday = Math.floor((timeDifference) / (this.milliSecondsInASecond) % this.SecondsInAMinute);
         this.minutesToDday = Math.floor((timeDifference) / (this.milliSecondsInASecond * this.minutesInAnHour) % this.SecondsInAMinute);
         this.hoursToDday = Math.floor((timeDifference) / (this.milliSecondsInASecond * this.minutesInAnHour * this.SecondsInAMinute) % this.hoursInADay);
+
+        this.progressBar = document.querySelector(".progress-inner");
+
+        let divider = this.recipe.time *1000000;
+        let progressPass = this.timeDifference*2 / divider;
+        let progressWidth = 100 - progressPass ;
+        if(this.timeDifference>0){
+          this.progressBar.style.width = progressWidth + "%";
+        }else{
+          this.progressBar.style.width = "0%";
+        }
+
+        if(progressWidth >  50 && progressWidth <100){
+          this.progressBar.style.background = "#753BBD";
+        } else if( progressWidth > 25 && progressWidth <50){
+          this.progressBar.style.background = " orange";
+
+        } else {
+          this.progressBar.style.background = "red";
+        }
   }
 
     ngOnInit() {

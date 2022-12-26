@@ -15,8 +15,9 @@
     <div class="footer1 animate1 recipes1" [ngClass]="{ 'apprentise': isApprenti }">
       <h6>Sélectionnez un plat dans la liste pour afficher la recette</h6>
       <app-recipe-list (recipeSelected)="selectRecipe($event)"></app-recipe-list>
+      <app-change-mod-button (click)="changeMode()" *ngIf="isApprenti === false"></app-change-mod-button>
     </div>
-    <app-change-mod-button (click)="changeMode()" *ngIf="isApprenti === false"></app-change-mod-button>
+
   </div>
 
 </app-side-panel>

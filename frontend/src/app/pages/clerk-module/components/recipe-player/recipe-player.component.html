@@ -1,22 +1,22 @@
 
 <div class="container1" >
 
-
-  <app-count-down [recipe]="recipe" *ngIf="apprentise"></app-count-down>
-
-    <div class="arrow-container left-arrow">
+  <div class="arrow-container left-arrow">
       <button><span (click)="previous()" class="material-symbols-outlined">chevron_left</span></button>
-    </div>
+  </div>
     <div>
 
-      <!--img style="width: 500px; height: 300px;" class="image" [src]="step.image" *ngIf="step.image && apprentise" [alt]="step.id"-->
-      <img style="width: 500px; height: 300px;" class="image1" [src]="step.image" [alt]="step.id">
+      <img style="width: 500px; height: 300px;" class="image" [src]="step.image" *ngIf="step.image && apprentise" [alt]="step.id">
 
     </div>
-    <div class="body1">
+    <div class="player">
+      <div class="body1">
       <h3>{{recipe.name}}</h3>
       <p>{{step.description}}</p>
     </div>
+    <app-count-down [recipe]="recipe" *ngIf="apprentise"></app-count-down>
+    </div>
+
     <div class="arrow-container right-arrow">
       <button><span class="material-symbols-outlined" (click)="next()">chevron_right</span></button>
     </div>
