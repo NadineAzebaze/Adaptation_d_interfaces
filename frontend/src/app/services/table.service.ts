@@ -74,7 +74,7 @@ export class TableService {
   }
 
   generateTable(): void {
-    if (this.tables.length < 7) {
+    if (this.tables.length < 6) {
       setTimeout(() => {
         let dishes: Dish[] = []
         let noEntree = this.generateRandomDishes(Entree, dishes)
@@ -128,6 +128,5 @@ export class TableService {
 
   private reorderTable() {
     this.tables = this.tables.sort((table1,table2) => table1.id-table2.id)
-    console.log(this.tables)
   }
 }

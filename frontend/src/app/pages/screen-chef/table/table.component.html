@@ -1,4 +1,4 @@
-<button type="button" (click)="setPosition.emit(table.id)" id="table{{table.id}}" class="btn btn-secondary" style="pointer-events: auto;">Table {{table.id}}</button>
+<button type="button" (click)="setPosition.emit(table.id)" id="tableId{{test}}" class="btn btn-secondary" style="pointer-events: auto;">Table {{table.id}}</button>
 <div class="table">
   <app-type-dish *ngIf="entrees.length>0 && allDishesNotDone(entrees)" [dishes]="entrees" [dishType]="'ENTREE'"
                  (setDone)="setDoneTable($event.id)"></app-type-dish>
