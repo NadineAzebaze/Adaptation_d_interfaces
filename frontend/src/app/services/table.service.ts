@@ -64,7 +64,7 @@ export class TableService {
 
       };
       const dish = dishes.find(d => d.id == dishToAdd.id);
-      if (dish) dish.name = dish.name + " x " + (++dish.number);
+      if (dish) dish.name = dish.number>1 ? dish.name.slice(0,-1) + (++dish.number) : dish.name + " x " + (++dish.number);
       else {
         dishes.push(dishToAdd)
       }
