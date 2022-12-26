@@ -1,7 +1,0 @@
-{
-  "dependencies": {
-    "@angular/cdk": "^15.0.3",
-    "@angular/common": "^15.0.4",
-    "bootstrap": "^5.2.3"
-  }
-}
