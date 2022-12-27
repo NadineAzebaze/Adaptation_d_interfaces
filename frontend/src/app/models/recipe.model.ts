@@ -4,7 +4,7 @@ export class Recipe {
 }
 
 export class RecipeStep {
-    constructor(public id: String, public description: string, public image: string|undefined) {
+    constructor(public id: String, public description: string, public image: string|undefined, public forApprentice:boolean) {
 
     }
 }
