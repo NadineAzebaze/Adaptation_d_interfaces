@@ -109,7 +109,10 @@ export class TableService {
   }
 
   checkChangeScreen() {
-    if (this.tables.length > 6 && this.screen) this.router.navigate(['/busy']).then(_ => {this.screen = false;
+    if (this.tables.length > 6 && this.screen) this.router.navigate(['/busy']).then(_ => {
+      this.screen = false;
+      this.changeOrderTable(this.tablePriorityPlat);
+      this.changeOrderTable(this.tablePriorityDessert);
     })
     if (this.tables.length < 7 && !this.screen) this.router.navigate(['/commands']).then(_ => {
       this.screen = true;
@@ -122,8 +125,12 @@ export class TableService {
       let tablePriority = dishType === DishType.ENTREE ? this.tablePriorityPlat : this.tablePriorityDessert
       table.dishes = table.dishes.filter(d => d.type !== dishType)
       tablePriority.push(table)
-      if (!this.screen) this.tables = tablePriority.concat(this.tables.filter(table => tablePriority.indexOf(table) < 0))
+      this.changeOrderTable(tablePriority)
     }
+  }
+
+  changeOrderTable(tablePriority : Table[]){
+    if (!this.screen) this.tables = tablePriority.concat(this.tables.filter(table => tablePriority.indexOf(table) < 0))
   }
 
   private reorderTable() {
