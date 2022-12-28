@@ -72,7 +72,7 @@ export class TableService {
         dishes.push(dishToAdd)
       }
     }
-     return numberOfDishes===0 && type[0].type === DishType.ENTREE;
+    return numberOfDishes===0 && type[0].type === DishType.ENTREE;
 
   }
 
@@ -89,9 +89,7 @@ export class TableService {
         })
         this.generateTable();
         this.checkChangeScreen();
-        if (noEntree && !this.screen) {
-          this.tablePriorityPlat.push(this.tables[this.tables.length-1])
-        }
+        if (noEntree ) this.changePriority(this.tables[this.tables.length-1], DishType.ENTREE)
       }, this.getRandom(5000, 2000));
     }
   }
@@ -104,7 +102,7 @@ export class TableService {
     if (!dish)
       throw "Dish null."
     dish.done = !dish.done;
-    if (dish.done && !this.screen) this.changePriority(table, dish)
+    if (dish.done) this.changePriority(table, dish.type)
     this.tables = this.tables.filter(f => !!f.dishes.find(d => !d.done))
     this.checkChangeScreen()
     this.tables$.next(this.tables)
@@ -119,12 +117,12 @@ export class TableService {
     })
   }
 
-  changePriority(table: Table, dish: Dish) {
-    if (!table.dishes.find(d => d.type === dish.type && !d.done)) {
-      let tablePriority = dish.type === DishType.ENTREE ? this.tablePriorityPlat : this.tablePriorityDessert
-      table.dishes = table.dishes.filter(d => d.type !== dish.type)
+  changePriority(table: Table, dishType: DishType) {
+    if (!table.dishes.find(d => d.type === dishType && !d.done)) {
+      let tablePriority = dishType === DishType.ENTREE ? this.tablePriorityPlat : this.tablePriorityDessert
+      table.dishes = table.dishes.filter(d => d.type !== dishType)
       tablePriority.push(table)
-      this.tables = tablePriority.concat(this.tables.filter(table => tablePriority.indexOf(table) < 0))
+      if (!this.screen) this.tables = tablePriority.concat(this.tables.filter(table => tablePriority.indexOf(table) < 0))
     }
   }
 
