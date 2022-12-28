@@ -1,7 +1,7 @@
 <div [ngClass]="typeOfDish">
   <ul>
     <li *ngFor="let dish of dishes">
-      <del *ngIf="dish.done" class="dish"><p>{{dish.name}}</p><input (click)="setDone.emit(dish)" type="checkbox" class="checkbox check" size="lg" /></del>
+      <del *ngIf="dish.done" class="dish"><p>{{dish.name}}</p><p *ngIf="busy">table {{dish.table}}</p><input (click)="setDone.emit(dish)" type="checkbox" class="checkbox check" size="lg" /></del>
       <div *ngIf="!dish.done" class="dish">
         <p class="dishName">{{dish.name}}</p>
         <p *ngIf="busy">table {{dish.table}}</p>
