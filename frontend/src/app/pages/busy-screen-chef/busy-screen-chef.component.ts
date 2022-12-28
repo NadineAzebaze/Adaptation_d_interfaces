@@ -14,7 +14,7 @@ export class BusyScreenChefComponent {
 
   tables! : Table  []; // Observer
 
-  constructor(private tableService :TableService){
+  constructor(public tableService :TableService){
     this.subs = tableService.tables$.subscribe(tables => {this.tables = tables})
 
   }
@@ -27,14 +27,14 @@ export class BusyScreenChefComponent {
     this.subs?.unsubscribe()
   }
 
-  get entrees() {
-    return this.tableService.entreesBusy
+  entrees(tables: Table[] | null = null) {
+    return this.tableService.entreesBusy(tables)
   }
-  get plats() {
-    return this.tableService.platsBusy
+  plats(tables: Table[] | null = null) {
+    return this.tableService.platsBusy(tables)
   }
-  get dessert() {
-    return this.tableService.dessertsBusy
+  dessert(tables: Table[] | null = null) {
+    return this.tableService.dessertsBusy(tables)
   }
 
   setDoneTable(tableId: number, dishId: number) {
