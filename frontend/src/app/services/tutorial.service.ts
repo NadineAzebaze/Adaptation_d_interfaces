@@ -1,6 +1,6 @@
 import {Injectable, OnDestroy} from "@angular/core";
 import {BehaviorSubject, interval, Subscription} from "rxjs";
-import {Recipe, RecipeService} from "./recipe.service";
+import {Recipe} from "./recipe.service";
 
 
 const clock = interval(100);
@@ -46,40 +46,63 @@ export class TutorialService implements OnDestroy {
   }
 
   selectRecipe(recipe: Recipe) {
+    // Reset current step
     this.currentStep = 0;
     this.currentStep$.next(this.currentStep);
 
+    // Set the selected recipe
     this.selectedRecipe = recipe;
     this.selectedRecipe$.next(this.selectedRecipe);
+
+    // Reset chrono
     this.startChrono();
   }
 
   toggleExpert() {
+    // Change expert mode
     this.expert = !this.expert;
     this.expert$.next(this.expert);
+
+    // Reset chrono
     this.startChrono();
   }
 
   next() {
+    // Check a recipe is selected
     if (!this.selectedRecipe) return;
+
+    // Change the current step (check if it is not out of bounds)
     this.currentStep = Math.min(this.currentStep + 1, this.selectedRecipe.steps.length - 1);
     this.currentStep$.next(this.currentStep);
+
+    // Reset chrono
     this.startChrono();
   }
 
   previous() {
+    // Check a recipe is selected
     if (!this.selectedRecipe) return;
+
+    // Change the current step (check if it is not out of bounds)
     this.currentStep = Math.max(this.currentStep - 1, 0);
     this.currentStep$.next(this.currentStep);
+
+    // Reset chrono
     this.startChrono();
   }
 
   private startChrono() {
+    // Check the user is not in expert mode
     if (this.expert) return;
+
+    // Check a recipe is selected
     if (!this.selectedRecipe) return;
+
+    // Set the start date and end date with the duration of the step.
     this.startDate = Date.now();
     this.endDate = this.startDate + this.selectedRecipe.steps[this.currentStep].duration * 1000;
 
+    // Create chrono state for first time
     this.chrono = {
       percent: 0,
       remainingTime: this.selectedRecipe.steps[this.currentStep].duration,
@@ -89,17 +112,31 @@ export class TutorialService implements OnDestroy {
   }
 
   private updateChrono() {
+    // Check the user is not in expert mode
     if (this.expert) return;
-    if (!this.selectedRecipe) return;
-    if(this.chrono.completed) return;
-    const now = Date.now();
-    const duration = this.endDate - this.startDate;
-    if(duration == 0) return;
 
+    // Check a recipe is selected
+    if (!this.selectedRecipe) return;
+
+    // Check if the chrono is completed
+    if (this.chrono.completed) return;
+
+    const now = Date.now();
+
+    // Compute the total duration of the chrono (step duration)
+    const duration = this.endDate - this.startDate;
+
+    // Check a chrono is setted, avoid division by 0
+    if (duration == 0) return;
+
+    // Compute elapsed time, remaining time
     const elapsed = now - this.startDate;
     const remaining = this.endDate - now;
+
+    // Compute percent from elapsed time
     const percent = elapsed / duration;
 
+    // Update chrono state
     this.chrono = {
       percent,
       remainingTime: remaining / 1000,
@@ -110,6 +147,7 @@ export class TutorialService implements OnDestroy {
   }
 
   stopChrono() {
+    // Reset chrono state
     this.chrono = {
       percent: 1,
       remainingTime: 0,

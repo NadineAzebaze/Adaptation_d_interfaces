@@ -56,13 +56,21 @@ export class ClerkTaskService {
   }
 
   beginTask(clerkTask: ClerkTask): void {
+    // Select a recipe in the tutorial
     this.tutorialService.selectRecipe(this.recipes.find(recipe => recipe.id === clerkTask.recipe) as Recipe);
+
+    // Change the state of the task
     clerkTask.state = "began";
   }
 
   completeTask(clerkTask: ClerkTask): void {
+    // Remove the completed task
     this.clerkTaskList = this.clerkTaskList.filter(task => task !== clerkTask);
+
+    // Stop the chrono of the tutorial
     this.tutorialService.stopChrono();
+
+    // Update the list
     this.subject.next(this.clerkTaskList);
   }
 }
