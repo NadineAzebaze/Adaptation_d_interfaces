@@ -1,0 +1,36 @@
+.step-container {
+  display: flex;
+  height: 100%;
+}
+
+img {
+  border-radius: 5px;
+}
+
+.description-panel {
+  flex: 1;
+  padding: 10px;
+}
+
+.chronometer {
+  --value: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  border-radius: 5px;
+  color: var(--on-primary);
+  background: linear-gradient(0.25turn, var(--primary) var(--value), transparent var(--value), transparent 100%);
+  border: solid var(--primary) 2px;
+  text-shadow: white 0.1em 0.1em 0.2em;
+}
+
+.chronometer.overdue {
+  --primary: var(--danger);
+  --on-primary: var(--on-danger);
+}
+
+.chronometer.completed {
+  --primary: var(--success);
+  --on-primary: var(--on-success);
+}

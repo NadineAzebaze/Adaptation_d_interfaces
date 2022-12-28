@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {RecipeListComponent} from "./pages/clerk-module/components/recipe-list/recipe-list.component";
 import {ClerkPageComponent} from "./pages/clerk-module/clerk-page/clerk-page.component";
 import { HttpClientModule } from '@angular/common/http';
 import { TableComponent } from './pages/screen-chef/table/table.component';
@@ -15,16 +14,15 @@ import {SidePanelComponent} from "./components/side-panel/side-panel.component";
 import {RecipePlayerComponent} from "./pages/clerk-module/components/recipe-player/recipe-player.component";
 import {RecipeStepComponent} from "./pages/clerk-module/components/recipe-step/recipe-step.component";
 import { RoleSelectionPageComponent } from './pages/role-selection-page/role-selection-page.component';
-import { CountDownComponent } from './pages/clerk-module/components/count-down/count-down.component';
 import { ChangeModButtonComponent } from './components/change-mod-button/change-mod-button.component';
 import {BusyScreenChefComponent} from "./pages/busy-screen-chef/busy-screen-chef.component";
-import {ChronometreComponent} from "./pages/clerk-module/components/chronometre/chronometre.component";
+import { RecipeItemComponent } from './pages/clerk-module/components/recipe-item/recipe-item.component';
+import { FormatTimePipe } from './pipes/format-time.pipe';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    RecipeListComponent,
     ClerkPageComponent,
     TableComponent,
     TypeDishComponent,
@@ -36,10 +34,10 @@ import {ChronometreComponent} from "./pages/clerk-module/components/chronometre/
     SidePanelComponent,
     ClerkHeaderComponent,
     RoleSelectionPageComponent,
-    CountDownComponent,
     BusyScreenChefComponent,
     ChangeModButtonComponent,
-    ChronometreComponent
+    RecipeItemComponent,
+    FormatTimePipe
   ],
   imports: [
     BrowserModule,

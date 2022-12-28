@@ -1,10 +1,24 @@
-<div class="step">
-  <div class="image1">
-    Ici titre de l'étape
-    {{recipeStep.image}}
+<div class="step-container">
+  <div class="img" *ngIf="!expert">
+    <img [src]="recipeStep.image" [alt]="recipeStep.name" style="height: 300px">
   </div>
-  <h3>
-    {{recipeStep.description}}
-  </h3>
 
+  <!-- Side panel -->
+  <div class="description-panel">
+    <strong class="description-title">{{recipeStep.name}}</strong>
+
+    <!-- Description -->
+    <p class="description">{{ expert ? recipeStep.shortDescription : recipeStep.description }}</p>
+
+    <!-- Chronometer -->
+    <div
+      class="chronometer {{ chrono.overdue ? 'overdue' : '' }} {{ chrono.completed ? 'completed' : '' }}"
+      style="--value: {{chrono.percent * 100}}%;"
+      *ngIf="!expert"
+    >
+      <span *ngIf="!chrono.overdue && !chrono.completed">{{chrono.remainingTime | formatTime }}</span>
+      <span *ngIf="chrono.overdue">en retard</span>
+      <span *ngIf="chrono.completed">préparation terminée</span>
+    </div>
+  </div>
 </div>

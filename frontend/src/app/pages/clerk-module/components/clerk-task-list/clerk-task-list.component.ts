@@ -1,6 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from "@angular/core";
-import ClerkTask from "../../../../models/clerktask.model";
-import {ClerkTaskService} from "../../../../services/clerk-task.service";
+import {ClerkTask, ClerkTaskService} from "../../../../services/clerk-task.service";
 
 @Component({
   selector: 'app-clerk-task-list',
@@ -9,9 +8,8 @@ import {ClerkTaskService} from "../../../../services/clerk-task.service";
 })
 export class ClerkTaskListComponent implements OnInit {
 
-
-  @Input()
   clerkTaskList: ClerkTask[] = [];
+
 
   @Output()
   clerkTaskSelected: EventEmitter<ClerkTask> = new EventEmitter<ClerkTask>();
@@ -24,7 +22,9 @@ export class ClerkTaskListComponent implements OnInit {
   }
 
 
-
+  remove(clerktask: ClerkTask) {
+    this.clerkTaskList = this.clerkTaskList.filter(v => v !== clerktask);
+  }
 }
 
 

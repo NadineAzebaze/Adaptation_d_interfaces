@@ -1,26 +1,12 @@
 
-<div class="container1" >
-
-  <div class="arrow-container left-arrow">
-      <button><span (click)="previous()" class="material-symbols-outlined">chevron_left</span></button>
+<div class="player-drawer">
+  <div class="controls left">
+    <i class="fa-solid fa-chevron-left" (click)="tutorialService.previous()"></i>
   </div>
-    <div>
-
-      <img style="width: 500px; height: 300px;" class="image" [src]="step.image" *ngIf="step.image && apprentise" [alt]="step.id">
-
-    </div>
-    <div class="player">
-      <div class="body1">
-      <h3>{{recipe.name}}</h3>
-      <p>{{step.description}}</p>
-    </div>
-    <app-count-down [recipe]="recipe" *ngIf="apprentise"></app-count-down>
-    </div>
-
-    <div class="arrow-container right-arrow">
-      <button><span class="material-symbols-outlined" (click)="next()">chevron_right</span></button>
-    </div>
-
+  <div class="content">
+    <app-recipe-step [recipeStep]="recipe.steps[currentStep]" [expert]="false"></app-recipe-step>
+  </div>
+  <div class="controls right">
+    <i class="fa-solid fa-chevron-right" (click)="tutorialService.next()"></i>
+  </div>
 </div>
-
-

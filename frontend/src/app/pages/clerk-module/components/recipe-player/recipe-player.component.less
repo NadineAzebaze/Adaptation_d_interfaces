@@ -1,56 +1,21 @@
-.arrow-container {
+.player-drawer {
   display: flex;
-  align-items: center;
-  font-size: 45px
-
 }
 
-i {
-  width: 40px;
-  height: 40px;
+.content {
+  flex: 1;
+}
+
+.controls {
   user-select: none;
   cursor: pointer;
-  color: #753BBD;
-}
-
-.container1, :host {
-  width: 100%;
-  height: 100%;
-}
-
-.container1 {
+  width: 50px;
   display: flex;
-}
-.player{
-  display: flex;
-  flex-direction: column;
-}
-
-
-button{
-  background-color: transparent;
-  border: transparent;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
 }
 
-.body1 {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  margin-left: 30px;
-}
-app-count-down{
-  flex: 0.5;
-}
-.timer {
-  display: flex;
-}
-
-p {
-  margin: 0;
-}
-
-.image1 {
-  width: 500px;
-  height: 300px;
-  object-fit: cover;
+.controls:active {
+  background-color: #dedede;
 }
