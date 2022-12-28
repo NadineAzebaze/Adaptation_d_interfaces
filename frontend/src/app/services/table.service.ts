@@ -12,8 +12,8 @@ export class TableService {
   public tables: Table[] = [];
   private screen = true;
   public tables$ = new BehaviorSubject<Table[]>([]);
-  private tablePriorityPlat: Table[] = [];
-  private tablePriorityDessert: Table[] = [];
+  tablePriorityPlat: Table[] = [];
+  tablePriorityDessert: Table[] = [];
 
   public busy = false;
 
@@ -21,25 +21,28 @@ export class TableService {
     this.generateTable();
   }
 
-  get entreesBusy() {
+  entreesBusy(tables: Table[] | null) {
     let entrees: Dish[]=[];
-    this.tables.forEach(table => {
+    let tableList = tables===null ? this.tables : tables!
+    tableList.forEach(table => {
       entrees = entrees.concat(table.dishes.filter(dish => dish.type===DishType.ENTREE))
     })
     return entrees;
   }
 
-  get platsBusy() {
+  platsBusy(tables: Table[] | null) {
     let plats: Dish[] = []
-    this.tables.forEach(table => {
+    let tableList = tables===null ? this.tables.filter(table => this.tablePriorityPlat.indexOf(table)<0) : tables!
+    tableList.forEach(table => {
       plats = plats.concat(table.dishes.filter(dish => dish.type === DishType.PLAT))
     })
     return plats;
   }
 
-  get dessertsBusy() {
+  dessertsBusy(tables: Table[] | null) {
     let desserts: Dish[] = [];
-    this.tables.forEach(table => {
+    let tableList = tables===null ? this.tables.filter(table => this.tablePriorityDessert.indexOf(table)<0) : tables!
+    tableList.forEach(table => {
       desserts = desserts.concat(table.dishes.filter(dish => dish.type === DishType.DESSERT))
     })
     return desserts;
@@ -64,7 +67,7 @@ export class TableService {
 
       };
       const dish = dishes.find(d => d.id == dishToAdd.id);
-      if (dish) dish.name = dish.name + " x " + (++dish.number);
+      if (dish) dish.name = dish.number>1 ? dish.name.slice(0,-1) + (++dish.number) : dish.name + " x " + (++dish.number);
       else {
         dishes.push(dishToAdd)
       }
@@ -88,7 +91,6 @@ export class TableService {
         this.checkChangeScreen();
         if (noEntree && !this.screen) {
           this.tablePriorityPlat.push(this.tables[this.tables.length-1])
-          this.tables = this.tablePriorityPlat.concat(this.tables.filter(table => this.tablePriorityPlat.indexOf(table) < 0))
         }
       }, this.getRandom(5000, 2000));
     }
@@ -128,6 +130,5 @@ export class TableService {
 
   private reorderTable() {
     this.tables = this.tables.sort((table1,table2) => table1.id-table2.id)
-    console.log(this.tables)
   }
 }

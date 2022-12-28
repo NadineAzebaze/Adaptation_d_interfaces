@@ -2,15 +2,17 @@
 
   <div class="entree">
     <p>Entrées</p>
-    <app-type-dish *ngIf="entrees.length>0 && allDishesNotDone(entrees,'ENTREE')" [dishes]="entrees" [dishType]="'ENTREE'" (setDone)="setDoneTable($event.table,$event.id)" [busy]="true"></app-type-dish>
+    <app-type-dish *ngIf="entrees().length>0 && allDishesNotDone(entrees(),'ENTREE')" [dishes]="entrees()" [dishType]="'ENTREE'" (setDone)="setDoneTable($event.table,$event.id)" [busy]="true"></app-type-dish>
   </div>
   <div class="plat">
     <p>Plats</p>
-    <app-type-dish *ngIf="plats.length>0 && allDishesNotDone(plats,'PLAT')" [dishes]="plats" [dishType]="'PLAT'" (setDone)="setDoneTable($event.table,$event.id)" [busy]="true"></app-type-dish>
+    <app-type-dish *ngIf="plats(tableService.tablePriorityPlat).length>0 && allDishesNotDone(plats(tableService.tablePriorityPlat),'PLAT')" [dishes]="plats(tableService.tablePriorityPlat)" [dishType]="'urgent'" (setDone)="setDoneTable($event.table,$event.id)" [busy]="true"></app-type-dish>
+    <app-type-dish *ngIf="plats().length>0 && allDishesNotDone(plats(),'PLAT')" [dishes]="plats()" [dishType]="'PLAT'" (setDone)="setDoneTable($event.table,$event.id)" [busy]="true"></app-type-dish>
   </div>
   <div class="dessert">
     <p>Desserts</p>
-    <app-type-dish *ngIf="dessert.length>0 && allDishesNotDone(dessert,'DESSERT')" [dishes]="dessert" [dishType]="'DESSERT'" (setDone)="setDoneTable($event.table,$event.id)" [busy]="true"></app-type-dish>
+    <app-type-dish *ngIf="dessert(tableService.tablePriorityDessert).length>0 && allDishesNotDone(dessert(tableService.tablePriorityDessert),'DESSERT')" [dishes]="dessert(tableService.tablePriorityDessert)" [dishType]="'urgent'" (setDone)="setDoneTable($event.table,$event.id)" [busy]="true"></app-type-dish>
+    <app-type-dish *ngIf="dessert().length>0 && allDishesNotDone(dessert(),'DESSERT')" [dishes]="dessert()" [dishType]="'DESSERT'" (setDone)="setDoneTable($event.table,$event.id)" [busy]="true"></app-type-dish>
   </div>
 
 </div>
