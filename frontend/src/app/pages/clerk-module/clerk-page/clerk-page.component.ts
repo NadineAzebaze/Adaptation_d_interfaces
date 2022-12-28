@@ -20,7 +20,7 @@ export class ClerkPageComponent implements OnDestroy {
   private selectedRecipeSubscription?: Subscription;
   private expertSubscription?: Subscription;
 
-  constructor(public router: Router, private tutorialService: TutorialService, private recipeService: RecipeService) {
+  constructor(public router: Router, public tutorialService: TutorialService, private recipeService: RecipeService) {
     this.recipesSubscription = recipeService.recipes$.subscribe(recipes => this.recipes = recipes);
     this.selectedRecipeSubscription = tutorialService.selectedRecipe$.subscribe(recipe => this.selectedRecipe = recipe);
     this.expertSubscription = tutorialService.expert$.subscribe(expert => this.expert = expert);

@@ -4,7 +4,7 @@
     <i class="fa-solid fa-chevron-left" (click)="tutorialService.previous()"></i>
   </div>
   <div class="content">
-    <app-recipe-step [recipeStep]="recipe.steps[currentStep]" [expert]="false"></app-recipe-step>
+    <app-recipe-step [recipeStep]="recipe.steps[currentStep]" [expert]="expert"></app-recipe-step>
   </div>
   <div class="controls right">
     <i class="fa-solid fa-chevron-right" (click)="tutorialService.next()"></i>
