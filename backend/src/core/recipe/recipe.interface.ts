@@ -9,4 +9,5 @@ export interface Recipe {
 export interface RecipeStep {
   description: string;
   image?: string;
+  forApprentice: boolean;
 }

@@ -7,12 +7,14 @@ export const RECIPE_STEP: RecipeStep[] = [
   {
     id: 'step1',
     description: 'Faire mariner le coq dans du vin',
+    forApprentice: false,
     image:
       'https://assets.afcdn.com/recipe/20170312/9120_w1024h576c1cx360cy560.webp',
   },
   {
     id: 'step2',
     description: 'Preparer les champignons',
+    forApprentice: false,
     image: 'https://cdn.futura-sciences.com/sources/images/cepe-champignon.jpg',
   },
 ];
@@ -21,11 +23,13 @@ const RECIPE_STEP_GENOISE: RecipeStep[] = [
   {
     id: 'step1',
     description:'Préchauffer le four à 180 C (350 F)',
+    forApprentice: false,
     image:'https://www.wikihow.com/images_en/thumb/a/a6/Preheat-an-Oven-Step-12-Version-3.jpg/v4-460px-Preheat-an-Oven-Step-12-Version-3.jpg'
   },
   {
     id: 'step2',
     description:'Séparer les blancs des jaunes',
+    forApprentice: false,
     image:'https://astucesdegrandmere.net/wp-content/uploads/2022/06/iStock-588597386.jpg'
   },
   {
@@ -33,19 +37,22 @@ const RECIPE_STEP_GENOISE: RecipeStep[] = [
     description:'Dans un saladier battre les blancs ainsi que l’extrait de vanille a grande vitesse. Quand ça commence a mousser ajouter le sucre en 3 fois.\n' +
         '\n' +
         'Continuer a battre a vitesse maximale jusqu’à ce que des pics se forment',
-    image:''
+    image:'',
+    forApprentice: false
   },
   {
     id: 'step4',
     description:'Ajouter les jaunes legerement battus et continuer a battre jusqu’à incorporation et un appareil léger',
-    image:'https://santecool.net/wp-content/uploads/2018/11/A-1024x703.jpeg'
+    image:'https://santecool.net/wp-content/uploads/2018/11/A-1024x703.jpeg',
+    forApprentice: false
   },
   {
     id: 'step5',
     description:'Ajouter la farine et le cacao tamises et incorporer a l’aide d’une spatule délicatement.\n' +
         '\n' +
         'Beurrer et fariner un moule recouvert de papier sulfurisé de préférence et verser la préparation.',
-    image:'https://www.marciatack.fr/wp-content/uploads/2014/04/chocolat-fondu-500x334.jpg'
+    image:'https://www.marciatack.fr/wp-content/uploads/2014/04/chocolat-fondu-500x334.jpg',
+    forApprentice: false
   }
 ]
 

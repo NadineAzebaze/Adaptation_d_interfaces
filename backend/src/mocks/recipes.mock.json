@@ -111,8 +111,6 @@
         "image": "https://assets.afcdn.com/recipe/20201217/116564_w1024h1024c1cx1009cy951.webp",
         "showTutorial": false,
         "time" : 15,
-        "clerkSteps": [{
-
-        }]
+        "clerkSteps": []
     }
 ]
