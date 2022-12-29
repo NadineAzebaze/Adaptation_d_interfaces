@@ -8,6 +8,3 @@ import {Component, Input} from '@angular/core';
 export class ChangeModButtonComponent {
   @Input() expert = false;
 }
-
-
-
