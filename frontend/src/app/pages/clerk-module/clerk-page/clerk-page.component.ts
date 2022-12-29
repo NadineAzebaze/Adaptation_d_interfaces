@@ -41,6 +41,7 @@ export class ClerkPageComponent implements OnInit {
    */
   changeMode() {
     this.isApprenti = !this.isApprenti;
+    this.tutorialService.toggleExpert();
   }
 
   /**

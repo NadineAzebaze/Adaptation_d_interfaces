@@ -4,7 +4,7 @@
   </div>
   <div class="header-page">
     <h1>Guide de recettes</h1>
-    <app-change-mod-button (click)="changeMode()" *ngIf="isApprenti"></app-change-mod-button>
+    <app-change-mod-button (click)="changeMode()" [expert]="expert" *ngIf="isApprenti"></app-change-mod-button>
   </div>
   <div class="body1">
     <div class="content1 animate1" [ngClass]="{ 'apprentise': isApprenti }">
@@ -16,7 +16,7 @@
       <h6>Sélectionnez un plat dans la liste pour afficher la recette</h6>
       <app-recipe-list (recipeSelected)="selectRecipe($event)"></app-recipe-list>
       <div class="expert-button-container">
-        <app-change-mod-button [expert]="expert" (click)="tutorialService.toggleExpert()"></app-change-mod-button>
+        <app-change-mod-button *ngIf="isApprenti === false" [expert]="expert" (click)="changeMode()" ></app-change-mod-button>
       </div>
     </div>
 

@@ -9,6 +9,7 @@ import {HttpClient} from "@angular/common/http";
 
 export class RecipeService {
   recipes: Recipe[] = [];
+  recipes$ = new BehaviorSubject<Recipe[]>([]);
   subject = new BehaviorSubject<Recipe[]>([]);
 
   constructor(private http: HttpClient) {
@@ -20,5 +21,7 @@ export class RecipeService {
       this.recipes = recipes;
       this.subject.next(this.recipes);
     });
+    this.recipes$.next(this.recipes);
   }
+
 }

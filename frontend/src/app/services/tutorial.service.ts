@@ -8,8 +8,13 @@ import {HttpClient} from "@angular/common/http";
 })
 
 export class TutorialService {
-
+  private selectedRecipe?: Recipe;
+  private currentStep = 0;
+  private expert = false;
   recipeSteps: RecipeStep[] = [];
+  selectedRecipe$ = new BehaviorSubject<Recipe | undefined>(undefined);
+  currentStep$ = new BehaviorSubject<number>(0);
+  expert$ = new BehaviorSubject<boolean>(false);
   subject = new BehaviorSubject<RecipeStep[]>([]);
 
 
@@ -18,7 +23,12 @@ export class TutorialService {
     this.retrieveRecipeSteps();
   }
 
+  toggleExpert() {
+    // Change expert mode
+    this.expert = !this.expert;
+    this.expert$.next(this.expert);
 
+  }
 
   retrieveRecipeSteps(): void {
     this.http.get<RecipeStep[]>("http://localhost:3000/recipe").subscribe((recipes) => {
