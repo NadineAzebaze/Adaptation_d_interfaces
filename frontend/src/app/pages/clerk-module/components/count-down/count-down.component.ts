@@ -2,6 +2,7 @@ import {Component, OnInit, OnDestroy, Input} from '@angular/core';
 import { Subscription, interval } from 'rxjs';
 import {Recipe} from "../../../../models/recipe.model";
 import {RecipeService} from "../../../../services/recipe.service";
+import {TutorialService} from "../../../../services/tutorial.service";
 
 @Component({
   selector: 'app-count-down',
@@ -14,6 +15,13 @@ export class CountDownComponent implements OnInit, OnDestroy {
   @Input()
   recipe! : Recipe;
   recipes : Recipe[] = [];
+
+  @Input()
+  expert = false;
+
+  constructor(private tutorialService: TutorialService, public recipeService : RecipeService) {
+    //this.chronoSubscription = tutorialService.chrono$.subscribe(chrono => this.chrono = chrono);
+  }
 
     private subscription!: Subscription;
 
@@ -33,9 +41,7 @@ export class CountDownComponent implements OnInit, OnDestroy {
     public minutesToDday!: number;
     public hoursToDday!: number;
     public daysToDday!: number;
-
-    constructor(public recipeService : RecipeService) {
-    }
+    public progressWidth!: number;
 
   /**
    * creating a date to reach taking in account the actual time and the time to do the recipe
@@ -62,16 +68,16 @@ export class CountDownComponent implements OnInit, OnDestroy {
 
         let divider = this.recipe.time *1000000;
         let progressPass = this.timeDifference*2 / divider;
-        let progressWidth = 100 - progressPass ;
+        this.progressWidth = 100 - progressPass ;
         if(this.timeDifference>0){
-          this.progressBar.style.width = progressWidth + "%";
+          this.progressBar.style.width = this.progressWidth + "%";
         }else{
           this.progressBar.style.width = "0%";
         }
 
-        if(progressWidth >  50 && progressWidth <100){
+        if(this.progressWidth >  50 && this.progressWidth <100){
           this.progressBar.style.background = "#753BBD";
-        } else if( progressWidth > 25 && progressWidth <50){
+        } else if( this.progressWidth > 25 && this.progressWidth <50){
           this.progressBar.style.background = " orange";
 
         } else {

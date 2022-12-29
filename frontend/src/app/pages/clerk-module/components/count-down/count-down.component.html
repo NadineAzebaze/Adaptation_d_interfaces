@@ -1,12 +1,14 @@
-<div class="timer">
+<div class="timer" *ngIf="!expert">
 
     <div class="progress">
       <div class="text">
-        <span id="minutes"> {{minutesToDday}} </span>Min
-        <span id="seconds"> {{secondsToDday}} </span>S
+        <!--span id="minutes"> {{minutesToDday}} </span>Min
+        <span id="seconds"> {{secondsToDday}} </span-->
+        <span *ngIf="progressWidth > 50">{{minutesToDday}} Min {{secondsToDday}} Sec </span>
+        <span *ngIf="progressWidth < 50">en retard</span>
+        <span *ngIf="progressWidth === 0">préparation terminée</span>
       </div>
       <div class="progress-inner">
       </div>
     </div>
-
 </div>

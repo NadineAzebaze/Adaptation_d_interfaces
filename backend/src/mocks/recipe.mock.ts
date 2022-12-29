@@ -62,7 +62,7 @@ export const RECIPE: Recipe[] = [
     name: 'Coq au vin',
     clerkSteps: [],
     showTutorial: false,
-    time : 45,
+    time : 1,
     image:'https://assets.afcdn.com/recipe/20190307/88896_w1024h1024c1cx3360cy2240.jpg'
   },
   {
@@ -70,7 +70,7 @@ export const RECIPE: Recipe[] = [
     name: 'Salade niçoise',
     clerkSteps: [],
     showTutorial: false,
-    time : 15,
+    time : 1,
     image:'https://img.cuisineaz.com/660x660/2013/12/20/i34581-salade-nicoise-rapide.jpeg'
   },
   {
@@ -78,7 +78,7 @@ export const RECIPE: Recipe[] = [
     name: 'Genoise chocolat secret maison',
     clerkSteps: [],
     showTutorial: false,
-    time : 25,
+    time : 1,
     image:'https://www.mesinspirationsculinaires.com/wp-content/uploads/2015/04/rectte-de-la-genoise-a-la-chocolat-1.jpg'
   }
 ];
