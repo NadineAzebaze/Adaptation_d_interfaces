@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'app-change-mod-button',
@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./change-mod-button.component.less']
 })
 export class ChangeModButtonComponent {
-
+  @Input() expert = false;
 }
+
+
+
