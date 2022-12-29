@@ -1,6 +1,9 @@
 import {Component, OnInit} from "@angular/core";
 import {Router} from "@angular/router";
 import {Recipe} from "../../../models/recipe.model";
+import {TutorialService} from "../../../services/tutorial.service";
+import {RecipeService} from "../../../services/recipe.service";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-clerk-page',
@@ -11,10 +14,25 @@ export class ClerkPageComponent implements OnInit {
 
   public isApprenti = false;
   public selectedRecipe?: Recipe;
-  constructor(public router : Router) {
+  public recipes: Recipe[] = [];
+  public expert = false;
+  private recipesSubscription?: Subscription;
+  private selectedRecipeSubscription?: Subscription;
+  private expertSubscription?: Subscription;
+
+  constructor(public router: Router, public tutorialService: TutorialService, private recipeService: RecipeService) {
+    this.recipesSubscription = recipeService.recipes$.subscribe(recipes => this.recipes = recipes);
+    this.selectedRecipeSubscription = tutorialService.selectedRecipe$.subscribe(recipe => this.selectedRecipe = recipe);
+    this.expertSubscription = tutorialService.expert$.subscribe(expert => this.expert = expert);
   }
 
   ngOnInit(): void {
+  }
+
+  ngOnDestroy(): void {
+    this.recipesSubscription?.unsubscribe();
+    this.selectedRecipeSubscription?.unsubscribe();
+    this.expertSubscription?.unsubscribe();
   }
 
 
@@ -33,4 +51,5 @@ export class ClerkPageComponent implements OnInit {
     this.selectedRecipe = recipe;
     console.log(recipe)
   }
+
 }
