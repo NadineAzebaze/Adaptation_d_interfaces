@@ -1,5 +1,10 @@
 
 export default class ClerkTask {
-    constructor(public id: String, public commandDate: Date, public quantity: number, public recipeId: String, public instruction: String) {}
+
+    constructor(
+      public name: string,
+  public qte: number,
+  public recipe: string,
+  public state: "pending"|"began") {}
 }
 

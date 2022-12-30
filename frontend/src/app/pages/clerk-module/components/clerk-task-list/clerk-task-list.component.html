@@ -4,11 +4,18 @@
   </div>
 
   <div class="body1">
-    <div class="text1" *ngFor="let clerktask of clerkTaskList">
-      <h2> {{clerktask.id}} </h2>
-      <p>
-        {{clerktask.instruction}}
-      </p>
+     <div class="task" *ngFor="let clerktask of clerkTaskList">
+      <span>{{clerktask.qte}}x {{clerktask.name}}</span>
+      <div class="collapsed" [ngStyle]="{ '--content-height': content.clientHeight+'px' }">
+        <div #content>
+          <button class="mb-3" style="width: 100%"
+                  *ngIf="clerktask.state === 'pending'">Commencer la préparation
+          </button>
+          <button class="mb-3 button-danger" style="width: 100%;"
+                  *ngIf="clerktask.state === 'began'">Préparation terminée
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 

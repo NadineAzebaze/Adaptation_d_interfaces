@@ -21,4 +21,17 @@ export class ClerkTaskService {
       this.subject.next(this.clerkTaskList);
     });
   }
+
+  beginTask(clerkTask: ClerkTask): void {
+     // Change the state of the task
+    clerkTask.state = "began";
+  }
+
+  completeTask(clerkTask: ClerkTask): void {
+    // Remove the completed task
+    this.clerkTaskList = this.clerkTaskList.filter(task => task !== clerkTask);
+
+    // Update the list
+    this.subject.next(this.clerkTaskList);
+  }
 }
