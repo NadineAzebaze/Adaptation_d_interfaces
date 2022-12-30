@@ -1,10 +1,12 @@
-<button type="button" (click)="setPosition.emit(table.id)" id="tableId{{test}}" class="btn btn-secondary" style="pointer-events: auto;">Table {{table.id}}</button>
-<div class="table">
+<button type="button" (click)="setTableClick.emit(table.id)" id="tableId{{position}}" class="btn btn-secondary" style="pointer-events: auto;">Table {{table.id}}</button>
+<div [ngClass]="busy ? '' : 'table'">
   <app-type-dish *ngIf="entrees.length>0 && allDishesNotDone(entrees)" [dishes]="entrees" [dishType]="'ENTREE'"
-                 (setDone)="setDoneTable($event.id)"></app-type-dish>
+                 (setDone)="setDoneTable($event.table,$event.id)" [busy]="busy"></app-type-dish>
+
+  <app-type-dish *ngIf="platsBusy(tableService.tablePriorityPlat).length>0 && allDishesNotDone(plats) && allDishesNotDone(platsBusy(tableService.tablePriorityPlat),'PLAT')" [dishes]="platsBusy(tableService.tablePriorityPlat)" [dishType]="'urgent'" (setDone)="setDoneTable($event.table,$event.id)" [busy]="true"></app-type-dish>
   <app-type-dish *ngIf="allDishesNotDone(plats)" [dishes]="plats" [dishType]="'PLAT'"
-                 (setDone)="setDoneTable($event.id)"></app-type-dish>
+                 (setDone)="setDoneTable($event.table,$event.id)" [busy]="busy"></app-type-dish>
   <app-type-dish *ngIf="dessert.length>0 && allDishesNotDone(dessert)" [dishes]="dessert" [dishType]="'DESSERT'"
-                 (setDone)="setDoneTable($event.id)"></app-type-dish>
+                 (setDone)="setDoneTable($event.table,$event.id)" [busy]="busy"></app-type-dish>
 </div>
 

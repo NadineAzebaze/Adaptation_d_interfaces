@@ -14,8 +14,16 @@ export class BusyScreenChefComponent {
 
   tables! : Table  []; // Observer
 
+  test? : number
+
+  entreesTable : Table = {id: 0, dishes: []}
+  platsTable : Table = {id: 0, dishes: []}
+  dessertsTable : Table = {id: 0, dishes: []}
+
+
   constructor(public tableService :TableService){
     this.subs = tableService.tables$.subscribe(tables => {this.tables = tables})
+
 
   }
 
@@ -28,6 +36,7 @@ export class BusyScreenChefComponent {
   }
 
   entrees(tables: Table[] | null = null) {
+    console.log(this.tableService.entreesBusy(tables))
     return this.tableService.entreesBusy(tables)
   }
   plats(tables: Table[] | null = null) {
@@ -38,10 +47,15 @@ export class BusyScreenChefComponent {
   }
 
   setDoneTable(tableId: number, dishId: number) {
+
     this.tableService.setDoneTable(tableId,dishId)
   }
 
   allDishesNotDone(dishes: Dish[], typeDish: string) {
     return dishes.find(dish => !dish.done && dish.type===typeDish)
+  }
+
+  setPosition($event: number) {
+
   }
 }

@@ -1,10 +1,11 @@
 <div class="screenBusy">
 
-  <div class="entree">
-    <p>Entrées</p>
-    <app-type-dish *ngIf="entrees().length>0 && allDishesNotDone(entrees(),'ENTREE')" [dishes]="entrees()" [dishType]="'ENTREE'" (setDone)="setDoneTable($event.table,$event.id)" [busy]="true"></app-type-dish>
-  </div>
-  <div class="plat">
+
+  <app-table class="entree" [position]="0" [table]="{'id':0,'dishes': entrees()}" (setTableClick)="setPosition($event)" [busy]="true"></app-table>
+  <app-table class="plat" [position]="0" [table]="{'id':0,'dishes': plats()}" (setTableClick)="setPosition($event)" [busy]="true"></app-table>
+  <app-table class="dessert" [position]="0" [table]="{'id':0,'dishes': dessert()}" (setTableClick)="setPosition($event)" [busy]="true"></app-table>
+
+  <!--<div class="plat">
     <p>Plats</p>
     <app-type-dish *ngIf="plats(tableService.tablePriorityPlat).length>0 && allDishesNotDone(plats(tableService.tablePriorityPlat),'PLAT')" [dishes]="plats(tableService.tablePriorityPlat)" [dishType]="'urgent'" (setDone)="setDoneTable($event.table,$event.id)" [busy]="true"></app-type-dish>
     <app-type-dish *ngIf="plats().length>0 && allDishesNotDone(plats(),'PLAT')" [dishes]="plats()" [dishType]="'PLAT'" (setDone)="setDoneTable($event.table,$event.id)" [busy]="true"></app-type-dish>
@@ -13,7 +14,7 @@
     <p>Desserts</p>
     <app-type-dish *ngIf="dessert(tableService.tablePriorityDessert).length>0 && allDishesNotDone(dessert(tableService.tablePriorityDessert),'DESSERT')" [dishes]="dessert(tableService.tablePriorityDessert)" [dishType]="'urgent'" (setDone)="setDoneTable($event.table,$event.id)" [busy]="true"></app-type-dish>
     <app-type-dish *ngIf="dessert().length>0 && allDishesNotDone(dessert(),'DESSERT')" [dishes]="dessert()" [dishType]="'DESSERT'" (setDone)="setDoneTable($event.table,$event.id)" [busy]="true"></app-type-dish>
-  </div>
+  </div>-->
 
 </div>
 
