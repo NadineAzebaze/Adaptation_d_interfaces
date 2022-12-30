@@ -20,7 +20,6 @@ export class CountDownComponent implements OnInit, OnDestroy {
   expert = false;
 
   constructor(private tutorialService: TutorialService, public recipeService : RecipeService) {
-    //this.chronoSubscription = tutorialService.chrono$.subscribe(chrono => this.chrono = chrono);
   }
 
     private subscription!: Subscription;
@@ -50,7 +49,7 @@ export class CountDownComponent implements OnInit, OnDestroy {
    */
   private getTimeDifference () {
       this.dateToReach = this.dateNow.setMinutes(this.minutesofDateToReach);
-      this.timeDifference = this.dateToReach - new  Date().getTime();
+      this.timeDifference = this.dateToReach - Date.now();
       this.allocateTimeUnits(this.timeDifference);
     }
 
@@ -66,22 +65,27 @@ export class CountDownComponent implements OnInit, OnDestroy {
 
         this.progressBar = document.querySelector(".progress-inner");
 
-        let divider = this.recipe.time *1000000;
-        let progressPass = this.timeDifference*2 / divider;
-        this.progressWidth = 100 - progressPass ;
+        let divider = this.recipe.time;
+        let progressPass = this.timeDifference / divider;
+        this.progressWidth = 100 - progressPass*2/1000 ;
+        if(this.progressWidth < 0) {
+          return;
+        }
+
+        console.log(this.progressWidth);
         if(this.timeDifference>0){
           this.progressBar.style.width = this.progressWidth + "%";
         }else{
           this.progressBar.style.width = "0%";
         }
 
-        if(this.progressWidth >  50 && this.progressWidth <100){
-          this.progressBar.style.background = "#753BBD";
-        } else if( this.progressWidth > 25 && this.progressWidth <50){
-          this.progressBar.style.background = " orange";
+        if(this.progressWidth >  50 && this.progressWidth <75){
+          this.progressBar.style.background = "orange";
+        } else if( this.progressWidth > 75 && this.progressWidth <100){
+          this.progressBar.style.background = " red";
 
         } else {
-          this.progressBar.style.background = "red";
+          this.progressBar.style.background = "#753BBD";
         }
   }
 
