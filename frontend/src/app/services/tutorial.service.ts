@@ -15,6 +15,7 @@ export interface ChronometerState {
 @Injectable({
   providedIn: 'root'
 })
+
 export class TutorialService implements OnDestroy {
   private selectedRecipe?: Recipe;
   private currentStep = 0;
@@ -75,8 +76,6 @@ export class TutorialService implements OnDestroy {
     this.currentStep = Math.min(this.currentStep + 1, this.selectedRecipe.steps.length - 1);
     this.currentStep$.next(this.currentStep);
 
-    // Reset chrono
-    this.startChrono();
   }
 
   previous() {
@@ -87,8 +86,6 @@ export class TutorialService implements OnDestroy {
     this.currentStep = Math.max(this.currentStep - 1, 0);
     this.currentStep$.next(this.currentStep);
 
-    // Reset chrono
-    this.startChrono();
   }
 
   private startChrono() {
@@ -98,14 +95,16 @@ export class TutorialService implements OnDestroy {
     // Check a recipe is selected
     if (!this.selectedRecipe) return;
 
-    // Set the start date and end date with the duration of the step.
+    // Set the start date and end date with the duration of the recipe.
     this.startDate = Date.now();
-    this.endDate = this.startDate + this.selectedRecipe.steps[this.currentStep].duration * 1000;
+    this.endDate = this.startDate + this.selectedRecipe.duration * 1000;
+    //this.endDate = this.startDate + this.selectedRecipe.steps[this.currentStep].duration * 1000;
 
     // Create chrono state for first time
     this.chrono = {
       percent: 0,
-      remainingTime: this.selectedRecipe.steps[this.currentStep].duration,
+      remainingTime: this.selectedRecipe.duration,
+      //remainingTime: this.selectedRecipe.steps[this.currentStep].duration,
       overdue: false,
       completed: false
     }
@@ -123,7 +122,7 @@ export class TutorialService implements OnDestroy {
 
     const now = Date.now();
 
-    // Compute the total duration of the chrono (step duration)
+    // Compute the total duration of the chrono (recipe duration)
     const duration = this.endDate - this.startDate;
 
     // Check a chrono is setted, avoid division by 0

@@ -11,14 +11,23 @@ import {TableService} from "../../../services/table.service";
 
 export class TableComponent implements OnInit {
   @Input() table! : Table
-
   @Input() position!: number;
+  @Output() setTableClick = new EventEmitter<number>();
+  @Output() tableID = new EventEmitter<number>();
+  @Input() busy: boolean = false;
+  @Input() busyPlat: boolean = false;
+  @Input() busyDessert: boolean = false;
 
-  @Input() test!: number;
+  constructor(public tableService: TableService) {
+  }
 
-  @Output() setPosition = new EventEmitter<number>();
-
-  constructor(private tableService: TableService) {
+  get tableName(){
+    switch (this.table.id){
+      case 0 : return "Entrées"
+      case -1 : return "Plats"
+      case -2 : return "Desserts"
+      default : return "Table "+this.table.id
+    }
   }
 
   get entrees() {
@@ -30,13 +39,19 @@ export class TableComponent implements OnInit {
   get dessert() {
     return this.table.dishes.filter(d => d.type === DishType.DESSERT)
   }
-
-  allDishesNotDone(dishes : Dish[]){
-    return dishes.find(dish => !dish.done)
+  platsBusy(tables: Table[] | null = null) {
+    return this.tableService.platsBusy(tables)
+  }
+  dessertBusy(tables: Table[] | null = null) {
+    return this.tableService.dessertsBusy(tables)
   }
 
-  setDoneTable(dishId: number) {
-    this.tableService.setDoneTable(this.table.id, dishId);
+  allDishesNotDone(dishes: Dish[], typeDish: string = "") {
+    return typeDish!=="" ? dishes.find(dish => !dish.done && dish.type===typeDish) : dishes.find(dish => !dish.done)
+  }
+
+  setDoneTable(tableID:number,dishId: number) {
+    this.tableService.setDoneTable(tableID, dishId);
   }
 
   ngOnInit(): void {

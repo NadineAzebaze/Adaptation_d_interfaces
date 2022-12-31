@@ -73,4 +73,5 @@ export class ClerkTaskService {
     // Update the list
     this.subject.next(this.clerkTaskList);
   }
+
 }

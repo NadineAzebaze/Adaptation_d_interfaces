@@ -5,7 +5,6 @@ import {TutorialService} from "../../../services/tutorial.service";
 import {Subscription} from "rxjs";
 
 
-
 @Component({
   selector: 'app-clerk-page',
   templateUrl: './clerk-page.component.html',
@@ -32,7 +31,22 @@ export class ClerkPageComponent implements OnDestroy {
     this.expertSubscription?.unsubscribe();
   }
 
+
+  /**
+   * changing expert mode to apprentice mode
+   */
+  changeMode() {
+    this.expert = !this.expert;
+    this.tutorialService.toggleExpert();
+  }
+
+  /**
+   * affects the value of the recipe on which we clicked to the parameter recipe of the component
+   * @param recipe
+   */
+
   selectRecipe(recipe: Recipe) {
     this.tutorialService.selectRecipe(recipe);
   }
+
 }
