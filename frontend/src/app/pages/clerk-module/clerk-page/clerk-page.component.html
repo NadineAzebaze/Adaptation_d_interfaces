@@ -8,7 +8,7 @@
       <app-change-mod-button (click)="changeMode()" [expert]="expert" *ngIf="expert === false"></app-change-mod-button>
     </div>
     <app-recipe-player [recipe]="selectedRecipe" [expert]="expert" *ngIf="selectedRecipe"></app-recipe-player>
-    <div class="recipe-list {{expert ? 'expert' : ''}}">
+    <div class="recipe-list {{expert || !selectedRecipe ? 'expert' : ''}}">
         <app-recipe-item class="mx-2"
                          [recipe]="recipe"
                          [selected]="recipe === selectedRecipe"
