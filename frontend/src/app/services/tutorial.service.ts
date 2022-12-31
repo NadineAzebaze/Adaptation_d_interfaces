@@ -15,6 +15,7 @@ export interface ChronometerState {
 @Injectable({
   providedIn: 'root'
 })
+
 export class TutorialService implements OnDestroy {
   private selectedRecipe?: Recipe;
   private currentStep = 0;
@@ -100,12 +101,14 @@ export class TutorialService implements OnDestroy {
 
     // Set the start date and end date with the duration of the step.
     this.startDate = Date.now();
-    this.endDate = this.startDate + this.selectedRecipe.steps[this.currentStep].duration * 1000;
+    this.endDate = this.startDate + this.selectedRecipe.duration * 1000;
+    //this.endDate = this.startDate + this.selectedRecipe.steps[this.currentStep].duration * 1000;
 
     // Create chrono state for first time
     this.chrono = {
       percent: 0,
-      remainingTime: this.selectedRecipe.steps[this.currentStep].duration,
+      remainingTime: this.selectedRecipe.duration,
+      //remainingTime: this.selectedRecipe.steps[this.currentStep].duration,
       overdue: false,
       completed: false
     }

@@ -3,7 +3,10 @@
     <app-clerk-task-list></app-clerk-task-list>
   </div>
   <div class="container my-3 body-content" #container>
-    <h1>Guide de recettes</h1>
+    <div class="header-page">
+      <h1>Guide de recettes</h1>
+      <app-change-mod-button (click)="changeMode()" [expert]="expert" *ngIf="expert === false"></app-change-mod-button>
+    </div>
     <app-recipe-player [recipe]="selectedRecipe" [expert]="expert" *ngIf="selectedRecipe"></app-recipe-player>
     <div class="recipe-list">
         <app-recipe-item class="mx-2"
@@ -11,9 +14,9 @@
                          [selected]="recipe === selectedRecipe"
                          *ngFor="let recipe of recipes" (click)="selectRecipe(recipe)"
         ></app-recipe-item>
-    </div>
-    <div class="expert-button-container">
-      <app-change-mod-button [expert]="expert" (click)="tutorialService.toggleExpert()"></app-change-mod-button>
+      <div class="expert-button-container">
+        <app-change-mod-button *ngIf="expert" [expert]="expert" (click)="changeMode()" ></app-change-mod-button>
+      </div>
     </div>
   </div>
 </app-side-panel>
