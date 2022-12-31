@@ -1,3 +1,4 @@
-<div class="recipe-container" [ngClass]="{ 'selected': selected }" [ngStyle]="{ 'background': 'url(' + recipe.image + ')' }" (click)="clicked()">
-  {{recipe.name}}
+<div class="recipe-container" [ngClass]="{ 'selected': selected }" (click)="clicked()">
+  <img class="recipe_image" [src]="recipe.image" >
+  <h2>{{recipe.name}}</h2>
 </div>
