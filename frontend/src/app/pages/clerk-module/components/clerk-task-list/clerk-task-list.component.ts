@@ -18,7 +18,7 @@ export class ClerkTaskListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.clerkTaskService.subject.subscribe(v => this.clerkTaskList = v);
+    this.clerkTaskService.clerkTasks$.subscribe(v => this.clerkTaskList = v);
   }
 
 

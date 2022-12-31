@@ -1,10 +1,11 @@
 import {Injectable} from "@angular/core";
-import {BehaviorSubject, Subscription} from "rxjs";
+import {BehaviorSubject, interval, Subscription} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {TutorialService} from "./tutorial.service";
 import {Recipe, RecipeService} from "./recipe.service";
 
 
+const clock = interval(3000);
 export interface ClerkTask {
   name: string;
   qte: number;
@@ -17,8 +18,8 @@ export interface ClerkTask {
 })
 
 export class ClerkTaskService {
-  clerkTaskList: ClerkTask[] = [];
-  subject = new BehaviorSubject<ClerkTask[]>([]);
+  private clerkTasks: ClerkTask[] = [];
+  clerkTasks$ = new BehaviorSubject<ClerkTask[]>([]);
 
   private recipes: Recipe[] = [];
   private recipeSubscription?: Subscription;
@@ -27,32 +28,25 @@ export class ClerkTaskService {
     this.retrieveTasks();
     this.recipeSubscription = this.recipeService.recipes$.subscribe(recipes => this.recipes = recipes);
     this.recipeService.retrieveRecipes();
+
+    clock.subscribe(() => {
+      this.generateTask();
+    });
   }
 
   retrieveTasks(): void {
-    /* this.http.get<ClerkTask[]>("http://localhost:3000/clerk-task").subscribe((clerkTaskList) => {
-      this.clerkTaskList = clerkTaskList;
-      this.subject.next(this.clerkTaskList);
-    }); */
-    this.clerkTaskList = [
-      {
-        name: "Sauce vinaigrette spéciale maison",
-        qte: 1,
-        recipe: "1",
-        state: "pending"
-      }, {
-        name: "Génoise forêt noire",
-        qte: 1,
-        recipe: "2",
-        state: "pending"
-      }, {
-        name: "Salade noçoise",
-        qte: 4,
-        recipe: "3",
-        state: "pending"
-      }
-    ]
-    this.subject.next(this.clerkTaskList);
+    this.clerkTasks$.next(this.clerkTasks);
+  }
+
+  generateTask(): void {
+    const recipe = this.recipes[Math.floor(Math.random() * this.recipes.length)];
+    this.clerkTasks.push({
+      name: recipe.name,
+      qte: Math.floor(Math.random() * 10) + 1,
+      recipe: recipe.id,
+      state: "pending"
+    });
+    this.clerkTasks$.next(this.clerkTasks);
   }
 
   beginTask(clerkTask: ClerkTask): void {
@@ -65,13 +59,13 @@ export class ClerkTaskService {
 
   completeTask(clerkTask: ClerkTask): void {
     // Remove the completed task
-    this.clerkTaskList = this.clerkTaskList.filter(task => task !== clerkTask);
+    this.clerkTasks = this.clerkTasks.filter(task => task !== clerkTask);
 
     // Stop the chrono of the tutorial
     this.tutorialService.stopChrono();
 
     // Update the list
-    this.subject.next(this.clerkTaskList);
+    this.clerkTasks$.next(this.clerkTasks);
   }
 
 }

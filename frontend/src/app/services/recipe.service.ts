@@ -151,7 +151,15 @@ const recipes: Recipe[] = [
     "name": "Gratin dauphinois",
     "image": "https://assets.afcdn.com/recipe/20201217/116564_w1024h1024c1cx1009cy951.webp",
     "duration" : 300,
-    "steps": []
+    "steps": [
+      {
+        "recipeName":"Genoise chocolat secret maison",
+        "description":"Ajouter la farine et le cacao tamises et incorporer a l’aide d’une spatule délicatement.\n Beurrer et fariner un moule recouvert de papier sulfurisé de préférence et verser la préparation.",
+        "shortDescription":"",
+        "forApprentice": true,
+        "image":"https://www.marciatack.fr/wp-content/uploads/2014/04/chocolat-fondu-500x334.jpg"
+      }
+    ]
   }
 ]
 
