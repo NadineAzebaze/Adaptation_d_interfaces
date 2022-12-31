@@ -10,9 +10,8 @@ import {TableService} from 'src/app/services/table.service';
 })
 export class BusyScreenChefComponent {
   private subs?: Subscription;
-
-  tables! : Table  []; // Observer
-
+  tables! : Table  [];
+  public tableClick!: number
   constructor(public tableService :TableService){
     this.subs = tableService.tables$.subscribe(tables => {this.tables = tables})
   }
@@ -35,7 +34,7 @@ export class BusyScreenChefComponent {
     return this.tableService.dessertsBusy(tables)
   }
 
-  setPosition($event: number) {
-
+  setPosition(tableId: number) {
+    this.tableClick = tableId;
   }
 }

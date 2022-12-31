@@ -1,10 +1,10 @@
 <div class="screenBusy">
   <app-table class="entree" [position]="0" [table]="{'id':0,'dishes': entrees()}" (setTableClick)="setPosition($event)"
-             [busy]="true" [tableName]="'Entrées'"></app-table>
-  <app-table class="plat" [position]="0" [table]="{'id':0,'dishes': plats()}" (setTableClick)="setPosition($event)"
-             [busy]="true" [busyPlat]="true" [tableName]="'Plats'"></app-table>
+             [busy]="true" [ngStyle]="{'z-index':this.tableClick===0 ? 2 : 0}"></app-table>
+  <app-table class="plat" [position]="-1" [table]="{'id':-1,'dishes': plats()}"
+             [busy]="true" [busyPlat]="true" (setTableClick)="setPosition($event)" [ngStyle]="{'z-index':this.tableClick===-1 ? 2 : 0}"></app-table>
   <app-table class=" dessert
-  " [position]="0" [table]="{'id':0,'dishes': dessert()}" (setTableClick)="setPosition($event)" [busy]="true"
-  [busyDessert]="true" [tableName]="'Desserts'"></app-table>
+  " [position]="-2" [table]="{'id':-2,'dishes': dessert()}" [busy]="true"
+             [busyDessert]="true" (setTableClick)="setPosition($event)" [ngStyle]="{'z-index':this.tableClick===-2 ? 2 : 0}"></app-table>
 </div>
 

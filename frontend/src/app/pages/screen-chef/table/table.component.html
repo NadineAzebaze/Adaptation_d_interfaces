@@ -1,4 +1,4 @@
-<button type="button" (click)="setTableClick.emit(table.id)" id="tableId{{position}}" class="btn btn-secondary" style="pointer-events: auto;">{{tableName ? tableName : 'Table '+table.id}}</button>
+<button type="button" (click)="setTableClick.emit(table.id)" id="tableId{{position}}" [ngClass]="busy ? 'btn btn-secondary busyButton' : 'btn btn-secondary'" style="pointer-events: auto;">{{tableName}}</button>
 <div [ngClass]="busy ? 'busy' : 'table'">
   <!-- ENTREES -->
   <app-type-dish *ngIf="allDishesNotDone(entrees)" [dishes]="entrees" [dishType]="'ENTREE'"

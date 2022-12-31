@@ -12,7 +12,6 @@ import {TableService} from "../../../services/table.service";
 export class TableComponent implements OnInit {
   @Input() table! : Table
   @Input() position!: number;
-  @Input() tableName?: string;
   @Output() setTableClick = new EventEmitter<number>();
   @Output() tableID = new EventEmitter<number>();
   @Input() busy: boolean = false;
@@ -20,6 +19,15 @@ export class TableComponent implements OnInit {
   @Input() busyDessert: boolean = false;
 
   constructor(public tableService: TableService) {
+  }
+
+  get tableName(){
+    switch (this.table.id){
+      case 0 : return "Entrées"
+      case -1 : return "Plats"
+      case -2 : return "Desserts"
+      default : return "Table "+this.table.id
+    }
   }
 
   get entrees() {
