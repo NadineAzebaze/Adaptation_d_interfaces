@@ -1,20 +1,10 @@
 <div class="screenBusy">
-
-
-  <app-table class="entree" [position]="0" [table]="{'id':0,'dishes': entrees()}" (setTableClick)="setPosition($event)" [busy]="true"></app-table>
-  <app-table class="plat" [position]="0" [table]="{'id':0,'dishes': plats()}" (setTableClick)="setPosition($event)" [busy]="true"></app-table>
-  <app-table class="dessert" [position]="0" [table]="{'id':0,'dishes': dessert()}" (setTableClick)="setPosition($event)" [busy]="true"></app-table>
-
-  <!--<div class="plat">
-    <p>Plats</p>
-    <app-type-dish *ngIf="plats(tableService.tablePriorityPlat).length>0 && allDishesNotDone(plats(tableService.tablePriorityPlat),'PLAT')" [dishes]="plats(tableService.tablePriorityPlat)" [dishType]="'urgent'" (setDone)="setDoneTable($event.table,$event.id)" [busy]="true"></app-type-dish>
-    <app-type-dish *ngIf="plats().length>0 && allDishesNotDone(plats(),'PLAT')" [dishes]="plats()" [dishType]="'PLAT'" (setDone)="setDoneTable($event.table,$event.id)" [busy]="true"></app-type-dish>
-  </div>
-  <div class="dessert">
-    <p>Desserts</p>
-    <app-type-dish *ngIf="dessert(tableService.tablePriorityDessert).length>0 && allDishesNotDone(dessert(tableService.tablePriorityDessert),'DESSERT')" [dishes]="dessert(tableService.tablePriorityDessert)" [dishType]="'urgent'" (setDone)="setDoneTable($event.table,$event.id)" [busy]="true"></app-type-dish>
-    <app-type-dish *ngIf="dessert().length>0 && allDishesNotDone(dessert(),'DESSERT')" [dishes]="dessert()" [dishType]="'DESSERT'" (setDone)="setDoneTable($event.table,$event.id)" [busy]="true"></app-type-dish>
-  </div>-->
-
+  <app-table class="entree" [position]="0" [table]="{'id':0,'dishes': entrees()}" (setTableClick)="setPosition($event)"
+             [busy]="true" [tableName]="'Entrées'"></app-table>
+  <app-table class="plat" [position]="0" [table]="{'id':0,'dishes': plats()}" (setTableClick)="setPosition($event)"
+             [busy]="true" [busyPlat]="true" [tableName]="'Plats'"></app-table>
+  <app-table class=" dessert
+  " [position]="0" [table]="{'id':0,'dishes': dessert()}" (setTableClick)="setPosition($event)" [busy]="true"
+  [busyDessert]="true" [tableName]="'Desserts'"></app-table>
 </div>
 
