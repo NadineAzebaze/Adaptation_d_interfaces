@@ -5,7 +5,7 @@
   <div class="container my-3 body-content" #container>
     <h1>Guide de recettes</h1>
     <app-recipe-player [recipe]="selectedRecipe" [expert]="expert" *ngIf="selectedRecipe"></app-recipe-player>
-    <div class="recipe-list">
+    <div class="recipe-list {{expert ? 'expert' : ''}}">
         <app-recipe-item class="mx-2"
                          [recipe]="recipe"
                          [selected]="recipe === selectedRecipe"
