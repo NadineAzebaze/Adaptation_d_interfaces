@@ -1,4 +1,4 @@
-.table{
+.table {
   background-color: #ecebeb;
   padding: 1rem 1rem 1rem 1rem;
   width: 97%;
@@ -6,7 +6,21 @@
   border-radius: 0 5px 5px 5px;
 
 }
-.btn-secondary{
+
+.busy {
+  margin: 0 2% 2% 2%;
+  padding: 1%;
+  border: outset;
+  background-color: #ecebeb;
+  height: fit-content;
+  min-height: 90%;
+}
+
+.busyButton {
+  margin-left: 2%;
+}
+
+.btn-secondary {
   background-color: #ecebeb;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
@@ -16,9 +30,11 @@
 }
 
 @media (max-width: 650px) {
-  .table{
+  .table, .busy {
     pointer-events: all;
+    min-height: 100%;
   }
+
   #tableId1 {
     margin-left: 14%;
   }
@@ -37,5 +53,13 @@
 
   #tableId5 {
     margin-left: 70%;
+  }
+
+  #tableId-1 {
+    margin-left: 17%;
+  }
+
+  #tableId-2 {
+    margin-left: 29%;
   }
 }

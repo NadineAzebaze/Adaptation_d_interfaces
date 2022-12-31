@@ -1,6 +1,5 @@
 import {Component} from '@angular/core';
 import {Subscription} from 'rxjs';
-import Dish from 'src/app/models/dish.model';
 import Table from 'src/app/models/table.model';
 import {TableService} from 'src/app/services/table.service';
 
@@ -11,12 +10,10 @@ import {TableService} from 'src/app/services/table.service';
 })
 export class BusyScreenChefComponent {
   private subs?: Subscription;
-
-  tables! : Table  []; // Observer
-
+  tables! : Table  [];
+  public tableClick!: number
   constructor(public tableService :TableService){
     this.subs = tableService.tables$.subscribe(tables => {this.tables = tables})
-
   }
 
   ngOnInit(): void {
@@ -37,11 +34,7 @@ export class BusyScreenChefComponent {
     return this.tableService.dessertsBusy(tables)
   }
 
-  setDoneTable(tableId: number, dishId: number) {
-    this.tableService.setDoneTable(tableId,dishId)
-  }
-
-  allDishesNotDone(dishes: Dish[], typeDish: string) {
-    return dishes.find(dish => !dish.done && dish.type===typeDish)
+  setPosition(tableId: number) {
+    this.tableClick = tableId;
   }
 }

@@ -1,10 +1,17 @@
-<button type="button" (click)="setPosition.emit(table.id)" id="tableId{{test}}" class="btn btn-secondary" style="pointer-events: auto;">Table {{table.id}}</button>
-<div class="table">
-  <app-type-dish *ngIf="entrees.length>0 && allDishesNotDone(entrees)" [dishes]="entrees" [dishType]="'ENTREE'"
-                 (setDone)="setDoneTable($event.id)"></app-type-dish>
+<button type="button" (click)="setTableClick.emit(table.id)" id="tableId{{position}}" [ngClass]="busy ? 'btn btn-secondary busyButton' : 'btn btn-secondary'" style="pointer-events: auto;">{{tableName}}</button>
+<div [ngClass]="busy ? 'busy' : 'table'">
+  <!-- ENTREES -->
+  <app-type-dish *ngIf="allDishesNotDone(entrees)" [dishes]="entrees" [dishType]="'ENTREE'"
+                 (setDone)="setDoneTable($event.table,$event.id)" [busy]="busy"></app-type-dish>
+
+  <!-- PLATS -->
+  <app-type-dish *ngIf=" busyPlat && allDishesNotDone(platsBusy(tableService.tablePriorityPlat),'PLAT')" [dishes]="platsBusy(tableService.tablePriorityPlat)" [dishType]="'urgent'" (setDone)="setDoneTable($event.table,$event.id)" [busy]="true"></app-type-dish>
   <app-type-dish *ngIf="allDishesNotDone(plats)" [dishes]="plats" [dishType]="'PLAT'"
-                 (setDone)="setDoneTable($event.id)"></app-type-dish>
-  <app-type-dish *ngIf="dessert.length>0 && allDishesNotDone(dessert)" [dishes]="dessert" [dishType]="'DESSERT'"
-                 (setDone)="setDoneTable($event.id)"></app-type-dish>
+                 (setDone)="setDoneTable($event.table,$event.id)" [busy]="busy"></app-type-dish>
+
+  <!-- DESSERTS -->
+  <app-type-dish *ngIf=" busyDessert && allDishesNotDone(dessertBusy(tableService.tablePriorityDessert),'DESSERT')" [dishes]="dessertBusy(tableService.tablePriorityDessert)" [dishType]="'urgent'" (setDone)="setDoneTable($event.table,$event.id)" [busy]="true"></app-type-dish>
+  <app-type-dish *ngIf="allDishesNotDone(dessert)" [dishes]="dessert" [dishType]="'DESSERT'"
+                 (setDone)="setDoneTable($event.table,$event.id)" [busy]="busy"></app-type-dish>
 </div>
 

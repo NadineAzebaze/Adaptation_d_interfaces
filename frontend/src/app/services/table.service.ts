@@ -98,7 +98,9 @@ export class TableService {
     const table = this.tables.find(t => t.id === tableId)
     if (!table)
       throw "Table null."
+
     const dish = table.dishes.find(d => d.id === dishId)
+    console.log(dish!.table,table.id, "laaaa")
     if (!dish)
       throw "Dish null."
     dish.done = !dish.done;

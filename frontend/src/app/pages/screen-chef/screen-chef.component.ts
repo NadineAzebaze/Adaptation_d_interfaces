@@ -11,7 +11,7 @@ import {Subscription} from "rxjs";
 export class ScreenChefComponent implements OnInit, OnDestroy {
 
   private subs?: Subscription;
-  public position!: number
+  public tableClick!: number
   constructor(private commands: TableService) {
     this.subs = commands.tables$.subscribe(tables => this.tables = tables)
   }
@@ -27,6 +27,6 @@ export class ScreenChefComponent implements OnInit, OnDestroy {
   }
 
   setPosition(tableId: number) {
-    this.position = tableId;
+    this.tableClick = tableId;
   }
 }
