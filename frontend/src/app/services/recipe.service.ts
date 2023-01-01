@@ -19,7 +19,7 @@ export interface Recipe {
 }
 const recipes: Recipe[] = [
   {
-    "id": "coq_au_vin",
+    "id": "1",
     "name": "Coq au vin",
     "image": "https://assets.afcdn.com/recipe/20190307/88896_w1024h1024c1cx3360cy2240.jpg",
     "duration" : 300,
@@ -40,7 +40,7 @@ const recipes: Recipe[] = [
       }
     ]
   }, {
-    "id": "salade_nicoise",
+    "id": "2",
     "name": "Salade niçoise",
     "duration" : 300,
     "image": "https://img.cuisineaz.com/660x660/2013/12/20/i34581-salade-nicoise-rapide.jpeg",
@@ -105,7 +105,7 @@ const recipes: Recipe[] = [
     ]
   },
   {
-    "id": "Genoise_chocolat_secret_maison",
+    "id": "3",
     "name": "Genoise chocolat secret maison",
     "image": "https://www.mesinspirationsculinaires.com/wp-content/uploads/2015/04/rectte-de-la-genoise-a-la-chocolat-1.jpg",
     "duration" : 300,
@@ -147,7 +147,7 @@ const recipes: Recipe[] = [
 
   },
   {
-    "id": "gratin_dauphinois",
+    "id": "4",
     "name": "Gratin dauphinois",
     "image": "https://assets.afcdn.com/recipe/20201217/116564_w1024h1024c1cx1009cy951.webp",
     "duration" : 300,
