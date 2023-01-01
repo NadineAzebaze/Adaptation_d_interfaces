@@ -1,11 +1,10 @@
 import {Injectable} from "@angular/core";
-import {BehaviorSubject, interval, Subscription} from "rxjs";
+import {BehaviorSubject, Subscription} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {TutorialService} from "./tutorial.service";
 import {Recipe, RecipeService} from "./recipe.service";
 
 
-const clock = interval(3000);
 export class ClerkTask {
   public name!: string;
   public _qte!: number;
@@ -29,7 +28,8 @@ export class ClerkTask {
 })
 
 export class ClerkTaskService {
-  private clerkTasks: ClerkTask[] = [];
+  clerkTaskList: ClerkTask[] = [];
+  subject = new BehaviorSubject<ClerkTask[]>([]);
   clerkTasks$ = new BehaviorSubject<ClerkTask[]>([]);
 
   private recipes: Recipe[] = [];
@@ -40,25 +40,9 @@ export class ClerkTaskService {
     this.retrieveTasks();
     this.recipeSubscription = this.recipeService.recipes$.subscribe(recipes => this.recipes = recipes);
     this.recipeService.retrieveRecipes();
-
-    clock.subscribe(() => {
-      this.generateTask();
-    });
   }
 
   retrieveTasks(): void {
-
-    /*this.clerkTasks$.next(this.clerkTasks);
-  }
-  generateTask(): void {
-    const recipe = this.recipes[Math.floor(Math.random() * this.recipes.length)];
-    this.clerkTasks.push({
-      name: recipe.name,
-      qte: Math.floor(Math.random() * 10) + 1,
-      recipe: recipe.id,
-      state: "pending"
-    });
-    this.clerkTasks$.next(this.clerkTasks);*/
     /* this.http.get<ClerkTask[]>("http://localhost:3000/clerk-task").subscribe((clerkTaskList) => {
       this.clerkTaskList = clerkTaskList;
       this.subject.next(this.clerkTaskList);
@@ -79,7 +63,6 @@ export class ClerkTaskService {
 
 
     this.subject.next(this.clerkTaskList);
-
   }
 
   beginTask(clerkTask: ClerkTask): void {
@@ -94,7 +77,7 @@ export class ClerkTaskService {
 
   completeTask(clerkTask: ClerkTask): void {
     // Remove the completed task
-    this.clerkTasks = this.clerkTasks.filter(task => task !== clerkTask);
+    this.clerkTaskList = this.clerkTaskList.filter(task => task !== clerkTask);
 
     // Stop the chrono of the tutorial
     this.tutorialService.stopChrono();
@@ -112,7 +95,7 @@ export class ClerkTaskService {
       //update clerkTaskList
       console.log("qte", clerkTask._qte);
     }
-    
+
   }
 
 }
