@@ -1,11 +1,11 @@
 <div class="step-container">
   <div class="img" *ngIf="!expert">
-    <img [src]="recipeStep.image" [alt]="recipeStep.recipeName" style="height: 300px">
+    <img [src]="recipeStep.image" [alt]="recipeStep.name" style="height: 300px">
   </div>
 
   <!-- Side panel -->
   <div class="description-panel">
-    <strong class="description-title">{{recipeStep.recipeName}}</strong>
+    <strong class="description-title">{{recipeStep.name}}</strong>
 
     <!-- Description -->
     <p class="description">{{ expert ? recipeStep.shortDescription : recipeStep.description }}</p>

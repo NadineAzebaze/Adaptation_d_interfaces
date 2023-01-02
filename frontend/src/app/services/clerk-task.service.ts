@@ -88,10 +88,9 @@ export class ClerkTaskService {
       this.subject.next(this.clerkTaskList);
     } else {
       let u = new ClerkTask(clerkTask.name,this.counter, clerkTask.recipe,clerkTask.state);
+      clerkTask._qte = this.counter;
       clerkTask = u;
       this.beginTask(clerkTask);
-      clerkTask.qte(this.counter);
-      //update clerkTaskList
       console.log("qte", clerkTask._qte);
     }
 
