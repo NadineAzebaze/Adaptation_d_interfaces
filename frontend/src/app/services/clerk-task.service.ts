@@ -25,8 +25,6 @@ export class ClerkTask {
 })
 
 export class ClerkTaskService {
-  clerkTaskList: ClerkTask[] = [];
-  subject = new BehaviorSubject<ClerkTask[]>([]);
   private clerkTasks: ClerkTask[] = [];
   clerkTasks$ = new BehaviorSubject<ClerkTask[]>([]);
 
@@ -60,8 +58,7 @@ export class ClerkTaskService {
       4,
       "3",
       "pending");
-    this.clerkTaskList = [clerktask1,clerktask2,clerktask3];
-    this.subject.next(this.clerkTaskList);
+    this.clerkTasks = [clerktask1,clerktask2,clerktask3];
 
     this.clerkTasks$.next(this.clerkTasks);
   }
@@ -74,7 +71,7 @@ export class ClerkTaskService {
       recipe: recipe.id,
       state: "pending"
     });
-    this.clerkTasks$.next(this.clerkTasks);
+    //this.clerkTasks$.next(this.clerkTasks);
   }
 
   beginTask(clerkTask: ClerkTask): void {
@@ -89,7 +86,6 @@ export class ClerkTaskService {
 
   completeTask(clerkTask: ClerkTask): void {
     // Remove the completed task
-    this.clerkTaskList = this.clerkTaskList.filter(task => task !== clerkTask);
     this.clerkTasks = this.clerkTasks.filter(task => task !== clerkTask);
 
     // Stop the chrono of the tutorial
@@ -98,8 +94,7 @@ export class ClerkTaskService {
     // Update the list
     this.counter--;
     console.log("counter", clerkTask);
-    if(this.counter === 0 ){
-      this.subject.next(this.clerkTaskList);
+    if(this.counter <= 0 ){
       this.clerkTasks$.next(this.clerkTasks);
     } else {
       let u = new ClerkTask(clerkTask.name,this.counter, clerkTask.recipe,clerkTask.state);

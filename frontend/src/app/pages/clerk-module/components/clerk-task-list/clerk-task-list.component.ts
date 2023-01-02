@@ -21,10 +21,6 @@ export class ClerkTaskListComponent implements OnInit {
     this.clerkTaskService.clerkTasks$.subscribe(v => this.clerkTaskList = v);
   }
 
-
-  remove(clerktask: ClerkTask) {
-    this.clerkTaskList = this.clerkTaskList.filter(v => v !== clerktask);
-  }
 }
 
 
