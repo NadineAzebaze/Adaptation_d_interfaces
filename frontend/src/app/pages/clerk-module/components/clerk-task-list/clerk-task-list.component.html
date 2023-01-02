@@ -3,7 +3,7 @@
 </div>
 <div class="body1">
   <div class="task" *ngFor="let clerktask of clerkTaskList">
-    <span>{{clerktask._qte}}x {{clerktask.name}}</span>
+    <span> <h3>{{clerktask._qte}} </h3> X {{clerktask.name}}</span>
     <div class="collapsed" [ngStyle]="{ '--content-height': content.clientHeight+'px' }">
       <div #content>
         <button class="mb-3" style="width: 100%" (click)="clerkTaskService.beginTask(clerktask)"

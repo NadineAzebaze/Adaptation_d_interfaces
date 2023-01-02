@@ -1,5 +1,8 @@
 
 <div class="recipe-container" [ngClass]="{ 'selected': selected }" (click)="clicked()">
   <img class="recipe_image" [src]="recipe.image" >
-  <h2>{{recipe.name}}</h2>
+  <div class="text">
+    <h2>{{recipe.name}}</h2>
+    <h3>{{recipe.steps.length}} Etapes</h3>
+  </div>
 </div>
