@@ -12,14 +12,14 @@ export class ScreenChefComponent implements OnInit, OnDestroy {
 
   private subs?: Subscription;
   public tableClick!: number
-  constructor(private commands: TableService) {
-    this.subs = commands.tables$.subscribe(tables => this.tables = tables)
+  constructor(private tableService: TableService) {
+    this.subs = tableService.tables$.subscribe(tables => this.tables = tables)
   }
 
   tables : Table[] = [];
 
   ngOnInit(): void {
-    this.tables = this.commands.tables
+    this.tables = this.tableService.tables
   }
 
   ngOnDestroy(): void {
@@ -28,5 +28,9 @@ export class ScreenChefComponent implements OnInit, OnDestroy {
 
   setPosition(tableId: number) {
     this.tableClick = tableId;
+  }
+
+  addTable() {
+    this.tableService.generateTable();
   }
 }

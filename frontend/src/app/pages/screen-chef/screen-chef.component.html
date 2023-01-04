@@ -1,6 +1,8 @@
 <div class="screen">
-    <h3>Commandes</h3>
+  <button type="button" class="addTable" (click)="addTable()">Add</button>
+  <h3>Commandes</h3>
   <div class="allCommands">
-    <app-table *ngFor="let t of tables" [position]="tables.indexOf(t)" [table]="t" (setTableClick)="setPosition($event)" [ngStyle]="{'z-index':this.tableClick===t.id ? 2 : 0}" ></app-table>
+    <app-table *ngFor="let t of tables" [position]="tables.indexOf(t)" [table]="t" (setTableClick)="setPosition($event)"
+               [ngStyle]="{'z-index':this.tableClick===t.id ? 2 : 0}"></app-table>
   </div>
 </div>

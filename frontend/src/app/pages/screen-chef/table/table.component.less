@@ -12,12 +12,13 @@
   padding: 1%;
   border: outset;
   background-color: #ecebeb;
-  height: fit-content;
-  min-height: 90%;
+  height: 95%;
+  overflow-y: auto;
 }
 
 .busyButton {
-  margin-left: 2%;
+  position: relative;
+  left: 2%;
 }
 
 .btn-secondary {
@@ -29,37 +30,54 @@
   font-style: italic;
 }
 
-@media (max-width: 650px) {
-  .table, .busy {
+@media (max-width: 1100px) {
+  .busy {
     pointer-events: all;
-    min-height: 100%;
+  }
+  #tableId0, #tableId-1, #tableId-2{
+    position: relative;
+    width: 10%;
+    min-width: fit-content;
+
+  }
+  #tableId-1 {
+    left: 12%;
+  }
+  #tableId-2 {
+    left: 22%;
+  }
+}
+
+@media (max-width: 650px) {
+  .table {
+    pointer-events: all;
+    min-height: 95%;
+  }
+  #tableId0, #tableId1, #tableId2, #tableId3, #tableId4, #tableId5{
+    position: relative;
+    width: 15%;
+    min-width: fit-content;
   }
 
   #tableId1 {
-    margin-left: 14%;
+    left: 15%;
   }
 
   #tableId2 {
-    margin-left: 28%;
+    left: 30%;
   }
 
   #tableId3 {
-    margin-left: 42%;
+    left: 45%;
   }
 
   #tableId4 {
-    margin-left: 56%;
+    left: 60%;
   }
 
   #tableId5 {
-    margin-left: 70%;
+    left: 75%;
   }
 
-  #tableId-1 {
-    margin-left: 17%;
-  }
-
-  #tableId-2 {
-    margin-left: 29%;
-  }
 }
+

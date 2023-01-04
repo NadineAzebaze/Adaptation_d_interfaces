@@ -1,7 +1,7 @@
 .screen {
   background-color: rgba(189, 189, 189, 0.56);
-  height: fit-content;
-  min-height: 95%;
+  overflow-y: auto;
+  height: 99%;
   border: outset;
   border-radius: 3px;
   padding: 1rem;
@@ -20,6 +20,15 @@ app-table {
 .allCommands {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+}
+
+.addTable{
+  height: 10px;
+  width: 10px;
+  background-color: #a5acaf;
+  align-items: center;
+  justify-content: center;
+  display: flex;
 }
 
 @media (max-width: 970px) {

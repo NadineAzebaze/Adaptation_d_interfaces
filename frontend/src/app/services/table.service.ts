@@ -18,7 +18,7 @@ export class TableService {
   public busy = false;
 
   constructor(private router: Router) {
-    this.generateTable();
+    this.generateAllTables();
   }
 
   entreesBusy(tables: Table[] | null) {
@@ -76,22 +76,26 @@ export class TableService {
 
   }
 
-  generateTable(): void {
-    if (this.tables.length < 7) {
+  generateAllTables(): void {
+    if (this.tables.length < 6) {
       setTimeout(() => {
-        let dishes: Dish[] = []
-        let noEntree = this.generateRandomDishes(Entree, dishes)
-        this.generateRandomDishes(Plat, dishes, 1)
-        this.generateRandomDishes(Dessert, dishes)
-        this.tables.push({
-          id: this.tables.length + 1,
-          dishes: dishes
-        })
-        this.generateTable();
-        this.checkChangeScreen();
-        if (noEntree ) this.changePriority(this.tables[this.tables.length-1], DishType.ENTREE)
+        this.generateTable()
       }, this.getRandom(5000, 2000));
     }
+  }
+
+  generateTable(){
+    let dishes: Dish[] = []
+    let noEntree = this.generateRandomDishes(Entree, dishes)
+    this.generateRandomDishes(Plat, dishes, 1)
+    this.generateRandomDishes(Dessert, dishes)
+    this.tables.push({
+      id: this.tables.length + 1,
+      dishes: dishes
+    })
+    this.generateAllTables();
+    this.checkChangeScreen();
+    if (noEntree ) this.changePriority(this.tables[this.tables.length-1], DishType.ENTREE)
   }
 
   setDoneTable(tableId: number, dishId: number) {

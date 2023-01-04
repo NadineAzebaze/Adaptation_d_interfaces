@@ -37,4 +37,8 @@ export class BusyScreenChefComponent {
   setPosition(tableId: number) {
     this.tableClick = tableId;
   }
+
+  addTable() {
+    this.tableService.generateTable();
+  }
 }

@@ -1,35 +1,41 @@
 .screenBusy{
+  background-color: rgba(189, 189, 189, 0.56);
+  border: outset;
+  height: 99%;
+  overflow-y: auto;
+  border-radius: 3px;
+  align-items: center;
+}
+h3 {
+  text-align: center;
+}
+
+.allCommands{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  background-color: rgba(189, 189, 189, 0.56);
-  margin: 1%;
-  border: outset;
-  height: fit-content;
-  min-height: 90%;
+  height: 98%;
 }
-/*
-.entree,.plat,.dessert{
-  margin: 2%;
-  padding:1%;
-  border: outset;
-  background-color: #ecebeb;
-  height: fit-content;
-  min-height: 90%;
 
-
+app-table {
+  height: 95%;
+  overflow-y: hidden;
 }
-*/
 
-@media (max-width: 650px) {
+.addTable{
+  height: 10px;
+  width: 10px;
+  background-color: #a5acaf;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+@media (max-width: 1100px) {
   app-table {
     position: absolute;
     pointer-events: none;
     width: 90%;
-    height: 80%;
   }
-  .screenBusy{
-    height: fit-content;
-    min-height: 90%;
-  }
+
 }
 
