@@ -1,15 +1,33 @@
 .screenBusy{
+  background-color: rgba(189, 189, 189, 0.56);
+  border: outset;
+  height: 99%;
+  overflow-y: auto;
+  border-radius: 3px;
+  align-items: center;
+}
+h3 {
+  text-align: center;
+}
+
+.allCommands{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  background-color: rgba(189, 189, 189, 0.56);
-  margin: 1%;
-  border: outset;
   height: 98%;
 }
 
 app-table {
   height: 95%;
   overflow-y: hidden;
+}
+
+.addTable{
+  height: 10px;
+  width: 10px;
+  background-color: #a5acaf;
+  align-items: center;
+  justify-content: center;
+  display: flex;
 }
 
 @media (max-width: 1100px) {
