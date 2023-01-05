@@ -77,7 +77,7 @@ export class TableService {
   }
 
   generateAllTables(): void {
-    if (this.tables.length < 6) {
+    if (this.tables.length < 9) {
       setTimeout(() => {
         this.generateTable()
       }, this.getRandom(5000, 2000));
@@ -115,7 +115,7 @@ export class TableService {
   }
 
   checkChangeScreen() {
-    if (this.tables.length > 6 && this.screen) this.router.navigate(['/busy']).then(_ => {
+    if (this.tables.length > 9 && this.screen) this.router.navigate(['/busy']).then(_ => {
       this.screen = false;
       this.changeOrderTable(this.tablePriorityPlat);
       this.changeOrderTable(this.tablePriorityDessert);
