@@ -7,4 +7,17 @@ import { Component } from '@angular/core';
 })
 export class SidePanelComponent {
 
+  mousedown($event: MouseEvent, panel: HTMLDivElement) {
+    const startHeight = panel.clientHeight;
+    const handler = (event: MouseEvent) => {
+      panel.style.height = "0";
+      panel.style.height = ($event.clientY - event.clientY + startHeight) + "px";
+    };
+    const removeHandler = (event: MouseEvent) => {
+      window.removeEventListener('mousemove', handler);
+      window.removeEventListener('mouseup', removeHandler);
+    }
+    window.addEventListener('mousemove', handler);
+    window.addEventListener('mouseup', removeHandler);
+  }
 }
