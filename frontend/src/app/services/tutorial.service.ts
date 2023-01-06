@@ -20,6 +20,7 @@ export class TutorialService implements OnDestroy {
   private selectedRecipe?: Recipe;
   private currentStep = 0;
   private expert = false;
+  private hidePicture = false;
   private chrono: ChronometerState = {
     percent: 0,
     remainingTime: 0,
@@ -32,6 +33,7 @@ export class TutorialService implements OnDestroy {
   currentStep$ = new BehaviorSubject<number>(0);
   expert$ = new BehaviorSubject<boolean>(false);
   chrono$ = new BehaviorSubject<ChronometerState>(this.chrono);
+  hidePicture$ = new BehaviorSubject<boolean>(this.hidePicture);
 
 
   private clockSubs?: Subscription;
@@ -66,6 +68,11 @@ export class TutorialService implements OnDestroy {
 
     // Reset chrono
     this.startChrono();
+  }
+
+  toggleHidePicture() {
+    this.hidePicture = !this.hidePicture;
+    this.hidePicture$.next(this.hidePicture);
   }
 
   next() {
