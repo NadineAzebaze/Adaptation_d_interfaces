@@ -15,6 +15,8 @@ export class TableService {
   tablePriorityPlat: Table[] = [];
   tablePriorityDessert: Table[] = [];
 
+  test: Table[] =[]
+
   public busy = false;
 
   constructor(private router: Router) {
@@ -52,7 +54,7 @@ export class TableService {
     return Math.floor(Math.random() * (indexMax - min) + min);
   }
 
-  generateRandomDishes(type: Dish[], dishes: Dish[], min: number = 0) {
+  generateRandomDishes(type: Dish[], dishes: Dish[],tableId: number, min: number = 0) {
     const indexMax = Entree.length;
     const numberOfDishes = this.getRandom(6, min);
     for (let j = 0; j < numberOfDishes; j++) {
@@ -63,7 +65,7 @@ export class TableService {
         type: type[indexRandom].type,
         done: type[indexRandom].done,
         number: 1,
-        table: this.tables.length + 1
+        table: tableId
 
       };
       const dish = dishes.find(d => d.id == dishToAdd.id);
@@ -80,20 +82,21 @@ export class TableService {
     if (this.tables.length < 9) {
       setTimeout(() => {
         this.generateTable()
+        this.generateAllTables();
       }, this.getRandom(5000, 2000));
     }
   }
 
   generateTable(){
     let dishes: Dish[] = []
-    let noEntree = this.generateRandomDishes(Entree, dishes)
-    this.generateRandomDishes(Plat, dishes, 1)
-    this.generateRandomDishes(Dessert, dishes)
+    let tableId = this.test.length>0 ? this.test.pop()!.id : this.tables.length + 1
+    let noEntree = this.generateRandomDishes(Entree, dishes,tableId)
+    this.generateRandomDishes(Plat, dishes,tableId,1)
+    this.generateRandomDishes(Dessert, dishes,tableId)
     this.tables.push({
-      id: this.tables.length + 1,
+      id: tableId ,
       dishes: dishes
     })
-    this.generateAllTables();
     this.checkChangeScreen();
     if (noEntree ) this.changePriority(this.tables[this.tables.length-1], DishType.ENTREE)
   }
@@ -104,13 +107,15 @@ export class TableService {
       throw "Table null."
 
     const dish = table.dishes.find(d => d.id === dishId)
-    console.log(dish!.table,table.id, "laaaa")
+    console.log("dish",dishId,"table",table)
     if (!dish)
       throw "Dish null."
     dish.done = !dish.done;
     if (dish.done) this.changePriority(table, dish.type)
     this.tables = this.tables.filter(f => !!f.dishes.find(d => !d.done))
     this.checkChangeScreen()
+    this.test.push(...this.tables$.value.filter(t => this.tables.indexOf(t)<0 ))
+    console.log(this.test)
     this.tables$.next(this.tables)
   }
 
