@@ -14,10 +14,11 @@
                          [selected]="recipe === selectedRecipe"
                          *ngFor="let recipe of recipes" (click)="selectRecipe(recipe)"
         ></app-recipe-item>
-      <div class="expert-button-container">
-        <app-change-mod-button *ngIf="expert" [expert]="expert" (click)="changeMode()" ></app-change-mod-button>
-      </div>
     </div>
+  </div>
+
+  <div class="expert-button-container">
+    <app-change-mod-button *ngIf="expert" [expert]="expert" (click)="changeMode()" ></app-change-mod-button>
   </div>
 </app-side-panel>
 
