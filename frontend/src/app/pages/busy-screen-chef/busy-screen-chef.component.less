@@ -1,5 +1,4 @@
 .screenBusy{
-  background-color: rgba(189, 189, 189, 0.56);
   border: outset;
   height: 100%;
   border-radius: 3px;
@@ -10,12 +9,16 @@ h3 {
 }
 
 .allCommands{
+  background-color: #f9f5efc2;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   overflow-y: auto;
   height: 92%;
-  border: #636464 solid;
+  border: #c0c0c0 solid 2px;
   padding-top: 1%;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.4);
+  border-radius: 5px;
+
 }
 
 app-table {
@@ -30,6 +33,7 @@ app-table {
   align-items: center;
   justify-content: center;
   display: flex;
+  border-radius: 50px;
 }
 
 @media (max-width: 1100px) {

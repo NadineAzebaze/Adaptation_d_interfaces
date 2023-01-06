@@ -4,16 +4,19 @@
   width: 97%;
   height: 80%;
   border-radius: 0 5px 5px 5px;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.4);
 
 }
 
 .busy {
   margin: 0 2% 2% 2%;
   padding: 1%;
-  border: outset;
   background-color: #ecebeb;
   height: 95%;
   overflow-y: auto;
+  border-radius: 0 1% 1% 1%;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.4);
+
 }
 
 .busyButton {
@@ -25,14 +28,20 @@
   background-color: #ecebeb;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
-  border-bottom: none;
   color: black;
   font-style: italic;
+  box-shadow: 2px 0 0 0 rgb(0 0 0 / 40%);
+  border-style: none;
 }
 
 @media (max-width: 1100px) {
+  .busyButton{
+    border-style: solid;
+    border-bottom: none;
+  }
   .busy {
     pointer-events: all;
+    height: 85%;
   }
   #tableId0, #tableId-1, #tableId-2{
     position: relative;
@@ -49,6 +58,10 @@
 }
 
 @media (max-width: 650px) {
+  .btn-secondary{
+    border-style: solid;
+    border-bottom: none;
+  }
   .table {
     pointer-events: all;
     min-height: 95%;

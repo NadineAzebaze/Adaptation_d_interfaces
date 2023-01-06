@@ -1,5 +1,4 @@
 .screen {
-  background-color: rgba(189, 189, 189, 0.56);
   height: 100%;
   border: outset;
   border-radius: 3px;
@@ -17,13 +16,17 @@ app-table {
 }
 
 .allCommands {
+  background-color: #f9f5efc2;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   overflow-y: auto;
   height: 92%;
-  border: #636464 solid;
+  border: #c0c0c0 solid 2px;
   padding: 1% 0 0 1%;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.4);
+  border-radius: 5px;
 }
+
 
 .addTable{
   height: 10px;
@@ -32,6 +35,7 @@ app-table {
   align-items: center;
   justify-content: center;
   display: flex;
+  border-radius: 50px;
 }
 
 @media (max-width: 970px) {
