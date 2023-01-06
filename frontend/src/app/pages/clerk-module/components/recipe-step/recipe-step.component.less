@@ -46,12 +46,41 @@ img {
     height: 20%;
     object-fit: contain;
   }
+
+  .hide-picture>.picture {
+    display: none;
+  }
+
+  .hide-picture>.picture-button {
+    display: block;
+  }
+
+  .picture-button {
+    display: none;
+  }
+
+  .picture {
+    display: block;
+  }
+
+  .tips {
+    display: block !important;
+    animation: forwards ease-in-out fadeout 2s;
+    animation-delay: 1s;
+    max-height: 80px;
+  }
 }
 
 .tips {
-  animation: forwards ease-in-out fadeout 2s;
-  animation-delay: 1s;
-  max-height: 80px;
+  display: none;
+}
+
+.picture-button {
+  display: none;
+}
+
+.picture {
+  display: block;
 }
 
 @keyframes fadeout {
