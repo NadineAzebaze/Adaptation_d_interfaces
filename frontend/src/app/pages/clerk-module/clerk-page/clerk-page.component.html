@@ -8,16 +8,17 @@
       <app-change-mod-button (click)="changeMode()" [expert]="expert" *ngIf="expert === false"></app-change-mod-button>
     </div>
     <app-recipe-player [recipe]="selectedRecipe" [expert]="expert" *ngIf="selectedRecipe"></app-recipe-player>
-    <div class="recipe-list {{expert || !selectedRecipe ? 'expert' : ''}}">
+    <div class="recipe-list my-3 {{expert || !selectedRecipe ? 'expert' : ''}}">
         <app-recipe-item class="mx-2"
                          [recipe]="recipe"
                          [selected]="recipe === selectedRecipe"
                          *ngFor="let recipe of recipes" (click)="selectRecipe(recipe)"
         ></app-recipe-item>
-      <div class="expert-button-container">
-        <app-change-mod-button *ngIf="expert" [expert]="expert" (click)="changeMode()" ></app-change-mod-button>
-      </div>
     </div>
+  </div>
+
+  <div class="expert-button-container">
+    <app-change-mod-button *ngIf="expert" [expert]="expert" (click)="changeMode()" ></app-change-mod-button>
   </div>
 </app-side-panel>
 

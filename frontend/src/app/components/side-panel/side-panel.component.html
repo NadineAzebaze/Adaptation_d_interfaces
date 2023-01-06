@@ -3,8 +3,16 @@
       <ng-content></ng-content>
   </div>
   <div class="panel-panel" #panel>
-    <div class="panel-holder" [ngStyle]="{'--panel-width': panel.clientWidth + 'px'}">
+
+    <div class="panel-holder"  [ngStyle]="{'--panel-width': panel.clientWidth + 'px'}">
+<!--      <div class="handler" (dragstart)="beginDrag($event, panel)" (drag)="drag($event, panel)" (dragend)="dragEnd($event, panel)" #handler>-->
+<!--        <div class="handler-tiret"></div>-->
+<!--      </div>-->
+      <div class="handler" (mousedown)="mousedown($event, panel)" #handler>
+        <div class="handler-tiret"></div>
+      </div>
       <ng-content select="[panel]"></ng-content>
+      <div style="flex: 1"></div>
     </div>
   </div>
 </div>

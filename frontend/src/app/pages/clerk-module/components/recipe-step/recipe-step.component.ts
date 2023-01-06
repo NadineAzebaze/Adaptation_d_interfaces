@@ -18,6 +18,8 @@ export class RecipeStepComponent implements OnDestroy {
   @Input()
   expert = false;
 
+  hidePicture = false;
+
   chrono: ChronometerState = {
     percent: 0,
     remainingTime: 0,
@@ -25,13 +27,16 @@ export class RecipeStepComponent implements OnDestroy {
     completed: false
   }
   private chronoSubscription?: Subscription;
+  private hidePictureSubscription?: Subscription;
 
-  constructor(private tutorialService: TutorialService) {
+  constructor(public tutorialService: TutorialService) {
     this.chronoSubscription = tutorialService.chrono$.subscribe(chrono => this.chrono = chrono);
+    this.hidePictureSubscription = tutorialService.hidePicture$.subscribe(hidePicture => this.hidePicture = hidePicture);
   }
 
   ngOnDestroy(): void {
     this.chronoSubscription?.unsubscribe();
+    this.hidePictureSubscription?.unsubscribe();
   }
 }
 
