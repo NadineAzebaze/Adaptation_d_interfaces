@@ -8,7 +8,12 @@
 <!--      <div class="handler" (dragstart)="beginDrag($event, panel)" (drag)="drag($event, panel)" (dragend)="dragEnd($event, panel)" #handler>-->
 <!--        <div class="handler-tiret"></div>-->
 <!--      </div>-->
-      <div class="handler" (mousedown)="mousedown($event, panel)" #handler>
+      <!-- (mousedown)="mousedown($event, panel)"
+           (touchstart)="touchstart($event, panel)"
+           (pointerdown)="pointerDown($event, panel)"  -->
+      <div class="handler"
+           (pointerdown)="pointerDown($event, panel)"
+           #handler>
         <div class="handler-tiret"></div>
       </div>
       <ng-content select="[panel]"></ng-content>
