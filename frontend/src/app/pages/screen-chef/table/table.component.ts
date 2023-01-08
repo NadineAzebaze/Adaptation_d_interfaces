@@ -15,8 +15,10 @@ export class TableComponent implements OnInit {
   @Output() setTableClick = new EventEmitter<number>();
   @Output() tableID = new EventEmitter<number>();
   @Input() busy: boolean = false;
+  @Input() busyEntree: boolean = false;
   @Input() busyPlat: boolean = false;
   @Input() busyDessert: boolean = false;
+
 
   constructor(public tableService: TableService) {
   }
@@ -38,6 +40,9 @@ export class TableComponent implements OnInit {
   }
   get dessert() {
     return this.table.dishes.filter(d => d.type === DishType.DESSERT)
+  }
+  entreesBusy(tables: Table[] | null = null){
+    return this.tableService.entreesBusy(tables)
   }
   platsBusy(tables: Table[] | null = null) {
     return this.tableService.platsBusy(tables)
