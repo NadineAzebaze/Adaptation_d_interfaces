@@ -5,7 +5,7 @@
   <div class="step-container">
     <div class="img" *ngIf="!expert" [ngClass]="{ 'hide-picture': hidePicture }">
       <img [src]="recipeStep.image" [alt]="recipeStep.name" style="height: 300px" class="picture" (click)="tutorialService.toggleHidePicture()">
-      <button class="btn btn-secondary picture-button" (click)="tutorialService.toggleHidePicture()">show picture</button>
+      <button class="btn btn-secondary picture-button" (click)="tutorialService.toggleHidePicture()">Afficher l'image</button>
     </div>
 
     <!-- Side panel -->
