@@ -1,6 +1,7 @@
 <button type="button" (click)="setTableClick.emit(table.id)" id="tableId{{position}}" [ngClass]="busy ? 'btn btn-secondary busyButton' : 'btn btn-secondary'" style="pointer-events: auto;">{{tableName}}</button>
 <div [ngClass]="busy ? 'busy' : 'table'">
   <!-- ENTREES -->
+  <app-type-dish *ngIf=" busyEntree && allDishesNotDone(entreesBusy(tableService.tablePriorityEntree),'PLAT')" [dishes]="entreesBusy(tableService.tablePriorityEntree)" [dishType]="'urgent'" (setDone)="setDoneTable($event.table,$event.id)" [busy]="true"></app-type-dish>
   <app-type-dish *ngIf="allDishesNotDone(entrees)" [dishes]="entrees" [dishType]="'ENTREE'"
                  (setDone)="setDoneTable($event.table,$event.id)" [busy]="busy"></app-type-dish>
 

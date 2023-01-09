@@ -12,10 +12,12 @@ export class TableService {
   public tables: Table[] = [];
   private screen = true;
   public tables$ = new BehaviorSubject<Table[]>([]);
+
+  tablePriorityEntree: Table[] = [];
   tablePriorityPlat: Table[] = [];
   tablePriorityDessert: Table[] = [];
 
-  test: Table[] =[]
+  tableToReallocate: Table[] =[]
 
   public busy = false;
 
@@ -89,7 +91,7 @@ export class TableService {
 
   generateTable(){
     let dishes: Dish[] = []
-    let tableId = this.test.length>0 ? this.test.pop()!.id : this.tables.length + 1
+    let tableId = this.tableToReallocate.length>0 ? this.tableToReallocate.pop()!.id : this.tables.length>0 ? Math.max(...this.tables.map(table => table.id))+1 : 1
     let noEntree = this.generateRandomDishes(Entree, dishes,tableId)
     this.generateRandomDishes(Plat, dishes,tableId,1)
     this.generateRandomDishes(Dessert, dishes,tableId)
@@ -107,16 +109,20 @@ export class TableService {
       throw "Table null."
 
     const dish = table.dishes.find(d => d.id === dishId)
-    console.log("dish",dishId,"table",table)
     if (!dish)
       throw "Dish null."
     dish.done = !dish.done;
     if (dish.done) this.changePriority(table, dish.type)
-    this.tables = this.tables.filter(f => !!f.dishes.find(d => !d.done))
+    this.deleteTableFinish()
     this.checkChangeScreen()
-    this.test.push(...this.tables$.value.filter(t => this.tables.indexOf(t)<0 ))
-    console.log(this.test)
+    this.tableToReallocate.push(...this.tables$.value.filter(t => this.tables.indexOf(t)<0 ))
     this.tables$.next(this.tables)
+  }
+
+  deleteTableFinish() {
+    this.tables = this.tables.filter(f => !!f.dishes.find(d => !d.done))
+    this.tablePriorityPlat = this.tablePriorityPlat.filter(f => !!f.dishes.find(d => !d.done))
+    this.tablePriorityDessert = this.tablePriorityDessert.filter(f => !!f.dishes.find(d => !d.done))
   }
 
   checkChangeScreen() {
@@ -135,7 +141,7 @@ export class TableService {
     if (!table.dishes.find(d => d.type === dishType && !d.done)) {
       let tablePriority = dishType === DishType.ENTREE ? this.tablePriorityPlat : this.tablePriorityDessert
       table.dishes = table.dishes.filter(d => d.type !== dishType)
-      tablePriority.push(table)
+      if (tablePriority.indexOf(table)<0)tablePriority.push(table)
       this.changeOrderTable(tablePriority)
     }
   }
